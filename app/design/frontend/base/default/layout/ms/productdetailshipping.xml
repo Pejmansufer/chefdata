@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Shipping Calcutalor
+ *
+ * Website: www.hiremagento.com 
+ * Email: hiremagento@gmail.com
+ */
+ -->
+<layout>
+    <ms_productdetailshipping_skeleton>
+        <reference name="head">
+            <action method="addCss"><file>css/productdetailshipping.css</file></action>
+        </reference>
+        <block  name="shipping.estimate.form" type="ms_productdetailshipping/estimate_form" template="ms/productdetailshipping/estimate/form.phtml" />
+    </ms_productdetailshipping_skeleton>
+
+    <ms_productdetailshipping_left>
+        <update handle="ms_productdetailshipping_skeleton" />
+        <reference name="left">
+            <action method="insert"><block>shipping.estimate.form</block></action>
+        </reference>
+    </ms_productdetailshipping_left>
+
+    <ms_productdetailshipping_right>
+        <update handle="ms_productdetailshipping_skeleton" />
+        <reference name="right">
+            <action method="insert"><block>shipping.estimate.form</block></action>
+        </reference>
+    </ms_productdetailshipping_right>
+
+    <ms_productdetailshipping_estimate_estimate>
+        <block type="ms_productdetailshipping/estimate_result" name="shipping.estimate.result" template="ms/productdetailshipping/estimate/result.phtml" output="toHtml" />
+    </ms_productdetailshipping_estimate_estimate>
+	
+	<ms_productdetailshipping_custom>
+	<update handle="ms_productdetailshipping_skeleton" />
+       <reference name="product.info.additional">
+				<action method="insert"><block>shipping.estimate.form</block></action>
+			</reference>
+		
+ <catalog_product_view>
+			 	<update handle="msproductdetailshipping_skeleton" />
+			<reference name="product.info.additional">
+				<action method="insert"><block>shipping.estimate.form</block></action>
+			</reference>
+	</catalog_product_view>
+	    </ms_productdetailshipping_custom>
+
+</layout>

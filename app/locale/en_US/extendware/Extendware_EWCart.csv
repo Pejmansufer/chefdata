@@ -1,0 +1,134 @@
+"%s was added to your compare list.","%s was added to your compare list."
+"%s was added to your shopping cart.","%s was added to your shopping cart."
+"%s was added to your wishlist.","%s was added to your wishlist."
+"* Required Fields","* Required Fields"
+Add,Add
+"Add All to Cart","Add All to Cart"
+"Add to Cart","Add to Cart"
+"Add to cart","Add to cart"
+"Add to compare","Add to compare"
+"Add to wishlist","Add to wishlist"
+"Added On","Added On"
+"Advanced Product Support","Advanced Product Support"
+"AJAX Cart","AJAX Cart"
+"AJAX Overlay","AJAX Overlay"
+"Are you sure you want to remove this product from your wishlist?","Are you sure you want to remove this product from your wishlist?"
+"As low as","As low as"
+Availability:,Availability:
+Behavior,Behavior
+"Block background clicking when dialog is visible","Block background clicking when dialog is visible"
+"Bottom Block Options Wrapper","Bottom Block Options Wrapper"
+"Buy %1$s with %2$s discount each","Buy %1$s with %2$s discount each"
+Canceled,Canceled
+"Cannot create wishlist.","Cannot create wishlist."
+Cart,Cart
+"Choose a selection...","Choose a selection..."
+"Clear All","Clear All"
+"Clear Confirmation","Clear Confirmation"
+Comment,Comment
+Compare,Compare
+"Compare Products","Compare Products"
+Configuration,Configuration
+"Confirmation Display Time","Confirmation Display Time"
+"Continue Shopping","Continue Shopping"
+"Cross-sell products","Cross-sell products"
+"Customers Who Bought Also Bought","Customers Who Bought Also Bought"
+"Customers Who Viewed Also Viewed","Customers Who Viewed Also Viewed"
+Delete,Delete
+"Delete Confirmation","Delete Confirmation"
+"Do not list products","Do not list products"
+"Enable or disable AJAX Cart","Enable or disable AJAX Cart"
+"Enable or disable AJAX for adding","Enable or disable AJAX for adding"
+"Enable or disable AJAX for clearing","Enable or disable AJAX for clearing"
+"Enable or disable AJAX for deleting","Enable or disable AJAX for deleting"
+"Enable or disable. Automatically disabled on unsupported browsers","Enable or disable. Automatically disabled on unsupported browsers"
+Enabled,Enabled
+"Error encountered","Error encountered"
+"Excl. Tax","Excl. Tax"
+"Excl. Tax:","Excl. Tax:"
+Extendware,Extendware
+From,From
+From:,From:
+General,General
+"Gift Message","Gift Message"
+"If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen.","If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen."
+"In stock","In stock"
+"Incl. Tax","Incl. Tax"
+"Incl. Tax:","Incl. Tax:"
+"Info Column Options Wrapper","Info Column Options Wrapper"
+"Leave empty for no confirmation","Leave empty for no confirmation"
+"Loading Transitions","Loading Transitions"
+Main,Main
+"Manually Redirect","Manually Redirect"
+"Max Top (px)","Max Top (px)"
+Message:,Message:
+"My Cart","My Cart"
+"My Cart (%s item)","My Cart (%s item)"
+"My Cart (%s items)","My Cart (%s items)"
+"My Wishlist","My Wishlist"
+"My Wishlist (%s item)","My Wishlist (%s item)"
+"My Wishlist (%s items)","My Wishlist (%s items)"
+N/A,N/A
+"No options of this product are available.","No options of this product are available."
+None,None
+Ordered,Ordered
+"Out of stock","Out of stock"
+"Payment Methods After Checkout Button","Payment Methods After Checkout Button"
+"Payment Methods Before Checkout Button","Payment Methods Before Checkout Button"
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+"Please enter your comments...","Please enter your comments..."
+"Please refresh the page and try again.","Please refresh the page and try again."
+Price,Price
+"Price as configured","Price as configured"
+Product,Product
+"Product could not be added to your compare list.","Product could not be added to your compare list."
+"Product could not be added to your shopping cart.","Product could not be added to your shopping cart."
+"Product could not be added to your wishlist.","Product could not be added to your wishlist."
+"Product could not be removed from your compare list.","Product could not be removed from your compare list."
+"Product could not be removed from your shopping cart.","Product could not be removed from your shopping cart."
+"Product could not be removed from your wishlist.","Product could not be removed from your wishlist."
+"Product is currently not available for sale.","Product is currently not available for sale."
+"Product must be visible in order to add it to wishlist.","Product must be visible in order to add it to wishlist."
+"Product Name","Product Name"
+"Product Options Support","Product Options Support"
+"Product View Extra Hint","Product View Extra Hint"
+"Products could not be cleared from your compare list.","Products could not be cleared from your compare list."
+Qty,Qty
+Qty:,Qty:
+"Redirecting to product page.","Redirecting to product page."
+Refunded,Refunded
+"Related products","Related products"
+"Reload Cart","Reload Cart"
+"Remove Item","Remove Item"
+"Remove item","Remove item"
+"RSS Feed","RSS Feed"
+"Set to 0 to disable auto-closing of dialogs","Set to 0 to disable auto-closing of dialogs"
+Settings,Settings
+"Share Wishlist","Share Wishlist"
+Shipped,Shipped
+"Shopping Cart Form Before","Shopping Cart Form Before"
+"Support non-simple products (such as configurable, bundle, grouped products, etc)","Support non-simple products (such as configurable, bundle, grouped products, etc)"
+"Support products with custom options (affects configurable and bundle products too)","Support products with custom options (affects configurable and bundle products too)"
+"The advantage of disabling this option if you do not need configurable, bundle, grouped product support is that the javascript will be more compact.","The advantage of disabling this option if you do not need configurable, bundle, grouped product support is that the javascript will be more compact."
+"The advantage of disabling this option if you do not need product option support is that the javascript will be more compact.","The advantage of disabling this option if you do not need product option support is that the javascript will be more compact."
+"The maximum pixels from the top of the screen that the modal box will appear. Put in a very lage value (e.g., 99999) to center the modal box","The maximum pixels from the top of the screen that the modal box will appear. Put in a very lage value (e.g., 99999) to center the modal box"
+"These type of products will be displayed in the add to cart success dialog. <a href=""http://www.extendware.com/customers-also-bought-magento-extension.html"" target=""_target"">Also Bought</a> and <a href=""http://www.extendware.com/customers-also-viewed-magento-extension.html"" target=""_target"">Also Viewed</a> requires our extensions to be installed.","These type of products will be displayed in the add to cart success dialog. <a href=""http://www.extendware.com/customers-also-bought-magento-extension.html"" target=""_target"">Also Bought</a> and <a href=""http://www.extendware.com/customers-also-viewed-magento-extension.html"" target=""_target"">Also Viewed</a> requires our extensions to be installed."
+"This product is also part of bundle(s)","This product is also part of bundle(s)"
+To,To
+To:,To:
+Total,Total
+"Total Incl. Tax","Total Incl. Tax"
+"Total incl. tax","Total incl. tax"
+"Up-sell Mode","Up-sell Mode"
+"Up-sell products","Up-sell products"
+"Update Wishlist","Update Wishlist"
+"View Shopping Cart","View Shopping Cart"
+"View Wishlist","View Wishlist"
+Width,Width
+"Width in pixels of the dialog box","Width in pixels of the dialog box"
+Wishlist,Wishlist
+"Wishlist is currently disabled.","Wishlist is currently disabled."
+"Wishlist of item does not match customer wishlist","Wishlist of item does not match customer wishlist"
+"You have no items in your wishlist.","You have no items in your wishlist."
+"You may also be interested in...","You may also be interested in..."
+"You must be logged in to use the wishlist. Redirecting to account login page.","You must be logged in to use the wishlist. Redirecting to account login page."

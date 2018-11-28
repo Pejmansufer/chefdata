@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <le_cartmigration translate="title">
+                                        <title>Cart Migration</title>
+                                        <sort_order>80</sort_order>
+                                    </le_cartmigration>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <cartmigration>
+                        <title>Cart Migration</title>
+                        <children>
+                            <migration>
+                                <title>Migration</title>
+                                <sort_order>10</sort_order>
+                            </migration>
+                            <config translate="title">
+                                <title>Configuration</title>
+                                <sort_order>20</sort_order>
+                            </config>
+                        </children>
+                    </cartmigration>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <cartmigration>
+            <title>Cart Migration</title>
+            <sort_order>70</sort_order>
+            <depends>
+                <module>LitExtension_CartMigration</module>
+            </depends>
+            <children>
+                <migration translate="title" module="le_cartmigration">
+                    <title>Migration</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/cartmigration_import/index</action>
+                </migration>
+                <config translate="title">
+                    <title>Configuration</title>
+                    <sort_order>20</sort_order>
+                    <action>adminhtml/system_config/edit/section/le_cartmigration</action>
+                </config>
+            </children>
+        </cartmigration>
+    </menu>
+</config>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<widgets>
+<responsiveslideshow type="responsiveslideshow/widget_responsiveslideshow" translate="name description" module="responsiveslideshow"> 
+        <name>Responsive Slideshow</name>
+        <description>List of Slideshows</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>weaveapps/responsiveslideshow/responsiveslideshow.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>weaveapps/responsiveslideshow/responsiveslideshow.phtml</value>
+                        <label>Responsive Slideshow</label>
+                    </default>
+                </values>
+            </template> 
+            <group_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Responsive Slideshow</label>
+                <type>label</type>
+                <helper_block>
+                    <type>responsiveslideshow/adminhtml_responsiveslideshow_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Slideshow...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </group_id>
+        </parameters>
+</responsiveslideshow>
+</widgets>

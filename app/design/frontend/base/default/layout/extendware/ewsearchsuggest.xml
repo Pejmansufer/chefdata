@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+        	<action method="addItem" ifconfig="ewsearchsuggest/general/enabled" ewminify_ignore_order="1"><type>ewgenerated_js</type><name>ewsearchsuggest/js_general</name></action>
+            <action method="addItem" ifconfig="ewsearchsuggest/general/enabled" ewminify_ignore_order="1"><type>skin_css</type><name>extendware/ewsearchsuggest/css/general.css</name></action>
+        </reference>
+		
+        <reference name="footer">
+            <block type="ewsearchsuggest/code" name="ewsearchsuggest_footer" ifconfig="ewsearchsuggest/general/enabled" after="-" />
+        </reference>
+    </default>
+    
+    <ewsearchsuggest_ajax_suggest>
+    	<reference name="ajax">
+    		<block type="ewsearchsuggest/autocomplete" name="ewsearchsuggest_autocomplete"/>
+		</reference>
+    </ewsearchsuggest_ajax_suggest>
+    
+    <ewsearchsuggest_price_handle>
+    	<block type="catalog/product_price_template" name="ewsearchsuggest_catalog_product_price_template" />
+		<reference name="ewsearchsuggest_catalog_product_price_template">
+        	<action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>extendware/ewsearchsuggest/catalog/product/bundle/price.phtml</template></action>
+        </reference>
+    </ewsearchsuggest_price_handle>
+    
+    <ewsearchsuggest_price_old_handle>
+    	<block type="catalog/product_price_template" name="ewsearchsuggest_catalog_product_price_template" />
+		<reference name="ewsearchsuggest_catalog_product_price_template">
+        	<action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>extendware/ewsearchsuggest/catalog/product/bundle/price_old.phtml</template></action>
+        </reference>
+    </ewsearchsuggest_price_old_handle>
+</layout>

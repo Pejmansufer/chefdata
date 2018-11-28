@@ -1,0 +1,121 @@
+<!--
+
+ /**
+ * Quickrfq extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    FME_Quickrfq
+ * @author     Malik Tahir Mehmood<malik.tahir786@gmail.com>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+
+-->
+
+<!--@subject A New Request For Quote@-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"var data.name":"Sender Name",
+"var data.email":"Sender Email",
+"var data.phone":"Sender Telephone",
+"var data.overview":"Overview"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+ 
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+        <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+              <tr>
+                    <td align="center" valign="top">
+                        A new RFQ has been Submitted with the following Details. The Details are as follows.
+                        
+                        <!-- [ header starts here] -->
+                          <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                    <td valign="top">
+                                     <p><a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}" border="0"/></a></p></td>
+                                </tr>
+                           </table>
+                           <!-- [ middle starts here] -->
+                          <table cellspacing="0" cellpadding="0" border="0" width="650">
+                                   
+                             
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Name:</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.contact_name}}</td>
+                             </tr>
+                          </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                          
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">E-mail: </td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">{{var data.email}}</td>
+                             </tr>
+                               </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Company Name:  </td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">  {{var data.company}}</td>
+                             </tr>
+                               </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Telephone: </td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.phone}}</td>
+                             </tr>
+                               <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Project Title:</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.project_title}}</td>
+                             </tr>
+                                </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                               <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Quote Needed By:</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;"> {{var data.date}}</td>
+                             </tr>
+                            </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                                  
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Project Budget Status:  </td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">
+                                    
+                                            {{var data.budget}}</td>
+                                        
+                             </tr>
+                            </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                   <td align="center" style="text-align:left;vertical-align:top;width:30%;font-weight:bold;">Overview:</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">
+                                    {{var data.overview}}</td>
+                                        
+                             </tr>
+                            </table>
+                           <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;">&nbsp;</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp;</td>
+                             </tr>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" border="0" width="650">
+                              <tr>
+                                   <td align="center" style="text-align:left;width:30%;font-weight:bold;">Regards,</td>
+                                   <td align="center" style="padding-left:5px;text-align:left;width:70%;">&nbsp; </td>
+                             </tr>
+                            </table>
+                          
+                    </td>
+                </tr>
+            </table>
+        </div>
+

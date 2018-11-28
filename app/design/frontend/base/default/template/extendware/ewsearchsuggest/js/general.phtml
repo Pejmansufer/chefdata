@@ -1,0 +1,93 @@
+var EWSearchSuggestAutocomplete = Class.create(Ajax.Autocompleter, {
+	baseInitialize: function($super, element, update, options) {
+	    $super(element, update, options);
+	    this.disableOnBlur = 0;
+	},
+	onHover: function(event) {
+		Event.stop(event);
+	},
+	
+	onBlur: function(e) {},
+	onClick: function(e) {},
+	selectEntry: function() {
+		this.options.caller.form.submit();
+		this.active = false;
+	},
+	hide: function() {
+		this.stopIndicator();
+		if(Element.getStyle(this.update, 'display')!='none') this.options.onHide(this.element, this.update);
+		if(this.iefix) Element.hide(this.iefix);
+	},
+  
+  	show: function($super) {
+		$super();
+		this.boundBodyClickEvent = this.onBodyClick.bind(this);
+		$$('body').first().observe('click', this.boundBodyClickEvent);
+	},
+	
+	onBodyClick: function(event) {
+		this.hide();
+		$$('body').first().stopObserving('click', this.boundBodyClickEvent);
+	},
+	
+	startIndicator: function() {
+		this.element.addClassName('ewspinner');
+	},
+
+	stopIndicator: function() {
+		this.element.removeClassName('ewspinner')
+	},
+	
+	onComplete: function($super, request) {
+		$super(request);
+		this.stopIndicator();
+	}
+});
+
+var EWSearchSuggest = Class.create(Varien.searchForm, {
+    initialize : function($super, form, field, emptyText) {
+    	$(form).stopObserving();
+        $(field).stopObserving();
+    	$super(form, field, emptyText);
+    },
+
+    initAutocomplete : function(url, destinationElement){
+    	url = url.replace('http://', window.location.protocol+'//');
+		url = url.replace('https://', window.location.protocol+'//');
+		
+        this.autocompleter = new EWSearchSuggestAutocomplete(
+            this.field,
+            destinationElement,
+            url,
+            {
+            	caller: this,
+                paramName: this.field.name,
+                method: 'get',
+                minChars: <?php echo $this->mHelper('config')->getMinChars(); ?>,
+                frequency: <?php echo $this->mHelper('config')->getFrequency(); ?>,
+                onShow : function(element, update) {
+                	update.style.position = 'absolute';
+                	
+                	var pos = Element.cumulativeOffset(element);
+                	var left = pos[0]; 
+                	<?php if ($this->mHelper('config')->getBoxHorizontalOrientation() == 'left'): ?>
+                	left = left - update.getWidth() + element.getWidth();
+                	<?php endif; ?>
+                	var top = pos[1]+element.getHeight();
+                	top += <?php echo $this->mHelper('config')->getBoxTopOffsetAdjustment(); ?>;
+                	update.setStyle({left: left+'px', top: top+'px'})
+                    Effect.Appear(update,{duration:0});
+                    this.disableOnBlur = 0;
+                }
+            }
+        );
+    },
+
+    onClickQuerySuggestion : function(q) {
+    	this.field.value = q;
+    	if (this.autocompleter) {
+    		this.autocompleter.getUpdatedChoices();
+    		this.autocompleter.render();
+    	}
+	}
+});

@@ -1,0 +1,725 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWSphinx>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewsphinx">
+						            <label>Sphinx Search</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewsphinx translate="label comment ewhelp" module="ewsphinx">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewsphinx">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<enabled translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling will mean sphinx will not be used on the frontend for searching.]]></comment>
+						                        </enabled>
+											</fields>
+										</general>
+										<search translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Product Search</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <mode translate="label comment ewhelp">
+						                            <label>Search Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_mode</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The search mode can make the search more or less precise. Typically only phrase, all, or any would be used:]]></comment>
+						                        	<ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>All match - </b> All search words must be present</li>
+						                        		<li><b>Any match - </b> Any search words must match</li>
+						                        		<li><b>Extended expression match - </b> Match with respect of the expression query syntax.</li>
+						                        	</ul>]]></ewhelp>
+						                        </mode>
+						                        <operator translate="label comment ewhelp">
+						                            <label>Operator</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_operator</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA["And" requires all search terms to be present. "Or" only requires one search term to be present.]]></comment>
+						                        </operator>
+						                        <wildcard_mode translate="label comment ewhelp">
+						                            <label>Wildcard Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_wildcardmode</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA[If enabled then "cat" will match cathy.]]></comment>
+						                            <ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>None - </b> "Car" will only match car and not scar or carrot</li>
+						                        		<li><b>Prefix - </b> "Car" will match car and scar, but not carrot</li>
+						                        		<li><b>Suffix - </b> "Car" will match car and carrot, but not scar</li>
+						                        		<li><b>Both - </b> "Car" will match car, carrot, and scar</li>
+						                        	</ul>]]></ewhelp>
+						                        </wildcard_mode>
+						                        <field_boosters translate="label comment ewhelp">
+						                            <label>Field Boosters</label>
+						                            <frontend_model>ewsphinx/adminhtml_config_form_field_product_fieldboosters</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                   			<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>2</splittable_min_items>
+						                            			<splittable_max_items>2</splittable_max_items>
+						                            			<splittable_item_types>string|double</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Prioritize or deprioritize certain product attributes.]]></comment>
+						                        	<ewhelp><![CDATA[The default weight attached to any field is 1. You should enter a whole number higher than 1 to prioritize that attribute.]]></ewhelp>
+						                        </field_boosters>
+											</fields>
+										</search>
+										<indexing translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Product Indexing</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>50</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <tag_inclusion translate="label comment ewhelp">
+						                            <label>Tag Inclusion</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enabling will mean product active tags will be added to the index. This can slow indexing.]]></comment>
+						                        </tag_inclusion>
+						                        <category_inclusion translate="label comment ewhelp">
+						                            <label>Category Inclusion</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enabling will mean product categories will be added to the index. This can slow down indexing.]]></comment>
+						                        </category_inclusion>
+											</fields>
+										</indexing>
+									</groups>
+								</ewsphinx>
+								<ewsphinx_page translate="label comment ewhelp" module="ewsphinx">
+									<class>separator-top</class>
+									<label>Page Search</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>125</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewsphinx">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<enabled translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling will mean pages will not be indexed.]]></comment>
+						                        </enabled>
+											</fields>
+										</general>
+										<search translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Search</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <mode translate="label comment ewhelp">
+						                            <label>Search Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_mode</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The search mode can make the search more or less precise. Typically only phrase, all, or any would be used:]]></comment>
+						                        	<ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>All match - </b> All search words must be present</li>
+						                        		<li><b>Any match - </b> Any search words must match</li>
+						                        		<li><b>Extended expression match - </b> Match with respect of the expression query syntax.</li>
+						                        	</ul>]]></ewhelp>
+						                        </mode>
+						                        <operator translate="label comment ewhelp">
+						                            <label>Operator</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_operator</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA["And" requires all search terms to be present. "Or" only requires one search term to be present.]]></comment>
+						                        </operator>
+						                        <wildcard_mode translate="label comment ewhelp">
+						                            <label>Wildcard Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_wildcardmode</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA[If enabled then "cat" will match cathy.]]></comment>
+						                            <ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>None - </b> "Car" will only match car and not scar or carrot</li>
+						                        		<li><b>Prefix - </b> "Car" will match car and scar, but not carrot</li>
+						                        		<li><b>Suffix - </b> "Car" will match car and carrot, but not scar</li>
+						                        		<li><b>Both - </b> "Car" will match car, carrot, and scar</li>
+						                        	</ul>]]></ewhelp>
+						                        </wildcard_mode>
+						                        <field_boosters translate="label comment ewhelp">
+						                            <label>Field Boosters</label>
+						                            <frontend_model>ewsphinx/adminhtml_config_form_field_page_fieldboosters</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                   			<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>2</splittable_min_items>
+						                            			<splittable_max_items>2</splittable_max_items>
+						                            			<splittable_item_types>string|double</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Prioritize or deprioritize certain product attributes.]]></comment>
+						                        	<ewhelp><![CDATA[The default weight attached to any field is 1. You should enter a whole number higher than 1 to prioritize that attribute.]]></ewhelp>
+						                        </field_boosters>
+											</fields>
+										</search>
+										<indexing translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Indexing</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>50</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<search_attributes translate="label comment ewhelp">
+													<label>Search Attributes</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsphinx/adminhtml_config_data_option_page_searchattributes</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>These attributes will be used for searching. You must re-index "Search Suggest" in System -> Index Management after changing</comment>
+												</search_attributes>
+												<excluded_pages translate="label comment ewhelp">
+													<label>Excluded CMS Pages</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsphinx/adminhtml_config_data_option_page_excluded</source_model>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<can_be_empty>1</can_be_empty>
+						                            <comment>Selected CMS pages will be excluded from the results. Use CTRL-Click to select multiple pages</comment>
+												</excluded_pages>
+											</fields>
+										</indexing>
+									</groups>
+								</ewsphinx_page>
+								<ewsphinx_category translate="label comment ewhelp" module="ewsphinx">
+									<class>separator-top</class>
+									<label>Category Search</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>150</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewsphinx">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<enabled translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling will mean categories will not be indexed.]]></comment>
+						                        </enabled>
+											</fields>
+										</general>
+										<search translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Search</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <mode translate="label comment ewhelp">
+						                            <label>Search Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_mode</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The search mode can make the search more or less precise. Typically only phrase, all, or any would be used:]]></comment>
+						                        	<ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>All match - </b> All search words must be present</li>
+						                        		<li><b>Any match - </b> Any search words must match</li>
+						                        		<li><b>Extended expression match - </b> Match with respect of the expression query syntax.</li>
+						                        	</ul>]]></ewhelp>
+						                        </mode>
+						                        <operator translate="label comment ewhelp">
+						                            <label>Operator</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_operator</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA["And" requires all search terms to be present. "Or" only requires one search term to be present.]]></comment>
+						                        </operator>
+						                        <wildcard_mode translate="label comment ewhelp">
+						                            <label>Wildcard Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_search_wildcardmode</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><mode>4</mode></depends>
+						                            <comment><![CDATA[If enabled then "cat" will match cathy.]]></comment>
+						                            <ewhelp><![CDATA[<ul style="list-style-type:disc; margin-left: 20px;">
+						                        		<li><b>None - </b> "Car" will only match car and not scar or carrot</li>
+						                        		<li><b>Prefix - </b> "Car" will match car and scar, but not carrot</li>
+						                        		<li><b>Suffix - </b> "Car" will match car and carrot, but not scar</li>
+						                        		<li><b>Both - </b> "Car" will match car, carrot, and scar</li>
+						                        	</ul>]]></ewhelp>
+						                        </wildcard_mode>
+						                        <field_boosters translate="label comment ewhelp">
+						                            <label>Field Boosters</label>
+						                            <frontend_model>ewsphinx/adminhtml_config_form_field_category_fieldboosters</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                   			<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>2</splittable_min_items>
+						                            			<splittable_max_items>2</splittable_max_items>
+						                            			<splittable_item_types>string|double</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Prioritize or deprioritize certain product attributes.]]></comment>
+						                        	<ewhelp><![CDATA[The default weight attached to any field is 1. You should enter a whole number higher than 1 to prioritize that attribute.]]></ewhelp>
+						                        </field_boosters>
+											</fields>
+										</search>
+										<indexing translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Indexing</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>50</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<search_attributes translate="label comment ewhelp">
+													<label>Search Attributes</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsphinx/adminhtml_config_data_option_category_searchattributes</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>These attributes will be used for searching.</comment>
+												</search_attributes>
+											</fields>
+										</indexing>
+									</groups>
+								</ewsphinx_category>
+								<ewsphinx_advanced translate="label comment ewhelp" module="ewsphinx">
+									<class>separator-top</class>
+									<label>Advanced</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>400</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewsphinx">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <cache_enabled translate="label comment ewhelp">
+						                            <label>Cache Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling this will make it so the search cache is not used.]]></comment>
+						                        </cache_enabled>
+						                        <max_results translate="label comment ewhelp">
+						                            <label>Max Results</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>11</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[The maximum number of results returned by a search. Have a limit can speed up some searches.]]></comment>
+						                        </max_results>
+						                        <wildcard_min_length translate="label comment ewhelp">
+						                            <label>Wildcard Min Length</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>12</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[The number of characters needed for a word before a wild card query will be performed]]></comment>
+						                        </wildcard_min_length>
+						                        <chars2spaces translate="label comment ewhelp">
+						                            <label>Chars To Spaces</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <comment><![CDATA[List each character (wihout any separation) that you want to convert to spaces.]]></comment>
+						                        </chars2spaces>
+											</fields>
+										</general>
+										<connection translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Connection</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>15</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>0</show_in_website>
+						                    <show_in_store>0</show_in_store>
+						                    <fields>
+												<mode translate="label comment ewhelp">
+						                            <label>Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_connection_mode</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[Local will connect to the local search sphinx installed on the server. Remote is for connecting to search sphinx on an external server.]]></comment>
+						                        </mode>
+						                        <host translate="label comment ewhelp">
+						                            <label>Host</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[The host the sphinx server where the connection will be made.]]></comment>
+						                        </host>
+						                        <port translate="label comment ewhelp">
+						                            <label>Port</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment><![CDATA[The port of the sphinx server. Default port is 3312]]></comment>
+						                        </port>
+						                        <binary_path translate="label comment ewhelp">
+						                            <label>Binary Path</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <depends><mode>local</mode></depends>
+						                            <comment><![CDATA[The full path where the sphinx binaries are located. Exmaple: /usr/bin]]></comment>
+						                        </binary_path>
+						                        <remote_path translate="label comment ewhelp">
+						                            <label>Remote Path</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <depends><mode>remote</mode></depends>
+						                            <comment><![CDATA[The full path on the remote server where sphinx configuration and indexes are stored. Example: /var/sphinx]]></comment>
+						                        </remote_path>
+											</fields>
+										</connection>
+										<indexing translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Indexing</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<morphology_mode translate="label comment ewhelp">
+						                            <label>Morphology Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewsphinx/adminhtml_config_data_option_indexing_morphologymode</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The language rules that will be used for stemming / lemmatization. <b>Note: </b> Sphinx will need to be installed with support for the chosen morphology backend or none will be used.]]></comment>
+						                        </morphology_mode>
+						                    	<number_tokenization_enabled translate="label comment ewhelp">
+						                            <label>Number Tokenization</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>2</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If enabled, "11b99" will be tokenized as "11b99 1199 11 99"]]></comment>
+						                        </number_tokenization_enabled>
+						                        <chars_for_tokenization translate="label comment ewhelp">
+						                            <label>Chars For Tokenization</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <comment><![CDATA[List each character (wihout any separation) that you want to tokenize on.]]></comment>
+						                            <comment><![CDATA[Tokenizing on "-" will turn "fat-cat" into "fat-cat fat cat fatcat"]]></comment>
+						                        </chars_for_tokenization>
+						                        <min_word_length translate="label comment ewhelp">
+						                            <label>Min Word Length</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[Words less than this will not be indexed. Set to 0 to index all.]]></comment>
+						                        </min_word_length>
+						                        <max_memory translate="label comment ewhelp">
+						                            <label>Max Memory (mb)</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                    		<show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>16</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[The maximum memory in megabytes the indexer can use]]></comment>
+						                        </max_memory>
+											</fields>
+										</indexing>
+										<cronjob translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Cronjob</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>30</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>0</show_in_website>
+						                    <show_in_store>0</show_in_store>
+						                    <fields>
+						                        <magento_cron_enabled translate="label comment ewhelp">
+						                            <label>Magento Cronjob Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[Disabling this will make it so the magento cronjob will not be used for sphinx search. You must manually register the cronjobs.]]></comment>
+						                        </magento_cron_enabled>
+						                        <all_cron_expr translate="label comment ewhelp">
+						                            <label>Reindex All Cron Expr</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                    		<show_in_store>0</show_in_store>
+						                            <validate>required-entry</validate>
+						                            <depends><magento_cron_enabled>1</magento_cron_enabled></depends>
+						                            <comment><![CDATA[The cron expression controls how frequently the search index will be completely redone.]]></comment>
+						                        </all_cron_expr>
+						                        <delta_cron_expr translate="label comment ewhelp">
+						                            <label>Reindex Updates Cron Expr</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                    		<show_in_store>0</show_in_store>
+						                            <validate>required-entry</validate>
+						                            <depends><magento_cron_enabled>1</magento_cron_enabled></depends>
+						                            <comment><![CDATA[The cron expression controls how frequently updates will be reindexed. This should be more frequent than the reindex all cron expr.]]></comment>
+						                        </delta_cron_expr>
+											</fields>
+										</cronjob>
+										<misc translate="label comment ewhelp" module="ewsphinx">
+						                    <label>Miscellaneous</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>40</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>0</show_in_website>
+						                    <show_in_store>0</show_in_store>
+						                    <fields>
+						                    	<php_command translate="label comment ewhelp">
+						                            <label>PHP Command</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[The php command used for the feeds of items. You can add a config file here such as "php -c [path to config] -f " (php file will be appended to the end)]]></comment>
+						                        </php_command>
+						                        <which_binary_path translate="label comment ewhelp">
+						                            <label>"which" Binary Path</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[Binary path to the "which" command on your server. Used for checking commands. Leave blank to not check existence of commands.]]></comment>
+						                        </which_binary_path>
+						                        <wait_timeout translate="label comment ewhelp">
+						                            <label>Wait Timeout</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[Set the session level wait_timeout in mysql (in seconds) when indexing. Set to 0 to use default. If you get MySQL Gone Away messagse you need to set this to a higher value.]]></comment>
+						                        </wait_timeout>
+											</fields>
+										</misc>
+									</groups>
+								</ewsphinx_advanced>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWSphinx>
+	</modules>
+</config>

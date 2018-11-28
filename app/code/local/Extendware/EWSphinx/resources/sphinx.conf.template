@@ -1,0 +1,38 @@
+###############################################################################
+# Auto-generated sphinx configuration ({{var timestamp}})
+###############################################################################
+
+searchd {
+	listen = {{var host}}:{{var port}}
+	read_timeout = 5
+	max_children = 50
+	pid_file = {{var sphinx_path}}/searchd.pid
+	log = {{var log_path}}/searchd.log
+	query_log = {{var log_path}}/query.log
+	max_matches = 100000
+	seamless_rotate = 1
+	preopen_indexes = 1
+	unlink_old = 1
+}
+
+indexer {
+	# memory limit, in bytes, kiloytes (16384K) or megabytes (256M)
+	# optional, default is 32M, max is 2047M, recommended is 256M to 1024M
+	mem_limit = {{var max_memory}}M
+
+	# lemmatizer dictionaries base path
+	# optional, defaut is /usr/local/share (see ./configure --datadir)
+	# lemmatizer_base = /usr/local/share/sphinx/dicts
+
+
+	# lemmatizer cache size
+	# improves the indexing time when the lemmatization is enabled
+	# optional, default is 256K
+	# lemmatizer_cache = 512M
+}
+
+###############################################################################
+# sections
+###############################################################################
+
+{{var sections}}

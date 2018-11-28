@@ -1,0 +1,84 @@
+<?php if ($this->checkDates() && $this->checkCountry() && $this->getProductCollection()->count()) : ?>
+<div class="block block-related" style="position: relative;">
+    <input type="hidden" id="items-count" name="items-count" value="<?php echo $this->getProductsViewCount() ?>"/>
+    <a href="javascript:" id="btn-prev" class="carousel-control triangle-up" rel="prev"></a>
+    <div class="block-title">
+        <strong><span><?php echo $this->__($this->getBlockName()) ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ol class="mini-products-list" id="block-related-slider" style="list-style: none outside none; padding:0;">
+            <?php foreach($this->getProductCollection() as $_item): ?>
+            <li class="item slide-block" style = "padding: 7px 0;">
+                <div class="product">
+                    <?php if (in_array('thumbnail', $this->getAttributes())) : ?>
+                    <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(50) ?>" width="50" height="50" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+                    <?php endif; ?>
+                    <div class="product-details">
+                        <?php if (in_array('name', $this->getAttributes())) : ?>
+                        <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></p>
+                        <?php endif; ?>
+                        <?php if (in_array('price', $this->getAttributes())) : ?>
+                        <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                        <?php endif; ?>
+                        <?php if (in_array('reviews', $this->getAttributes())) : ?>
+                        <?php echo $this->getReviewsSummaryHtml($_item) ?>
+                        <?php endif; ?>
+                        <?php if (in_array('sku', $this->getAttributes())) : ?>
+                        <div>SKU: <?php echo $_item->getSku(); ?></div>
+                        <?php endif; ?>
+                        <?php if (in_array('add_to_cart', $this->getAttributes())) : ?>
+                        <div>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart"
+                                    onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')">
+                                <span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </li>
+            <?php endforeach ?>
+        </ol>
+        <script type="text/javascript">decorateList('block-related-slider', 'none-recursive')</script>
+    </div>
+    <a href="javascript:" id="btn-next" class="carousel-control triangle-down" rel="next"></a>
+    <script type="text/javascript">
+        //<![CDATA[
+        $$('.slider-related-checkbox').each(function(elem){
+            Event.observe(elem, 'click', addRelatedToProduct)
+        });
+
+        var relatedProductsCheckFlag = false;
+        function selectAllRelated(txt){
+            if (relatedProductsCheckFlag == false) {
+                $$('.slider-related-checkbox').each(function(elem){
+                    elem.checked = true;
+                });
+                relatedProductsCheckFlag = true;
+                txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+            } else {
+                $$('.slider-related-checkbox').each(function(elem){
+                    elem.checked = false;
+                });
+                relatedProductsCheckFlag = false;
+                txt.innerHTML="<?php echo $this->__('select all') ?>";
+            }
+            addRelatedToProduct();
+        }
+
+        function addRelatedToProduct(){
+            var checkboxes = $$('.slider-related-checkbox');
+            var values = [];
+            for(var i=0;i<checkboxes.length;i++){
+                if(checkboxes[i].checked) values.push(checkboxes[i].value);
+            }
+            if($('related-products-field')){
+                $('related-products-field').value = values.join(',');
+            }
+        }
+
+        new ProductVerticalSlider('block-related-slider','li.slide-block',$('btn-next'),$('btn-prev'),{visibleCount:$$('#items-count')[0].value});
+        //]]>
+    </script>
+
+</div>
+<?php endif ?>

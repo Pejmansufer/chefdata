@@ -1,0 +1,279 @@
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $.LeCartMigration({
+                formKey : '<?php echo $this->getFormKey(); ?>',
+                urlRun  : '<?php echo $this->getUrl('adminhtml/cartmigration_import/run',array('_secure'=>true)); ?>',
+                resumeFunction : '<?php echo $this->getFunctionJsResume();?>',
+                timeDelay : '<?php echo $this->_getTimeDelay(); ?>',
+                autoRetry : '<?php echo $this->_getTimeRetry(); ?>'
+            });
+        });
+    })(jcm)
+</script>
+
+<?php
+$notice = $this->getNotice();
+$config = $this->getConfig();
+$import = @$config['import'];
+$add_options = @$config['add_option'];
+?>
+<div class="le-content-migration">
+<div class="content-header">
+   <span class="cart_migraition_logo"></span>
+</div>
+<div id="w" class="clearfix">
+<div id="sidemenu">
+    <div id="stepmenu1" class="stepmenu">
+        <a href="#step1" class="open enabled"><strong><?php echo $this->__("1. Source Cart Setup"); ?></strong></a>
+    </div>
+    <div id="stepmenu2"  class="stepmenu">
+        <a href="#step2" class="disabled"><strong><?php echo $this->__("2. Configuration"); ?></strong></a>
+    </div>
+    <div id="stepmenu3"  class="stepmenu">
+        <a href="#step3" class="disabled"><strong><?php echo $this->__("3. Migration"); ?></strong></a>
+    </div>
+</div>
+
+<div id="le-content">
+<div id="step1" class="contentblock">
+    <?php if($this->isRunning()){ echo $this->getLayout()->createBlock('le_cartmigration/adminhtml_import_resume')->toHtml();}?>
+    <form action="" method="post" id="le-form-step1">
+        <input type="hidden" name="action" value="check"/>
+        <h1 class="header_title"><?php echo $this->__("Source Cart Setup"); ?></h1>
+
+        <div class="le-container">
+            <div class="le-form-fields">
+                <div class="label-fields">
+                    <p>
+                        <label for="token"><?php echo $this->__("Cart Type:"); ?>
+                            <span class="required">*</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <select id="cms-type" name="cart_type" class="cms-type required-entry input-text">
+                            <?php echo $this->getCartsOption($config['cart_type']);?>
+                        </select>
+                        <span class="success-icon"></span>
+                    </p>
+                    <div id="error-cart" class="validation-advice error-custom"><?php echo $this->__('Cart type is not correct!'); ?></div>
+                </div>
+            </div>
+            <div class="le-form-fields">
+                <div class="label-fields">
+                    <p>
+                        <label for="source-cart-url"><?php echo $this->__("Cart Url:"); ?>
+                            <span class="required">*</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <input type="text" id="source-cart-url" name="site_url" value="<?php echo $config['site_url']; ?>"
+                              class="source-cart-url required-entry input-text validate-url"/>
+                        <span class="success-icon"></span>
+                    </p>
+                    <div id="error-url" class="validation-advice error-custom"><?php echo $this->__('Connector not exists!'); ?></div>
+                </div>
+            </div>
+            <div class="le-form-fields">
+                <div class="label-fields">
+                    <p>
+                        <label for="token"><?php echo $this->__("Cart Token:"); ?>
+                            <span class="required">*</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="input-fields">
+                    <p>
+                        <input type="text" id="token" name="token" class="token required-entry input-text validate-alphanum" value="<?php echo $config['token'];?>"/>
+                        <span class="success-icon"></span>
+                    </p>
+                    <div id="error-token" class="validation-advice error-custom"><?php echo $this->__('Token is not correct!'); ?></div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div id="lecm-check-log" class="lecm-console-log-wrap">
+            <div class="lecm-log-title"><?php echo $this->__('Console');?></div>
+            <div class="lecm-console-log"></div>
+        </div>
+
+        <div class="le-submit">
+            <div id="le-loading-step"><?php echo $this->__('Connecting ... ')?></div>
+            <div id="lecm-form1-submit" class="lecm-submit">
+                <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Next') ?> &raquo;</a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- @end #step1 -->
+
+
+<div id="step2" class="contentblock hidden">
+<?php //echo $this->getLayout()->createBlock('le_cartmigration/adminhtml_import_step2')->setData($config)->toHtml();?>
+</div>
+<!-- @end #step2 -->
+
+<div id="step3" class="contentblock hidden">
+    <div id="confirm">
+        <form action="" method="post" id="le-form-step3">
+            <input type="hidden" name="action" value="clear">
+            <div class="le-container">
+                <?php //echo $this->getLayout()->createBlock('le_cartmigration/adminhtml_import_step3')->toHtml();?>
+            </div>
+            <div class="le-submit">
+                <div id="le-loading-step3"><?php echo $this->__('Connecting ... ')?></div>
+                <div id="lecm-warning-clear"><?php echo $this->__('Warning: all current data of entities selected will be cleared.'); ?></div>
+                <div id="lecm-form3-submit" class="lecm-submit">
+                    <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Start Migration') ?></a>
+                </div>
+            </div>
+            <div id="lecm-back-step2" class="lecm-submit">
+                <a href="javascript:void(0)" class="">&laquo; <?php echo $this->__('Back to previous Step') ?></a>
+            </div>
+        </form>
+    </div>
+    <div id="migration" class="hidden">
+        <h1 class="header_title">Migration</h1>
+        <div style="font-weight: bold;">Migration is in progress! Please do not close your browser or remove Source Cart Connector file during the migration.</div>
+        <br />
+        <div id="process-clear-data" <?php if($add_options['clear_data']){echo 'style="display:block;"';} ?>>
+            <p>
+                <img src="<?php echo $this->getSkinUrl('le_cartmigration/images/loader-small.gif');?>"/>
+                <?php echo $this->__('Clearing store ...');?>
+            </p>
+        </div>
+        <div id="process-taxes" class="process-wrap" <?php if(@$import['taxes']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Taxes');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['taxes']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['taxes']['imported_count'].'/'.@$notice['taxes']['total_count'].', Errors: '.@$notice['taxes']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-taxes"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-manufacturers" class="process-wrap" <?php if(@$import['manufacturers']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Manufacturers');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['manufacturers']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['manufacturers']['imported_count'].'/'.@$notice['manufacturers']['total_count'].', Errors: '.@$notice['manufacturers']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-manufacturers"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-categories" class="process-wrap" <?php if(@$import['categories']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Categories');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['categories']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['categories']['imported_count'].'/'.@$notice['categories']['total_count'].', Errors: '.@$notice['categories']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-categories"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-products" class="process-wrap" <?php if(@$import['products']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Products');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['products']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['products']['imported_count'].'/'.@$notice['products']['total_count'].', Errors: '.@$notice['products']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-products"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-customers" class="process-wrap" <?php if(@$import['customers']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Customers');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['customers']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['customers']['imported_count'].'/'.@$notice['customers']['total_count'].', Errors: '.@$notice['customers']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-customers"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-orders" class="process-wrap" <?php if(@$import['orders']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Orders');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['orders']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['orders']['imported_count'].'/'.@$notice['orders']['total_count'].', Errors: '.@$notice['orders']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-orders"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="process-reviews" class="process-wrap" <?php if(@$import['reviews']){echo 'style="display:block;"' ;} ?>>
+            <div class="process-name"><?php echo $this->__('Reviews');?></div>
+            <div class="process-content">
+                <p class="process-bar">
+                    <span class="process-bar-point"></span>
+                    <span class="process-bar-loading"></span>
+                    <span class="process-bar-width" style="width: <?php echo $this->getProcessBarWidth(@$notice['reviews']) ?>;"></span>
+                </p>
+                <p class="console-log"><?php echo 'Imported: '.@$notice['reviews']['imported_count'].'/'.@$notice['reviews']['total_count'].', Errors: '.@$notice['reviews']['error_count'] ?></p>
+            </div>
+            <div class="clear-both"></div>
+            <div class="try-import">
+                <div id="try-import-reviews"><?php echo $this->__('Try again');?></div>
+            </div>
+        </div>
+        <div id="lecm-import-log" class="lecm-console-log-wrap">
+            <div class="lecm-log-title"><?php echo $this->__('Console');?></div>
+            <div class="lecm-console-log"></div>
+        </div>
+        <div class="le-submit">
+            <div id="le-loading-step4"><?php echo $this->__('Processing ...')?></div>
+            <div id="lecm-form4-submit" class="lecm-submit" style="display: none;">
+                <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Clear cache & Reindex Data') ?></a>
+            </div>
+            <div id="try-import-not-clear" class="lecm-submit" style="display: none;">
+                <a href="javascript:void(0)" class="le-button"><?php echo $this->__('Try again') ?></a>
+            </div>
+        </div>
+    </div >
+</div>
+<!-- @end #step3 -->
+
+</div>
+<!-- @end #content -->
+</div>
+<!-- @end #w -->
+<div class="le-footer-migration">
+<p><?php echo $this->__('Cart Migration by LitExtension ver ') . Mage::getConfig()->getNode()->modules->LitExtension_CartMigration->version;?></p>
+</div>
+</div>
+

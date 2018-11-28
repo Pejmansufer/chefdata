@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webtex_FeaturedProductsSlider>
+            <active>true</active>
+            <codePool>local</codePool>
+            <name>Webtex Featured Products Slider</name>
+        </Webtex_FeaturedProductsSlider>
+    </modules>
+</config>

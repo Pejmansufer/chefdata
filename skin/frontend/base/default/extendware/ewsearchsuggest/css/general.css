@@ -1,0 +1,92 @@
+#search_autocomplete2, #ewsearchsuggest {
+    z-index: 999999 !important;
+}
+
+#ewsearchsuggest {
+	padding: 7px;
+	text-align: left; 
+	background: white; 
+	overflow: auto;
+	box-shadow: 0px 4px 8px #000;
+	border: 1px solid #888;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+input.ewspinner, input.ewspinner:focus {
+    background-repeat: no-repeat !important;
+    background-position: right center;
+    background-image: url(../images/spinner.gif) !important;
+}
+
+#ewsearchsuggest a, #ewsearchsuggest a:hover {
+	color:black;
+	text-decoration: none;
+}
+
+#ewsearchsuggest .ewmore {
+	text-align: right;
+	width: 100%;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#ewsearchsuggest .ewheader {
+	border-bottom: 1px solid black;
+    margin-top: 0;
+}
+
+#ewsearchsuggest .ewseparator {
+	margin-top: 10px;
+}
+
+#ewsearchsuggest .ewname {
+	font-weight: bold;
+}
+
+#ewsearchsuggest .ewdetails {
+	display: table-cell;
+}
+
+#ewsearchsuggest .ewitem {
+	float: left; 
+	width: 100%; 
+	cursor: pointer;
+	padding: 4px 0;
+}
+
+#ewsearchsuggest .ewitem:hover {
+	background-color: #D5E4EB;
+}
+
+#ewsearchsuggest .ewproducts .ewimage {
+	margin-right: 5px;
+}
+
+#ewsearchsuggest span.highlight {
+	color:red;
+}
+
+#ewsearchsuggest .ewqueries .ewitem, #ewsearchsuggest .ewqueries .ewitem div {
+	display: inline;
+	width: auto;
+	float: none;
+}
+
+#ewsearchsuggest .old-price, #ewsearchsuggest .special-price {
+	display:inline;
+}
+
+#ewsearchsuggest .special-price .price-label {
+	margin-left: 5px;
+}
+
+
+#ewsearchsuggest .price-from, #ewsearchsuggest .price-to {
+	display:inline;
+}
+
+#ewsearchsuggest .ewimage {
+	float: left; 
+	display: table-cell;
+}

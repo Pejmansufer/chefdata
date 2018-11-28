@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+   <modules>
+      <Extendware_EWSphinx>
+         <active>false</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Sphinx Search</name>
+         </extendware>
+      </Extendware_EWSphinx>
+   </modules>
+</config>

@@ -1,0 +1,43 @@
+<?php
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     HxObcXe62uQsQGs98TzFPLxwiM3aCakojlW7nJdmvI
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+switch (Mage::helper('adjnav')->getCategoryDisplayType()) : ?>
+<?php case 'dropdown': ?>
+    <div>
+        <select id="adj-nav-select" onchange="adjnavNavigation.categoryMakeRequest(this.value, <?php echo (int)Mage::getStoreConfig('design/adjnav/reload_categories') ?>)">
+            <?php foreach ($this->getItems() as $_item): ?>
+            <?php $cur = $_item->getIsCurrent() ?>
+            <option class="adj-nav-pad<?php echo $_item->getLevel()?>" value="<?php echo $_item->getCategoryId()?>" <?php if($_item->getIsCurrent()): ?> selected="selected"<?php endif; ?>>
+                <?php echo $_item->getLabel() ?><?php if($_item->getCount()): ?>  (<?php echo $_item->getCount() ?>) <?php endif ?>
+            </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <?php break; ?>
+    <?php case 'whole_tree': ?>
+    <?php default: ?>
+    <ol>
+        <?php foreach ($this->getItems() as $_item):?>
+        <li>
+            <?php if ($_item->getIsCurrent()): ?>
+            <span class="adj-nav-category-current"><?php echo $_item->getLabel() ?></span>
+            <?php  else: ?>
+            <?php if (Mage::getStoreConfig('design/adjnav/reload_categories')) { ?>
+                        <a id="cat-<?php echo $_item->getCategoryId()?>" href="?dir=desc&p=clear&q=<?php echo isset($_GET['q']) ? $this->htmlEscape($_GET['q']) : ''?>&cat=<?php echo $_item->getCategoryId()?>" class="adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?>
+                <?php } else { ?>
+                        <a onclick="return false;" id="cat-<?php echo $_item->getCategoryId()?>" href="<?php echo $this->htmlEscape($_item->getUri()) ?>" class="adj-nav-category adj-nav-pad<?php echo $_item->getLevel()?>"><?php echo $_item->getLabel() ?>
+                <?php }
+            if($_item->getCount()): ?>  <span class='count'>(<?php echo $_item->getCount() ?>) </span><?php endif ?>
+                        </a>
+                <?php endif ?>
+        </li>
+        <?php endforeach ?>
+    </ol>
+    <?php endswitch; ?>

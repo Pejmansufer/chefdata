@@ -1,0 +1,901 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWSearchSuggest>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewsearchsuggest">
+						            <label>Search suggest</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewsearchsuggest translate="label comment ewhelp" module="ewsearchsuggest">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<enabled translate="label comment ewhelp">
+													<label>Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable / disable the functionality of the extension</comment>
+												</enabled> 
+												<default_box_enabled translate="label comment ewhelp">
+													<label>Use Default Box</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_yesno</source_model>
+													<sort_order>11</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Use the defualt "search_autocomplete" box. Useful for rwd themes</comment>
+												</default_box_enabled> 
+												<box_horizontal_orientation translate="label comment ewhelp">
+													<label>Box Orientation</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_horizontalorientation</source_model>
+													<sort_order>30</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><default_box_enabled>0</default_box_enabled></depends>
+													<comment>The direction the box will popup relative to the search box.</comment>
+												</box_horizontal_orientation>
+												<highlight_terms translate="label comment ewhelp">
+													<label>Highlight Terms</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_yesno</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Highlight search terms in the popup</comment>
+												</highlight_terms>
+												<default_search_text translate="label comment ewhelp">
+													<label>Default Text</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>47</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The text that will appear in the search box before any text is entered.</comment>
+												</default_search_text>
+												<no_results_message translate="label comment ewhelp">
+													<label>No Results Message</label>
+													<frontend_type>textarea</frontend_type>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>Message that is displayed if there are no results. HTML can be inputted.</comment>
+												</no_results_message>
+											</fields>
+						                </general>
+						                <advanced translate="label comment ewhelp">
+						                    <label>Advanced</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<box_width translate="label comment ewhelp">
+													<label>Box Width</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>2</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The width of the returned search suggest box.</comment>
+												</box_width>
+						                    	<max_box_height translate="label comment ewhelp">
+													<label>Max Box Height</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The maximum height of the search box. If the results require more space than this, then scroll bars will be visible. Set to 0 for no maximum height.</comment>
+												</max_box_height>
+												<box_top_offset_adjustment translate="label comment ewhelp">
+													<label>Box Top Offset Adjustment</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>12</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-number</validate>
+						                            <comment>Adjust the box height further using the top adjustment. Only needed if the box is positioned incorrectly in the page</comment>
+												</box_top_offset_adjustment>
+						                    	<min_chars translate="label comment ewhelp">
+													<label>Min Chars</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>13</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment>The minimum number of characters that must be entered in the input field before an Ajax request is made.</comment>
+												</min_chars>
+												<frequency translate="label comment ewhelp">
+													<label>Frequency</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>20</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_double</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment>How frequently (in seconds) the input field should be polled for changes before firing an Ajax request.</comment>
+												</frequency>
+												<save_queries_enabled translate="label comment ewhelp">
+													<label>Save Query</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>80</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>If disabled then queries entered will not be saved to the search query table which prevents the table from being polluted.</comment>
+												</save_queries_enabled>
+												<display_in_terms_enabled translate="label comment ewhelp">
+													<label>Display in Terms Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>90</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><save_queries_enabled>1</save_queries_enabled></depends>
+													<comment>If disabled then queries saved to the search query table via search suggest will not be marked as displable as terms. They can still be marked later in Catalog -> Search Terms. This reduces partial words getting added to the term list.</comment>
+												</display_in_terms_enabled>
+											</fields>
+						                </advanced>
+						            </groups>
+								</ewsearchsuggest>
+								<ewsearchsuggest_query translate="label comment ewhelp" module="ewsearchsuggest">
+									<class>separator-top</class>
+									<label>Query suggest</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>150</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>15</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<enabled translate="label comment ewhelp">
+													<label>Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable / disable query results. If disabled, no query suggestions will be shown</comment>
+												</enabled> 
+												<max_items translate="label comment ewhelp">
+													<label>Max Items</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>20</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The maximum number of query search results to show</comment>
+												</max_items>
+												<max_name_length translate="label comment ewhelp">
+													<label>Max Name Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>21</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the name that will be displayed</comment>
+												</max_name_length>
+												<sort_by translate="label comment ewhelp">
+													<label>Sort By</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_query_sortby</source_model>
+													<sort_order>70</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>Results will be sorted in the manner selected</comment>
+												</sort_by>
+											</fields>
+						                </general>
+						            </groups>
+								</ewsearchsuggest_query>
+								<ewsearchsuggest_product translate="label comment ewhelp" module="ewsearchsuggest">
+									<class>separator-top</class>
+									<label>Product suggest</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>200</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<enabled translate="label comment ewhelp">
+													<label>Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable / disable product results. If disabled, no product suggestions will be shown</comment>
+												</enabled>
+												<is_in_stock_required translate="label comment ewhelp">
+													<label>Only Show In-Stock</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>11</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>If enabled only in stock products will be shown</comment>
+												</is_in_stock_required>
+												<sort_no_images_last translate="label comment ewhelp">
+													<label>Sort Produts With No Images Last</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>12</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Sort products without images last</comment>
+												</sort_no_images_last>
+												<max_items translate="label comment ewhelp">
+													<label>Max Items</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>20</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The maximum number of product search results to show</comment>
+												</max_items>
+												<name_source translate="label comment ewhelp">
+													<label>Name Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_namesource</source_model>
+													<sort_order>21</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used to display the name of the item</comment>
+												</name_source>
+												<description_source translate="label comment ewhelp">
+													<label>Description Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_descriptionsource</source_model>
+													<sort_order>22</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used for the description of the item</comment>
+												</description_source>
+												<max_name_length translate="label comment ewhelp">
+													<label>Max Name Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>23</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the name that will be displayed</comment>
+												</max_name_length>
+												<max_description_length translate="label comment ewhelp">
+													<label>Max Description Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>24</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the description that will be displayed</comment>
+												</max_description_length>
+												<image_width translate="label comment ewhelp">
+													<label>Image Width</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Entering 50 means 50px. The number represents pixels.</comment>
+												</image_width> 
+												<image_height translate="label comment ewhelp">
+													<label>Image Height</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Entering 50 means 50px. The number represents pixels.</comment>
+												</image_height>
+												<sort_by translate="label comment ewhelp">
+													<label>Sort By</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_sortby</source_model>
+													<sort_order>70</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Results will be sorted in the manner selected. Bestselling / popularity requires <a href="http://www.extendware.com/magento-sorting.html"><b>Product Sorting</b></a>]]></comment>
+												</sort_by>
+												<group_by_category_enabled translate="label comment ewhelp">
+													<label>Group By Categories</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>80</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Group product results by category</comment>
+												</group_by_category_enabled>
+												<category_name_source translate="label comment ewhelp">
+													<label>Category Name Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_categorynamesource</source_model>
+													<sort_order>81</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><group_by_category_enabled>1</group_by_category_enabled></depends>
+						                            <comment>The attribute used for the name of the category</comment>
+												</category_name_source>
+												<category_path_snippet_format translate="label comment ewhelp">
+													<label>Category Path Snippet Format</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>82</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_splittable_string</model>
+						                            		<options>
+						                            			<delimiter>,</delimiter>
+						                            			<min_items>3</min_items>
+						                            			<max_items>4</max_items>
+						                            			<default_item_type>integer</default_item_type>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+													<depends><category_name_source>path</category_name_source><group_by_category_enabled>1</group_by_category_enabled></depends>
+						                            <comment>The snippet settings used to generate the category path</comment>
+						                            <ewhelp><![CDATA[This must be 4 numbers separated by a comma: [min level],[starting num],[ending num],[min length]:<br/><br/>
+						                            <ol>
+						                            	<li><b>Min Level</b> - categories with a level less than this will not be displayed</li>
+						                            	<li><b>Starting Num</b> - the number of categories to show before truncation</li>
+						                            	<li><b>Ending Num</b> - the minimum number of categories to show after truncation</li>
+						                            	<li><b>Min Length</b> - the minimum number of characters the unsnipped category path must be before it will be snipped according to the starting num and ending num</li>
+						                            </ol>
+						                            <br/>
+						                            <b>Example:</b> The category path <i>Electronics -> Cameras -> Accesories -> Batteries</i> would be truncated to <i>Elecontrics -> Cameras -> ... -> Batteries</i> if the starting number was 2 and the ending number was 1.
+						                            ]]></ewhelp>
+												</category_path_snippet_format>
+												<category_max_name_length translate="label comment ewhelp">
+													<label>Max Category Name Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>83</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <depends><group_by_category_enabled>1</group_by_category_enabled></depends>
+						                            <comment>Maximum length of the category name that will be displayed</comment>
+												</category_max_name_length>
+												<more_results_mode translate="label comment ewhelp">
+													<label>More Results Destination</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_moreresultsmode</source_model>
+													<sort_order>85</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><group_by_category_enabled>1</group_by_category_enabled></depends>
+													<comment><![CDATA[The destination of the "View Results Page" link.]]></comment>
+												</more_results_mode>
+												<category_filter_mode translate="label comment ewhelp">
+													<label>Category Filter Mode</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_product_categoryfiltermode</source_model>
+													<sort_order>90</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><group_by_category_enabled>1</group_by_category_enabled></depends>
+													<comment><![CDATA[None: no filtering; Lowest: categories with the lowest level are picked; Highest: categories with highest level are picked. <b>Note:</b> level refers to how deep the category is in the tree.]]></comment>
+												</category_filter_mode>
+												<max_categories_per_product translate="label comment ewhelp">
+													<label>Max Categories per Product</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>100</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <depends><group_by_category_enabled>1</group_by_category_enabled></depends>
+						                            <comment>The maximum number of times a product may be shown in the result page.</comment>
+												</max_categories_per_product>
+											</fields>
+						                </general>
+						            </groups>
+								</ewsearchsuggest_product>
+								<ewsearchsuggest_category translate="label comment ewhelp" module="ewsearchsuggest">
+									<class>separator-top</class>
+									<label>Category suggest</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>300</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>30</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<enabled translate="label comment ewhelp">
+													<label>Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable / disable category results. If disabled, no category suggestions will be shown</comment>
+												</enabled> 
+												<search_engine translate="label comment ewhelp">
+													<label>Search Engine</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_searchengine</source_model>
+													<sort_order>11</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment><![CDATA[Select whether to use the normal search engine or search sphinx as the index source <a href="https://www.extendware.com/fast-sphinx-search-magento-extension.html" target="_blank">sphinx search</a> or you will not see the option.]]></comment>
+												</search_engine>
+												<max_items translate="label comment ewhelp">
+													<label>Max Items</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>20</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The maximum number of category search results to show</comment>
+												</max_items>
+												<name_source translate="label comment ewhelp">
+													<label>Name Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_category_namesource</source_model>
+													<sort_order>21</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used for the name of the item</comment>
+												</name_source>
+												<path_snippet_format translate="label comment ewhelp">
+													<label>Path Snippet Format</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>23</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_splittable_string</model>
+						                            		<options>
+						                            			<delimiter>,</delimiter>
+						                            			<min_items>3</min_items>
+						                            			<max_items>4</max_items>
+						                            			<default_item_type>integer</default_item_type>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+													<depends><name_source>path</name_source></depends>
+						                            <comment>The snippet settings used to generate the category path</comment>
+						                            <ewhelp><![CDATA[This must be 4 numbers separated by a comma: [min level],[starting num],[ending num],[min length]:<br/><br/>
+						                            <ol>
+						                            	<li><b>Min Level</b> - categories with a level less than this will not be displayed</li>
+						                            	<li><b>Starting Num</b> - the number of categories to show before truncation</li>
+						                            	<li><b>Ending Num</b> - the minimum number of categories to show after truncation</li>
+						                            	<li><b>Min Length</b> - the minimum number of characters the unsnipped category path must be before it will be snipped according to the starting num and ending num</li>
+						                            </ol>
+						                            <br/>
+						                            <b>Example:</b> The category path <i>Electronics -> Cameras -> Accesories -> Batteries</i> would be truncated to <i>Elecontrics -> Cameras -> ... -> Batteries</i> if the starting number was 2 and the ending number was 1.
+						                            ]]></ewhelp>
+												</path_snippet_format>
+												<description_source translate="label comment ewhelp">
+													<label>Description Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_category_descriptionsource</source_model>
+													<sort_order>28</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used for the description of the item</comment>
+												</description_source>
+												<max_name_length translate="label comment ewhelp">
+													<label>Max Name Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>30</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the name that will be displayed</comment>
+												</max_name_length>
+												<max_description_length translate="label comment ewhelp">
+													<label>Max Description Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>35</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the description that will be displayed</comment>
+												</max_description_length>
+												<search_attributes translate="label comment ewhelp">
+													<label>Search Attributes</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_category_searchattributes</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><search_engine>internal</search_engine></depends>
+						                            <comment>These attributes will be used for searching. You must re-index "Search Suggest" in System -> Index Management after changing.</comment>
+												</search_attributes>
+												<sort_by translate="label comment ewhelp">
+													<label>Sort By</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_category_sortby</source_model>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>Results will be sorted in the manner selected</comment>
+												</sort_by>
+											</fields>
+						                </general>
+						            </groups>
+								</ewsearchsuggest_category>
+								<ewsearchsuggest_page translate="label comment ewhelp" module="ewsearchsuggest">
+									<class>separator-top</class>
+									<label>Page suggest</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>400</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>40</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<enabled translate="label comment ewhelp">
+													<label>Status</label>
+													<frontend_type>select</frontend_type>
+													<source_model>adminhtml/system_config_source_enabledisable</source_model>
+													<sort_order>10</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment>Enable / disable page results. If disabled, no page suggestions will be shown</comment>
+												</enabled>
+												<search_engine translate="label comment ewhelp">
+													<label>Search Engine</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_searchengine</source_model>
+													<sort_order>11</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<comment><![CDATA[Select whether to use the normal search engine or search sphinx as the index source <a href="https://www.extendware.com/fast-sphinx-search-magento-extension.html" target="_blank">sphinx search</a> or you will not see the option.]]></comment>
+												</search_engine>
+												<max_items translate="label comment ewhelp">
+													<label>Max Items</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>20</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>The maximum number of CMS search results to show</comment>
+												</max_items>
+												<name_source translate="label comment ewhelp">
+													<label>Name Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_page_namesource</source_model>
+													<sort_order>21</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used for the name of the item</comment>
+												</name_source>
+												<description_source translate="label comment ewhelp">
+													<label>Description Source</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_page_descriptionsource</source_model>
+													<sort_order>22</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>The attribute used for the description of the item</comment>
+												</description_source>
+												<max_name_length translate="label comment ewhelp">
+													<label>Max Name Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>23</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the name that will be displayed</comment>
+												</max_name_length>
+												<max_description_length translate="label comment ewhelp">
+													<label>Max Description Length</label>
+													<frontend_type>text</frontend_type>
+													<sort_order>24</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                            <comment>Maximum length of the description that will be displayed</comment>
+												</max_description_length>
+												<search_attributes translate="label comment ewhelp">
+													<label>Search Attributes</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_page_searchattributes</source_model>
+													<sort_order>40</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<depends><search_engine>internal</search_engine></depends>
+						                            <comment>These attributes will be used for searching. You must re-index "Search Suggest" in System -> Index Management after changing</comment>
+												</search_attributes>
+												<excluded_pages translate="label comment ewhelp">
+													<label>Excluded CMS Pages</label>
+													<frontend_type>multiselect</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_page_excluded</source_model>
+													<sort_order>50</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+													<can_be_empty>1</can_be_empty>
+													<depends><search_engine>internal</search_engine></depends>
+						                            <comment>Selected CMS pages will be excluded from the results. Use CTRL-Click to select multiple pages</comment>
+												</excluded_pages>
+												<sort_by translate="label comment ewhelp">
+													<label>Sort By</label>
+													<frontend_type>select</frontend_type>
+													<source_model>ewsearchsuggest/adminhtml_config_data_option_page_sortby</source_model>
+													<sort_order>60</sort_order>
+													<show_in_default>1</show_in_default>
+													<show_in_website>1</show_in_website>
+													<show_in_store>1</show_in_store>
+						                            <comment>Results will be sorted in the manner selected</comment>
+												</sort_by>
+											</fields>
+						                </general>
+						            </groups>
+								</ewsearchsuggest_page>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWSearchSuggest>
+	</modules>
+</config>

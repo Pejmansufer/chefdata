@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWQuickView>
+         <active>true</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Quick View</name>
+         </extendware>
+      </Extendware_EWQuickView>
+   </modules>
+</config>

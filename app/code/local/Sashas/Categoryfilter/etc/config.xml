@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_Categoryfilter
+ * @copyright   Copyright (c) 2013 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license    http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+-->
+<config>
+	<modules>
+	    <Sashas_Categoryfilter>
+	        <version>0.1.0</version>
+	    </Sashas_Categoryfilter>
+	</modules>
+	<global> 
+        <blocks>
+           <adminhtml>
+              <rewrite>
+                  <catalog_product_grid>Sashas_Categoryfilter_Block_Product_Grid</catalog_product_grid> 
+               </rewrite>
+           </adminhtml>           
+        </blocks>  
+		<helpers>
+			<categoryfilter>
+				<class>Sashas_Categoryfilter_Helper</class>
+			</categoryfilter>
+		</helpers>             
+  	</global>  
+	<default>
+      <categoryfilter>
+          <categoryfilter_group>
+              <extension_enabled><![CDATA[1]]></extension_enabled>
+          </categoryfilter_group>
+      </categoryfilter>
+  	</default>	
+</config>
+
+
+	

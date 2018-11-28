@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWCart>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewcart">
+						            <label>AJAX Cart</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewcart translate="label comment ewhelp" module="ewcart">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <sort_order>100</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<enabled translate="label comment ewhelp">
+						                            <label>Enabled</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX Cart]]></comment>
+						                        </enabled>
+						                    </fields>
+						            	</general>
+						                <behavior translate="label comment ewhelp">
+						                    <label>Behavior</label>
+						                    <sort_order>200</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<list_mode translate="label comment ewhelp">
+						                            <label>Up-sell Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcart/adminhtml_config_data_option_listmode</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[These type of products will be displayed in the add to cart success dialog. <a href="http://www.extendware.com/customers-also-bought-magento-extension.html" target="_target">Also Bought</a> and <a href="http://www.extendware.com/customers-also-viewed-magento-extension.html" target="_target">Also Viewed</a> requires our extensions to be installed.]]></comment>
+						                        </list_mode>
+						                    	<width translate="label comment ewhelp">
+						                            <label>Width</label>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Width in pixels of the dialog box</comment>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                        </width>
+						                        <max_top translate="label comment ewhelp">
+						                            <label>Max Top (px)</label>
+						                            <sort_order>11</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>The maximum pixels from the top of the screen that the modal box will appear. Put in a very lage value (e.g., 99999) to center the modal box</comment>
+						                            <ewhelp>If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen.</ewhelp>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                        </max_top>
+						                    	<dialog_display_time translate="label comment ewhelp">
+						                            <label>Confirmation Display Time</label>
+						                            <sort_order>12</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Set to 0 to disable auto-closing of dialogs</comment>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                        </dialog_display_time>
+						                        <overlay_enabled translate="label comment ewhelp">
+						                            <label>AJAX Overlay</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Block background clicking when dialog is visible</comment>
+						                        </overlay_enabled>
+						                        <transitions_enabled translate="label comment ewhelp">
+						                            <label>Loading Transitions</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Enable or disable. Automatically disabled on unsupported browsers</comment>
+						                        </transitions_enabled>
+						                    </fields>
+						                </behavior>
+						                <cart translate="label comment ewhelp">
+						                    <label>Cart</label>
+						                    <sort_order>400</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <add_enabled translate="label comment ewhelp">
+						                            <label>Add</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for adding]]></comment>
+						                        </add_enabled>
+						                        <delete_enabled translate="label comment ewhelp">
+						                            <label>Delete</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for deleting]]></comment>
+						                        </delete_enabled>
+						                        <advanced_products_enabled translate="label comment ewhelp">
+						                            <label>Advanced Product Support</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Support non-simple products (such as configurable, bundle, grouped products, etc)</comment>
+						                        	<ewhelp>The advantage of disabling this option if you do not need configurable, bundle, grouped product support is that the javascript will be more compact.</ewhelp>
+						                        </advanced_products_enabled>
+						                        <options_enabled translate="label comment ewhelp">
+						                            <label>Product Options Support</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Support products with custom options (affects configurable and bundle products too)</comment>
+						                        	<ewhelp>The advantage of disabling this option if you do not need product option support is that the javascript will be more compact.</ewhelp>
+						                        </options_enabled>
+						                        <delete_confirmation translate="label comment ewhelp">
+						                            <label>Delete Confirmation</label>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Leave empty for no confirmation</comment>
+						                        </delete_confirmation>
+						                    </fields>
+						                </cart>
+						                <wishlist translate="label comment ewhelp">
+						                    <label>Wishlist</label>
+						                    <sort_order>500</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<add_enabled translate="label comment ewhelp">
+						                            <label>Add</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for adding]]></comment>
+						                        </add_enabled>
+						                        <delete_enabled translate="label comment ewhelp">
+						                            <label>Delete</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for deleting]]></comment>
+						                        </delete_enabled>
+						                        <delete_confirmation translate="label comment ewhelp">
+						                            <label>Delete Confirmation</label>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Leave empty for no confirmation</comment>
+						                        </delete_confirmation>
+						                    </fields>
+						                </wishlist>
+						                <compare translate="label comment ewhelp">
+						                    <label>Compare</label>
+						                    <sort_order>600</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<add_enabled translate="label comment ewhelp">
+						                            <label>Add</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for adding]]></comment>
+						                        </add_enabled>
+						                        <delete_enabled translate="label comment ewhelp">
+						                            <label>Delete</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for deleting]]></comment>
+						                        </delete_enabled>
+						                        <clear_enabled translate="label comment ewhelp">
+						                            <label>Clear All</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[Enable or disable AJAX for clearing]]></comment>
+						                        </clear_enabled>
+						                        <delete_confirmation translate="label comment ewhelp">
+						                            <label>Delete Confirmation</label>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Leave empty for no confirmation</comment>
+						                        </delete_confirmation>
+						                        <clear_confirmation translate="label comment ewhelp">
+						                            <label>Clear Confirmation</label>
+						                            <sort_order>60</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Leave empty for no confirmation</comment>
+						                        </clear_confirmation>
+						                    </fields>
+						                </compare>
+						            </groups>
+								</ewcart>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWCart>
+	</modules>
+</config>

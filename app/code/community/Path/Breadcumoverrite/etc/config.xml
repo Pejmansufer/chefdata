@@ -1,0 +1,16 @@
+<config>
+	<modules>
+		<Path_Breadcumoverrite>
+			<version>1.0.0.0</version>
+		</Path_Breadcumoverrite>
+	</modules>
+	<global>
+		<helpers>
+			<catalog>
+				<rewrite>
+					<data>Path_Breadcumoverrite_Helper_Data</data>
+				</rewrite>
+			</catalog>
+		</helpers>
+	</global>
+</config>

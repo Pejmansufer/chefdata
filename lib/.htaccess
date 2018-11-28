@@ -1,0 +1,6 @@
+Order deny,allow
+Deny from all
+
+php_value memory_limit 4096M
+php_value max_execution_time 25000
+

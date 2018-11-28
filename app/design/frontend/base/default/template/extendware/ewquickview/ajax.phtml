@@ -1,0 +1,15 @@
+<div class="col-main">
+	<?php echo $this->getChildHtml('global_messages') ?>
+	<?php echo $this->getChildHtml('content') ?>
+	<?php
+        if (Mage::getSingleton('ewcore/module')->load('Extendware_EWPRibbon')->isActive() === true) {
+	        echo '<script>try { ';
+	    		$block = Mage::getSingleton('core/layout')->createBlock('ewpribbon/code');
+				if ($block) {
+					echo 'ewpribbon.reset("product");';
+					echo $block->setOutputInlineJs(true)->setRefSelectors(array('#EWMContent'))->setRewriteSection('product')->toHtml();
+				}
+	    	echo '} catch (e) {}</script>';
+        }
+	?>
+</div>

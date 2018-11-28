@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+	<menu></menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewquickview">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewquickview translate="title" module="ewquickview">
+                        		<title>Quick View</title>
+                        		<children>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewquickview translate="title">
+						                                <title>General</title>
+						                            </ewquickview>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewquickview>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

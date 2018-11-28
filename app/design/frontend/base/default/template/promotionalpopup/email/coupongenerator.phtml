@@ -1,0 +1,46 @@
+<?php
+$salesRuleId = Mage::getStoreConfig('trmpopupconfig/trmpopupcoupon_group/salesruleid',Mage::app()->getStore());
+if($salesRuleId != ""):
+$couponLength = Mage::getStoreConfig('trmpopupconfig/trmpopupcoupon_group/couponcodelength',Mage::app()->getStore());
+if($couponLength == "") $couponLength = 14; 
+
+$generator = Mage::getModel('salesrule/coupon_massgenerator');
+
+$data = array(
+    'max_probability'   => .25,
+    'max_attempts'      => 10,
+    'uses_per_customer' => 1,
+    'uses_per_coupon'   => 1,
+    'qty'               => 1, //number of coupons to generate
+    'length'            => $couponLength, //length of coupon string
+    //'to_date'           => '2013-12-31', //ending date of generated promo
+    /**
+     * Possible values include:
+     * Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHANUMERIC
+     * Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHABETICAL
+     * Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_NUMERIC
+     */
+    'format'          => Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHANUMERIC,
+    'rule_id'         => $salesRuleId //the id of the rule you will use as a template
+);
+
+$generator->validateData($data);
+
+$generator->setData($data);
+
+$generator->generatePool();
+
+//
+
+
+$salesRule = Mage::getModel('salesrule/rule')->load($data['rule_id']);
+$collection = Mage::getResourceModel('salesrule/coupon_collection')
+            ->addRuleToFilter($salesRule)
+            ->addGeneratedCouponsFilter()
+			->getLastItem();
+
+
+echo $collection->getCode();
+
+endif;
+?>

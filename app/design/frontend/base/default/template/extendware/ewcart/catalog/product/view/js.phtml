@@ -1,0 +1,9 @@
+<script type="text/javascript">
+//<![CDATA[
+<?php if ($this->mHelper()->isAddEnabledForProduct($this->getProduct()) === false): ?>
+	EWCart = Class.create(EWCart, {
+		rewriteForm: function ($super) {}
+	});
+<?php endif; ?>
+//]]>
+</script>

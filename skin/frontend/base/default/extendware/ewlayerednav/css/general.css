@@ -1,0 +1,24 @@
+#narrow-by-list .cat-current {font-weight: bold;}
+#narrow-by-list .cat-pad2 {padding-left:5px}
+#narrow-by-list .cat-pad3 {padding-left:10px}
+
+dt.attr-header { cursor: pointer; }
+#attr-toggler dd { padding: 2px 12px 6px; }
+li.attr-opt-toggler { text-align:right}
+
+.block-layered-nav dt {  }
+
+
+.block-layered-nav dt:before {content: "\f147";font-family: "FontAwesome";text-shadow: 0 0 0;}
+#narrow-by-list dt.attr-header-selected:before {content: "\f196";}
+
+.price-attr-selected {font-weight: bold}
+.std-attr-box li a.attr-opt { padding-left:15px; background:transparent url(../../ewlayerednav/images/checkbox.gif) no-repeat scroll 0px 2px; height: 12px;}
+.std-attr-box li a.selected {padding-left:15px; font-weight: bold; background-position: 0px -10px; }
+
+#price-slider { position:relative; z-index:10; height:17px; margin:0 auto 6px auto; cursor:pointer; background:url(../../../../../default/default/images/slider_bg.gif) no-repeat 50% 50%; background-size: 100% 2px; }
+#price-slider div.handle { top:3px; width:8px; height:14px; cursor:move; background: transparent url(../images/slider-handle-orange.png) no-repeat; position: absolute; }
+#price-slider div.left { cursor: e-resize}
+#price-slider div.right { cursor: w-resize}
+
+h4.block-subtitle{margin: 0;}

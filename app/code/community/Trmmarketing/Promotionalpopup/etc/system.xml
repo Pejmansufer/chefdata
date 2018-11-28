@@ -1,0 +1,353 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+-->
+<config>
+    <tabs>
+        <trmpopup_tab module="promotionalpopup" translate="label">
+            <label>TRM Marketing</label>
+            <sort_order>100</sort_order>
+        </trmpopup_tab>
+    </tabs>
+    <sections>
+        <trmpopupconfig module="promotionalpopup" translate="label">
+            <label>TRM Promotional Pop-up</label>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>trmpopup_tab</tab>
+            <groups>
+                <trmpopup_group translate="label">
+                    <label>Pop-up Browser Configuration</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<excludebrowsers translate="label tooltip comment">
+                            <label>Browser Exceptions</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Excluse these browsers from seeing the pop-up</comment>
+                        </excludebrowsers>
+						
+						
+						
+                    </fields>
+					<fields>
+						<disabledimension translate="label tooltip comment">
+                            <label>Disable Below Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Disable pop-up when browser dimensions below specified width. Eg 720</comment>
+                        </disabledimension>
+						
+						<tabletwidth translate="label tooltip comment">
+                            <label>Tablet Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Show tablet pop-up if available when width is at or below specified width Eg 720</comment>
+                        </tabletwidth>
+						<mobilewidth translate="label tooltip comment">
+                            <label>Mobile Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Show mobile pop-up if available when width is at or below specified width Eg 500</comment>
+                        </mobilewidth>
+						
+						
+						
+                    </fields>
+                </trmpopup_group>
+				
+				<trmpopuptracking_group translate="label">
+                    <label>Pop-up Tracking Configuration</label>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<trackingoptions translate="label tooltip comment">
+                            <label>Tracking Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>promotionalpopup/tracking</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Select which external Analytics platforms will receive conversion information</comment>
+                        </trackingoptions>
+						
+						<eventcategory translate="label tooltip comment">
+                            <label>Event Category</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>The event category which pop-up events will be recorded into Eg. Customer</comment>
+                        </eventcategory>
+						<vieweventaction translate="label tooltip comment">
+                            <label>View Event Action</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>The event action which pop-up events will be recorded into Eg. Pop-up View</comment>
+                        </vieweventaction>
+						
+						<conversioneventaction translate="label tooltip comment">
+                            <label>Conversion Event Action</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>The event action which pop-up events will be recorded into Eg. Pop-up Subscription</comment>
+                        </conversioneventaction>
+						
+						
+						<devicelabel_lg translate="label tooltip comment">
+                            <label>Desktop Pop-up Label Append</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>Appended to the end of label for desktops pop-ups. Eg. (Desktop)</comment>
+                        </devicelabel_lg>
+						
+						<devicelabel_md translate="label tooltip comment">
+                            <label>Tablet Pop-up Label Append</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>Appended to the end of label for tablet pop-ups. Eg. (Tablet)</comment>
+                        </devicelabel_md>
+						
+						<devicelabel_sm translate="label tooltip comment">
+                            <label>Mobile Pop-up Label Append</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>270</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       						<comment>Appended to the end of label for mobile pop-ups. Eg. (Mobile)</comment>
+                        </devicelabel_sm>
+						
+						
+						
+						
+                    </fields>
+                </trmpopuptracking_group>
+				<trmpopupdesign_group translate="label">
+                    <label>Pop-up Modal Settings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<popupmodalclickclose translate="label tooltip comment">
+                            <label>Modal Click Close</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Ability to click modal to close pop-up.</comment>
+                        </popupmodalclickclose>
+						<popupmodalcolor translate="label tooltip comment">
+                            <label>Modal Color</label>
+                            <frontend_type>text</frontend_type>
+							<validate>color {hash:true}</validate>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Color of the modal layer that will obscrube the webpage until pop-up is closed</comment>
+                        </popupmodalcolor>
+						<popupmodalopacity translate="label tooltip comment">
+                            <label>Modal Opacity</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>promotionalpopup/opacity</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Opacity 1 for opaque and 0 for transparent 0.5 for 50% opacity</comment>
+                        </popupmodalopacity>
+						
+						<popupmodalinduration translate="label tooltip comment">
+                            <label>Fade In Duration</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>promotionalpopup/duration</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Speed at which the modal background fades in.</comment>
+                        </popupmodalinduration>
+						<popupmodaloutduration translate="label tooltip comment">
+                            <label>Fade Out Duration</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>promotionalpopup/duration</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Speed at which the modal background fades out.</comment>
+                        </popupmodaloutduration>
+						
+						
+                    </fields>
+                </trmpopupdesign_group>
+				
+				<trmpopupsubscribe_group translate="label">
+                    <label>Subscription Email Configuration</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+					<identity translate="label">
+                            <label>Promotional Pop-ups Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </identity>
+						<template translate="label">
+                            <label>Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+						
+						<skipzendvalidation translate="label tooltip comment">
+                            <label>Skip Zend Validation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Skip Zend validation of emails</comment>
+                        </skipzendvalidation>
+					
+						<enablenoguest translate="label tooltip comment">
+                            <label>Enable No Guest</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Respect store guest subscription policy</comment>
+                        </enablenoguest>
+						<noguest translate="label tooltip comment">
+                            <label>Email No Guest</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Sorry, but administrator denied subscription for guests.</comment>
+                        </noguest>
+						
+						<enablecustomeremail translate="label tooltip comment">
+                            <label>Enable Existing Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Respect existing customer email check</comment>
+                        </enablecustomeremail>
+						
+						<customeremail translate="label tooltip comment">
+                            <label>Email Customer Exists</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>This email address is already assigned to another user.</comment>
+                        </customeremail>
+						
+						<enablenoduplicates translate="label tooltip comment">
+                            <label>Enable No Duplicates</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Respect store guest subscription policy</comment>
+                        </enablenoduplicates>
+						<noduplicates translate="label tooltip comment">
+                            <label>No Duplicate Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>Sorry, this email is already subscribed.</comment>
+                        </noduplicates>
+						
+                    </fields>
+                </trmpopupsubscribe_group>
+				
+				<trmexitpopup_group translate="label">
+                    <label>Exit Pop-up Configuration</label>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<initdelay translate="label tooltip comment">
+                            <label>Initialization Delay</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>promotionalpopup/exitpopupdelay</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+       <comment>The amount of time that a page must be loaded for before an exit pop-up can be retieved. Recommended 5 seconds minmum.</comment>
+                        </initdelay>
+						
+						
+						
+                    </fields>
+                </trmexitpopup_group>
+            </groups>
+        </trmpopupconfig>
+    </sections>
+</config>

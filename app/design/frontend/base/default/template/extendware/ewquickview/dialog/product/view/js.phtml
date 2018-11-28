@@ -1,0 +1,33 @@
+<script type="text/javascript">
+//<![CDATA[
+	if (typeof ewcart != 'undefined') {
+		ewcart.rewritePage();
+		<?php if ($this->mHelper()->isEwcartEnabledForProduct($this->getProduct()) === true): ?>
+		ewcart.rewriteForm();
+		<?php endif; ?>
+	}
+
+	var _fpz_timesCalled = 0;
+	function fixProductZoom() {
+		_fpz_timesCalled++;
+		if (_fpz_timesCalled  > 500) return;
+		if (typeof product_zoom == 'undefined') {
+			setTimeout(fixProductZoom, 50);
+		} else {
+			// product zoom is called before the image loads, so it could be disabled.
+			// to fix this, we reverse the disabling and create a new instance
+			if (!product_zoom.containerEl.hasClassName('product-image-zoom')) {
+				product_zoom.imageEl.hide();
+				product_zoom.trackEl.up().show();
+				product_zoom.hintEl.show();
+				product_zoom.containerEl.addClassName('product-image-zoom');
+				product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+				product_zoom.imageEl.show();
+			}
+		}
+	}
+
+	Event.observe($('image'), 'load', fixProductZoom);;
+	EWModalbox.resizeModal();
+//]]>
+</script>

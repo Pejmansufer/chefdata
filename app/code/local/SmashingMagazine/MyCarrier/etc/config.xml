@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <SmashingMagazine_MyCarrier>
+            <module>0.0.1</module>
+        </SmashingMagazine_MyCarrier>
+    </modules>
+    <global>
+        <models>
+            <smashingmagazine_mycarrier>
+                <class>SmashingMagazine_MyCarrier_Model</class>
+            </smashingmagazine_mycarrier>
+        </models>
+    </global>
+    <!-- Default configuration -->
+    <default>
+        <carriers>
+            <smashingmagazine_mycarrier>
+                <active>1</active>
+                <!--
+                     This configuration should not be made visible
+                     to the administrator, because it specifies
+                     the model to be used for this carrier.
+                -->
+                <model>smashingmagazine_mycarrier/carrier</model>
+                <!--
+                    The title as referenced in the carrier class
+                -->
+                <title>Freight</title>
+                <name>freight</name>
+                <!--
+                    The sort order specifies the position that
+                    this carrier appears relative to the other
+                    carriers available in checkout.
+                -->
+                <sort_order>0</sort_order>
+                <!--
+                    Out of the box, Magento offers shipping
+                    carriers the ability to restrict themselves
+                    to specific countries. For this configuration
+                    option, 0 means allow all countries available,
+                    and 1 means allow all countries specified
+                    in the country list that we will add later
+                    in system.xml
+                -->
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+            </smashingmagazine_mycarrier>
+            <!--<smashingmagazine_mycarrier>-->
+                <!--<active>0</active>-->
+                <!--<model>smashingmagazine_mycarrier/carrier</model>-->
+                <!--<title>Liftgate</title>-->
+                <!--<name>liftgate</name>-->
+                <!--<sort_order>1</sort_order>-->
+                <!--<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>-->
+                <!--<sallowspecific>0</sallowspecific>-->
+            <!--</smashingmagazine_mycarrier>-->
+            <!--<smashingmagazine_mycarrier>-->
+                <!--<active>0</active>-->
+                <!--<model>smashingmagazine_mycarrier/carrier</model>-->
+                <!--<title>Residential</title>-->
+                <!--<name>residential</name>-->
+                <!--<sort_order>2</sort_order>-->
+                <!--<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>-->
+                <!--<sallowspecific>0</sallowspecific>-->
+            <!--</smashingmagazine_mycarrier>-->
+            <!--<smashingmagazine_mycarrier>-->
+                <!--<active>0</active>-->
+                <!--<model>smashingmagazine_mycarrier/carrier</model>-->
+                <!--<title>Liftgate and Residential</title>-->
+                <!--<name>liftresidential</name>-->
+                <!--<sort_order>3</sort_order>-->
+                <!--<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>-->
+                <!--<sallowspecific>0</sallowspecific>-->
+            <!--</smashingmagazine_mycarrier>-->
+        </carriers>
+    </default>
+</config>

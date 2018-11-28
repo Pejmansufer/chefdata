@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Tvcom_Checkout>
+            <version>0.0.1</version>
+        </Tvcom_Checkout>
+    </modules>
+    <global>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <links>Tvcom_Checkout_Block_Links</links>
+                </rewrite>
+            </checkout>
+        </blocks>
+    </global>
+</config>

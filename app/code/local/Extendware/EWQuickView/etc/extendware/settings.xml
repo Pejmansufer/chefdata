@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWQuickView>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewquickview">
+						            <label>Quick View</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewquickview translate="label comment ewhelp" module="ewquickview">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp">
+						                    <label>General</label>
+						                    <sort_order>100</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <enabled translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment>Quickly enable or disable quick view</comment>
+						                        </enabled>
+						                    </fields>
+						                </general>
+						                <behavior translate="label comment ewhelp">
+						                    <label>Behavior</label>
+						                    <sort_order>200</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <transitions_enabled translate="label comment ewhelp">
+						                            <label>Loading Transitions</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>21</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Enable or disable. Automatically disabled on unsupported browsers</comment>
+						                        </transitions_enabled>
+						                        <overlay_close_enabled translate="label comment ewhelp">
+						                            <label>Overlay Close</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>21</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Enable or disable. Close when clicking off of the quick view dialog</comment>
+						                        </overlay_close_enabled>
+						                        <bundle_support_enabled translate="label comment ewhelp">
+						                            <label>Bundle Support</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment>Enable or disable support for bundled products</comment>
+								                    <ewhelp>The advantage of disabling this if you do not need bundle support is that the bundle related javascript will not have to load on your non-product pages.</ewhelp>
+						                        </bundle_support_enabled>
+						                        <loading_product_layouts_enabled translate="label comment ewhelp">
+						                            <label>Load Product Layouts</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment>If products have a custom layout, then this will load it if enabled. This can cause issues depending on the product layouts.</comment>
+						                        </loading_product_layouts_enabled>
+						                    </fields>
+						                </behavior>
+						                <appearance translate="label comment ewhelp">
+						                    <label>Appearance</label>
+						                    <sort_order>300</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<theme translate="label comment ewhelp">
+						                            <label>Theme</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewquickview/adminhtml_config_data_option_theme</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Default theme attempts to mimic the appearance on a default magento theme. Look through theme will attempt to use your customized theme files. If you are using the default theme, then they look the same.</comment>
+						                            <ewhelp><![CDATA[You also have complete control of the quick view appearance by editing the layout / template files in <i>app/design/frontend/base/default/layout/extendware/ewquickview.xml</i> and <i>app/design/frontend/base/default/template/extendware/ewquickview</i>.]]></ewhelp>
+						                        </theme>
+						                    	<width translate="label comment ewhelp">
+						                            <label>Width</label>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>Width in pixels of the dialog box</comment>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-greater-than-zero</validate>
+						                        </width>
+						                        <max_top translate="label comment ewhelp">
+						                            <label>Max Top (px)</label>
+						                            <sort_order>11</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+						                            <comment>The maximum pixels from the top of the screen that the modal box will appear.</comment>
+						                            <ewhelp>If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen.</ewhelp>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_integer</model>
+						                            		<options>
+						                            			<min_value>0</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                        </max_top>
+						                        <overlay_position translate="label comment ewhelp">
+						                            <label>Overlay Position</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewquickview/adminhtml_config_data_option_position</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment>Position of overlay over product image</comment>
+						                        </overlay_position>
+						                    </fields>
+						                </appearance>
+									</groups>
+								</ewquickview>
+								<ewquickview_developer translate="label comment ewhelp" module="ewquickview">
+									<class>separator-top</class>
+									<label>Developer</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>200</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<selector translate="label comment ewhelp">
+						                    <label>Selectors</label>
+						                    <sort_order>100</sort_order>
+						                    <fieldset_css>fieldset-wide</fieldset_css>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <category_product_block translate="label comment ewhelp">
+						                            <label>Category Product Selector</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[A prototype CSS selector that finds the product block in your catalog listings]]></comment>
+						                        	<ewhelp><![CDATA[]]></ewhelp>
+						                        </category_product_block>
+						                        <category_product_image translate="label comment ewhelp">
+						                            <label>Category Product Image Selector</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+								                    <show_in_website>1</show_in_website>
+								                    <show_in_store>1</show_in_store>
+								                    <comment><![CDATA[A prototype CSS selector that finds the product image within the product product block]]></comment>
+						                        	<ewhelp><![CDATA[]]></ewhelp>
+						                        </category_product_image>
+						                    </fields>
+						                </selector>
+									</groups>
+								</ewquickview_developer>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWQuickView>
+	</modules>
+</config>

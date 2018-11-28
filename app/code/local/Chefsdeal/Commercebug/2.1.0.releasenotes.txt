@@ -1,0 +1,26 @@
+Release Notes
+--------------------------------------------------
+Adjusted preg_match attachment code to be more universal. 
+
+Removed .header class in table-sorter, replaced with 
+ascommercebug_tablesort_header
+
+Fixed Javascript errors when running in full page cache mode
+
+Adjusted z-index to place nice with admin alert system
+
+Installation documentation clarification w/r/t CSS/Javascript cache
+
+Fixed some capitalization based field search bugs
+
+Switched toggle storage from cache to session, preventing multiple developer conflicts
+
+Create separate ajax controller for admin console and "Cross Area Ajax" 
+helper to enable separate frontend/backend toggles
+
+Fixed longstanding compatibility issues with inline translation mode
+
+Created inline translation toggle.
+
+Other compatibility and general code improvements
+

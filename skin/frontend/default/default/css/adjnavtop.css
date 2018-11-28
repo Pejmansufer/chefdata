@@ -1,0 +1,54 @@
+
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     n/a
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+#adj-nav-navigation-top div.adjnav-filter {
+    display:inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: top;
+}
+
+#adj-nav-navigation-top .block-layered-nav dt {
+    padding: 7px 10px 0 25px;
+    background: url(../images/adj-nav-bkg-block-layered-dt.gif) 9px 11px no-repeat;
+    text-transform: uppercase;
+    font-weight: bold;
+    position:relative;
+
+}
+
+#adj-nav-navigation-top .block-layered-nav dd {
+    display:inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: top;
+    padding: 0 20px 10px 15px;
+    background: repeat-y scroll 0 0 transparent;
+    position:relative;
+}
+
+#adj-nav-navigation-top .block-layered-nav dd.last {
+    background: none;
+}
+
+#narrow-by-list-top dd#adj-nav-filter-price {
+    width: 140px;
+}
+
+#narrow-by-list-top #adj-nav-select {
+    max-width: 150px;
+}
+
+#narrow-by-list-top dt{
+    cursor:pointer;
+}
+#narrow-by-list-top dt.adj-nav-dt-selected{
+    background:url(../images/narrow_by_set2.png) no-repeat 9px .9em;
+}

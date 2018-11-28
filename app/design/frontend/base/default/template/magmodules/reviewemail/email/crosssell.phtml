@@ -1,0 +1,74 @@
+<?php
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+?>
+<table width="100%">
+	<tr>
+		<?php 
+			$order = $this->getOrder(); 
+
+			foreach($order->getAllItems() as $_item) {
+				$items[] = array('id' => $_item->getProductId(), 'price' => $_item->getPrice());
+			}
+
+			krsort($items);
+
+			foreach ($items as $item) {
+				$product = Mage::getModel('catalog/product')->setStoreId($order->getStoreId())->load($item['id']);
+				$crosssell = $product->getCrossSellProducts(); 
+				foreach($crosssell as $cross) {
+					$cross_product = Mage::getModel('catalog/product')->setStoreId($order->getStoreId())->load($cross->getId());				
+					if($cross_product->getStatus() == '1') {
+						$cross_items[] = array('id' => $cross->getId());				
+					}
+				}
+			}
+
+
+			$width = (100 / count($cross_items));
+			if($width > 25) $width = 25;
+			$i = 0;
+
+			foreach($cross_items as $item) {
+				$product = Mage::getModel('catalog/product')->setStoreId($order->getStoreId())->load($item['id']);
+			
+				try { 
+					$img = Mage::helper('catalog/image')->init($product, 'image')->resize(100);
+				} catch (Exception $e) {
+					$img = Mage::app()->getStore($order->getStoreId())->getBaseUrl() . '/skin/frontend/base/default/images/catalog/product/placeholder/small_image.jpg';
+				}
+
+				if($img) {
+					$img = str_replace('https','http', $img);
+				}
+
+				$crosssell_name= $product->getName();	
+				
+				$price = '';
+				if($product->getPrice() > 0) {
+					$price = Mage::helper('core')->currency($product->getFinalPrice(), true, false);
+				}
+				
+				$crosssell_price = number_format($product->getPrice(),2);	
+				echo '<td width="' . $width . '%" align="center">';
+				echo ' <a href="' . $product->getProductUrl() .'"><img src="' . $img .'"></a><br/> <a href="' . $product->getProductUrl() .'">' . $crosssell_name . '</a> <br/>';		
+				echo $price;
+				echo '</td>';	
+				if (++$i == 4) break;
+			}
+		?>
+	</tr>
+</table>

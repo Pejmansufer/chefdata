@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+			<action method="addJs" ifconfig="responsiveslideshow/responsiveslideshow_config/enabled"><script>weaveapps/wa.wa.slide.js</script></action>      
+			
+			<action method="addJs" ifconfig="responsiveslideshow/responsiveslideshow_config/enabled"><script>weaveapps/cycle-plugin/jquery.cycle2.js</script></action>
+
+			<action method="addJs" ifconfig="responsiveslideshow/responsiveslideshow_config/enabled"><script>weaveapps/cycle-plugin/jquery.cycle2.swipe.min.js</script></action>
+
+            <action method="addCss" ifconfig="responsiveslideshow/responsiveslideshow_config/enabled"><stylesheet>weaveapps/css/styles.css</stylesheet></action>
+        </reference>
+    </default>
+</layout>

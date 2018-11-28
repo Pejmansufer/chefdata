@@ -1,0 +1,12 @@
+<script type="text/javascript">    
+//<![CDATA[
+<?php
+	$_javascript = $this->getJavascript();
+	foreach ($_javascript as $_js) {
+		echo "{$_js}\n";
+	}
+?>
+ewlayerednav.rewritePage();
+document.fire('ewlayerednav:loaded');
+//]]>
+</script>

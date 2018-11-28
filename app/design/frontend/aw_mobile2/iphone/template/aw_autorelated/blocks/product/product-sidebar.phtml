@@ -1,0 +1,59 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Autorelated
+ * @version    2.4.8
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php
+$abstractBlock = $this->helper('awautorelated')->getAbstractProductBlock();
+$collection = $this->getCollection();
+if ($this->getPosition() == AW_Autorelated_Model_Source_Position::INSTEAD_NATIVE_RELATED_BLOCK) {
+    $this->iterateBlock();
+    if ($collection && $collection->getSize()) {
+        $this->markAsShowed();
+        $this->getLayout()->unsetBlock('catalog.product.related');
+    }
+}
+?>
+<?php if ($collection && $collection->getSize()) : ?>
+    <div class="related-products aw-arp-block-<?php echo $this->getData('id') ?>">
+        <h3 class="related-products__title"><?php echo $this->htmlEscape($this->getData('name')) ?></h3>
+        <div class="related-products__list">
+            <?php foreach($collection as $product): ?>
+                <div class="product-card" onclick="setLocation('<?php echo $abstractBlock->getProductUrl($product) ?>')">
+                    <p class="product-card__image-wrapper">
+                        <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(75) ?>" alt="<?php echo $this->htmlEscape($product->getName()) ?>" class="product-card__image">
+                    </p>
+                    <div class="product-card__info">
+                        <h3 class="product-card__title">
+                    <span class="product-card__title-inner">
+                        <?php echo $this->htmlEscape($product->getName()) ?>
+                    </span>
+                        </h3>
+                        <?php echo $abstractBlock->getReviewsSummaryHtml($product, 'short', false)?>
+                        <?php echo $abstractBlock->getPriceHtml($product, true, '-related');?>
+                    </div><!-- .product-card__info -->
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+<?php endif;?>

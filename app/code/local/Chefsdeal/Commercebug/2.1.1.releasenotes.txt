@@ -1,0 +1,6 @@
+Release Notes
+--------------------------------------------------
+
+- Fixed toggle related bugs on frontend
+
+- Attempted fix for "cookie/session timing after initial installation" edge case

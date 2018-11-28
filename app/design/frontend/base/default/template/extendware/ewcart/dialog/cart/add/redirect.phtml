@@ -1,0 +1,29 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<ul class="messages ap-dialog-messages">
+	<li class="notice-msg ap-dialog-notice-message">
+		<span><?php echo $this->__('Redirecting to product page.'); ?></span>
+	</li>
+</ul>
+<div class="product-shop">
+	<div class="product-img-box" style="float: left; margin: 0px 10px 0px 0px">
+		<?php
+	        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(55).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"/>';
+	       echo $_helper->productAttribute($_product, $_img, 'image');
+	    ?>
+	</div>
+	<div class="product-name">
+		<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+		<p class="availability in-stock">Availability: <span>In stock</span></p>
+	</div>
+</div>	
+<div style="text-align: center; margin-top: 15px;">
+	<button class="button ap-dialog-button" type="button" onclick="location.href='<?php echo $this->getRedirectUrl(); ?>';"><span><span><?php echo $this->__('Manually Redirect'); ?></span></span></button>
+</div>
+<script type="text/javascript">    
+//<![CDATA[
+location.href=<?php echo json_encode($this->getRedirectUrl()); ?>;
+//]]>
+</script>

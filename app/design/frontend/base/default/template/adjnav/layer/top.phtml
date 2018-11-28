@@ -1,0 +1,73 @@
+<?php
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     HxObcXe62uQsQGs98TzFPLxwiM3aCakojlW7nJdmvI
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+?>
+<div id="adj-nav-navigation-top">
+<?php if ($this->canShowBlock()): ?>
+    <input type="hidden" id="adjnav-attr-expand" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show More Attributes')) ?>"/>
+    <input type="hidden" id="adjnav-attr-collapse" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show Less Attributes')) ?>"/>
+    <input type="hidden" id="adjnav-attr-val-expand" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show More')) ?>"/>
+    <input type="hidden" id="adjnav-attr-val-collapse" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show Less')) ?>"/>
+
+    <?php $state = $this->getStateInfo() ?>
+    <?php echo $this->getStateHtml() ?>
+    <?php if ($this->canShowOptions()): ?>
+        <div class="block block-layered-nav adj-nav">
+            <div class="block-content">
+
+                <div class="narrow-by">
+                    <dl id="narrow-by-list-top">
+
+                        <?php if ($state[1] && $this->bNeedClearAll()): ?>
+                            <div class="actions adj-clear-all">
+                                <a onclick="return false;" class="adj-nav-clearall"
+                                   href="<?php echo $this->htmlEscape($this->getClearAllUrl()) ?>"><?php echo $this->__('Clear All') ?></a>
+                            </div>
+                        <?php endif ?>
+
+                        <?php $_filters = $this->getFilters() ?>
+                        <?php foreach ($_filters as $_filter): ?>
+                            <?php if ($_filter->getItemsCount()): ?>
+                                <div class="adjnav-filter">
+                                    <dt class="adj-nav-dt">
+                                        <?php if ($clearUrl = $_filter->getClearUrl()): ?>
+                                            <a onclick="return false;" id="<?php echo $_filter->getVar() ?>-clear"
+                                               <?php if (!$this->getIsRemoveLinks()): ?>href="<?php echo $this->htmlEscape($clearUrl) ?>" <?php endif; ?>
+                                               class="btn-remove adj-nav-clear <?php if (Mage::getStoreConfig('design/adjnav/reload_categories') && 'cat' == $_filter->getVar()) {
+                                                   echo ' adj-nav-cat-reload ';
+                                               } ?>"
+                                               title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->__('Remove This Item')?></a>
+                                        <?php endif ?>
+                                        <?php echo $this->__($_filter->getName()) ?>
+                                    </dt>
+                                    <dd <?php echo $this->getHeightStyle()?>
+                                        id="adj-nav-filter-<?php echo $_filter->getVar() ?>"
+                                        class=""><?php echo $_filter->getHtml() ?></dd>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
+                    <script type="text/javascript">
+                        decorateDataList('narrow-by-list-top');
+                        nav_top = new AdjnavBlock('narrow-by-list-top');
+                        adjnavNavigation.addBlock(nav_top);
+                    </script>
+                </div>
+
+            </div>
+            <div class="adj-nav-progress" style="display:none"></div>
+        </div>
+    <?php endif; ?>
+
+<script type="text/javascript">
+    featured_values_top = new AdjnavAttributeValues('#narrow-by-list-top a.attr-val-more');
+</script>
+<?php endif; ?>
+</div>

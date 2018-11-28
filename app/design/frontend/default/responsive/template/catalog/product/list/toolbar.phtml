@@ -1,0 +1,108 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+
+
+<div class="toolbar col-xs-12">
+    <div class="pager-responsive row2">
+
+     <div class="amount col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <?php if($this->getLastPageNum()>1): ?>
+            <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+        <?php else: ?>
+            <?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?>
+        <?php endif; ?>
+    </div> 
+
+        <div class="pagination col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <?php echo $this->getPagerHtml() ?>
+        </div>
+       
+
+        <div class="limiter col-xs-6 col-sm-4 col-md-4 col-lg-2 ">
+            <?php echo $this->__('Show') ?>
+            <select onchange="setLocation(this.value)">
+            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                    <?php echo $_limit ?>
+                </option>
+            <?php endforeach; ?>
+            </select> <?php echo $this->__('/ page') ?>
+        </div>
+
+            <?php if( $this->isExpanded() ): ?>
+        <div class="sorter col-xs-6 col-sm-4 col-md-4 col-lg-2 no-padding">
+
+
+            <div class="sort-by">
+                <?php echo $this->__('Sort') ?>
+                <select onchange="setLocation(this.value)">
+                    <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                            <?php echo $this->__($_order) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <?php if($this->getCurrentDirection() == 'desc'): ?>
+                    <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo $this->__('Set Ascending Direction') ?>"><i class="fa fa-long-arrow-down"></i></a>
+                <?php else: ?>
+                    <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>"><i class="fa fa-long-arrow-up"></i></a>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+                <?php if( $this->isEnabledViewSwitcher() ): ?>
+            <div class="view-mode col-xs-12  col-sm-4 col-md-4 col-lg-1 no-padding">
+                <?php $_modes = $this->getModes(); ?>
+                <?php if($_modes && count($_modes)>1): ?>
+                    <!--                        --><?php //echo $this->__('View as') ?><!--:-->
+                    <div class="btn-group">
+                        <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                            <?php if($this->isModeActive($_code)): ?>
+                                <span title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?> btn btn-xs btn-default disabled"><?php if($_label == 'Grid') echo '<span class="glyphicon glyphicon-th-large"></span>'; else echo '<span class="glyphicon glyphicon-th-list"></span>'; ?></span>&nbsp;
+                            <?php else: ?>
+                                <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>  btn  btn-xs btn-default"><?php if($_label == 'Grid') echo '<span class="glyphicon glyphicon-th-large"></span>'; else echo '<span class="glyphicon glyphicon-th-list"></span>'; ?></a>&nbsp;
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+
+
+</div>
+<?php endif ?>

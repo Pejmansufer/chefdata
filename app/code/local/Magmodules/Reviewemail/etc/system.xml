@@ -1,0 +1,1355 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+ -->
+<config>
+	<tabs>
+		<magmodules translate="label" module="reviewemail">
+			<label>Magmodules</label>
+			<sort_order>200</sort_order>
+		</magmodules>
+	</tabs>
+	<sections>
+		<reviewemail translate="label" module="reviewemail">
+			<label>Product Review Reminder</label>
+			<tab>magmodules</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>26</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>	
+				<info>
+					<frontend_model>reviewemail/adminhtml_widget_info_info</frontend_model>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+				</info>
+				<general translate="label" module="reviewemail">				
+					<label>Licence</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>					
+					<comment>
+  					 <![CDATA[
+						<script>
+						function showLiceseImg(message) {
+							if (Prototype.Browser.IE) {
+								$('reviewemail_general_license_key').next('p').outerHTML = message;
+							} else {
+								$('reviewemail_general_license_key').next('p').innerHTML = message;
+							}
+						}
+						Event.observe(window, 'load', function() {
+							if ($('row_reviewemail_general_server')) {
+								$('row_reviewemail_general_server').hide();
+							}
+							if ($('reviewemail_general_servername')) {
+								$('reviewemail_general_servername').style.backgroundColor='#f0f0f0';
+								$('reviewemail_general_servername').disable();
+							}								
+						showLiceseImg('<a href="http://www.magmodules.eu/" target="_blank"><img src="//www.magmodules.eu/license/?check='+$('reviewemail_general_server').value+'" border="0" style="margin-top: 4px;"/></a>');
+						});
+						</script>
+						<p>
+							<b>License Keys</b>:
+							You can find your license key on your order conformation mail or login to you account at <a href="http://www.magmodules.eu/customer/account/">Magmodules.eu</a><br/>
+							Need development license keys? Please go to <a href="http://www.magmodules.eu/customer/account/">My License Keys</a> in our store to generate a development license key.<br/><br/>
+						</p>	
+                    ]]>								
+					</comment>					
+					<fields>
+                        <servername translate="label">
+                            <label>Server Name</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>reviewemail/system_config_model_servername</backend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </servername>
+                        <license_key translate="label">
+                            <label>License Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Enter your license key here</comment>
+                        </license_key>
+                        <server translate="label">
+                            <label/>
+                            <frontend_type>hidden</frontend_type>
+                            <backend_model>reviewemail/system_config_model_license</backend_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </server>                                           
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>reviewemail/system_config_model_enable</backend_model>                            
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>A valid license key is required in order to enable the module.</comment>
+                        </enabled>                        
+					</fields>
+				</general>			
+				<config translate="label" module="reviewemail">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>								
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Choose the general configuration admin settings, different product types, cronjob, and email sender. You can select these options for each specific store view.]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+ 						<email_heading translate="label">
+                            <label>Email and Cron</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_heading>
+                        <reviewemail_sender translate="label">
+                            <label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewemail_sender>
+						<reviewemail_bccenabled translate="label">
+							<label>Send a BCC copy</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</reviewemail_bccenabled> 
+						<reviewemail_bccemail translate="label">
+							<label>Send BCC to</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+							<depends><reviewemail_bccenabled>1</reviewemail_bccenabled></depends>																											
+						</reviewemail_bccemail>                           						                          
+                        <cron translate="label">
+                            <label>Use Cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip><![CDATA[You can use the cronjob to send emails automatically.]]></tooltip>
+                        </cron>	
+ 						<links_heading translate="label">
+                            <label>Product Types</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </links_heading>
+                        <link_bundle translate="label">
+                            <label>Link bundle to parent</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Link to parent product URL in review emails.]]></tooltip>                            
+                        </link_bundle>	
+                        <link_group translate="label">
+                            <label>Link group to parent</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Link to parent product URL in review emails.]]></tooltip>                                                        
+                        </link_group>
+                        <review_bundle translate="label">
+                            <label>Add review to bundle parent</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Add the review to the parent product of the bundle instead of the simple product.]]></tooltip>                            
+                        </review_bundle>	
+                        <review_group translate="label">
+                            <label>Add review to group parent</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Add the review to the parent product of the grouped product instead of the simple product.]]></tooltip>                                                        
+                        </review_group>
+ 						<adminhtml_heading translate="label">
+                            <label>Admin Settings</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </adminhtml_heading>
+                        <toolbar_block translate="label">
+                            <label>Add Notification Toolbar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Adds a notification toolbar to the admin displaying pending reviews.]]></tooltip>                                                        
+                        </toolbar_block>  
+                        <orders_block translate="label">
+                            <label>Add Block to Order View</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Adds a review email status block to the order view page in the admin.]]></tooltip>                                                        
+                        </orders_block>                                                                                                                                          	                                                     					                                                                                                                                                                           
+					</fields>
+				</config>				
+				<frontend translate="label" module="reviewemail">
+					<label>Frontend Form</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>		
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Create a personal frontend page by editing the welcome text, success page text and coupon introduction. This way, you can further encourage the customer to leave a review. It’s possible to disable the visibility of the form if a customer has already written a review about your product(s). Of course, you may also set a personal message for whenever this happens.]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+                        <heading_welcome translate="label">
+                            <label>Text</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_welcome>	
+						<welcome translate="label">
+							<label>Welcome Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[use {{orderid}} for ordernumber]]></tooltip>							
+						</welcome>
+						<coupon translate="label">
+							<label>Coupon Intro</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</coupon>
+						<success translate="label">
+							<label>Success Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</success>
+                        <after_submit translate="label">
+                            <label>Disable form after submit</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </after_submit>                                                 	
+                        <heading_products translate="label">
+                            <label>Products</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_products>										
+                        <checked translate="label">
+                            <label>Products checked by default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checked>                         
+					</fields>
+				</frontend>			    
+				<first_email translate="label" module="reviewemail">
+					<label>First Email</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>								
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Edit and personalize all the features within your first email reminder. Configure the general settings and adjust the style of the email so that it perfectly suits your brand. There are multiple blocks within the email. The alignment of these blocks is the same as in the email reminder and you may de-activate, activate or edit the blocks to suit your needs. Set the button to “Button: Review Email Page” to make use of our unique frontend review form.]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+                        <heading_delay_first translate="label">
+                            <label>Configuration</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_delay_first>							
+                        <reviewemail_status>
+                            <label>Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_status</source_model>
+							<sort_order>3</sort_order>                            
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+							<tooltip><![CDATA[Schedule email after the order has passed this status]]></tooltip>							                            
+                        </reviewemail_status>	
+						<reviewemail_days translate="label">
+							<label>Schedule After Days</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Schedule email to be sent after x-days]]></tooltip>							
+						</reviewemail_days>
+						<reviewemail_backlog translate="label">
+							<label>Maximum Days old</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Do not schedule orders older than x-days]]></tooltip>							
+						</reviewemail_backlog>					
+                        <heading_design translate="label">
+                            <label>Design</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_design>	
+						<first_title translate="label">
+							<label>Email Subject</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[use {{orderid}} for ordernumber]]></tooltip>							
+						</first_title>
+  						<email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_template>
+                     	<reviewemail_logo>
+                            <label>Email Logo</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">uploaddir</upload_dir> 
+                            <base_url type="media" scope_info="1">uploaddir</base_url> 
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewemail_logo>
+						<reviewemail_color translate="label">
+							<label>Header Color</label>
+							<frontend_type>text</frontend_type>
+							<validate>color</validate>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Hex colorcode]]></tooltip>																		
+						</reviewemail_color>                            
+						<reviewemail_color_text translate="label">
+							<label>Headertext Color</label>
+							<frontend_type>text</frontend_type>
+							<validate>color</validate>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Hex colorcode]]></tooltip>																		
+						</reviewemail_color_text>                            
+                        <reviewemail_unsubscribe translate="label">
+                            <label>Add Unsubscribe link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewemail_unsubscribe>    
+                        <heading_welcome_first translate="label">
+                            <label>Welcome Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_welcome_first>	
+						<first_welcome_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>31</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>															
+						</first_welcome_block>  
+						<first_welcome_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>32</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_welcome_block>1</first_welcome_block></depends>	
+						</first_welcome_block_static>
+						<first_welcome_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>32</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_welcome_block>2</first_welcome_block></depends>	
+						</first_welcome_block_text>						
+                        <heading_review_first translate="label">
+                            <label>Order / Review Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_review_first>						
+						<first_review_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>reviewemail/system_config_source_reviewlink</source_model>
+							<sort_order>41</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_review_block>  
+						<first_review_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>42</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_review_block separator=",">1,2,3,4,5</first_review_block></depends>							
+						</first_review_title>							    
+                        <first_review_hash translate="label">
+                            <label>Productpage link hash</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Use a Hashtag (#) to jump to Review section on your productpage]]></tooltip>					                                                        
+							<depends><first_review_block>3</first_review_block></depends>	
+                        </first_review_hash>
+                        <first_review_custom translate="label">
+                            <label>Custom Review URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[eg. http://www.yourshop.com/testimonial]]></tooltip>					                                                        
+							<depends><first_review_block>4</first_review_block></depends>	
+                        </first_review_custom>    						                   
+                        <heading_shopreview_first translate="label">
+                            <label>Shopreview Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_shopreview_first>							
+						<first_shopreview_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>51</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_shopreview_block>  
+						<first_shopreview_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>52</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_shopreview_block separator=",">1,2</first_shopreview_block></depends>														
+						</first_shopreview_title>								
+						<first_shopreview_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>53</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_shopreview_block>1</first_shopreview_block></depends>	
+						</first_shopreview_block_static>
+						<first_shopreview_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>54</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_shopreview_block>2</first_shopreview_block></depends>	
+						</first_shopreview_block_text>		
+                        <heading_crosssel_first translate="label">
+                            <label>Cross sell Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_crosssel_first>							
+						<first_crosssel_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>61</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_crosssel_block> 
+						<first_crosssel_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>62</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_crosssel_block>1</first_crosssel_block></depends>						
+						</first_crosssel_title>								
+                        <heading_upsell_first translate="label">
+                            <label>Up sell Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_upsell_first>							
+						<first_upsell_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>71</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_upsell_block> 
+						<first_upsell_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>72</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_upsell_block>1</first_upsell_block></depends>						
+						</first_upsell_title>	
+                        <heading_specs_first translate="label">
+                            <label>Product Attribute Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_specs_first>							
+						<first_specs_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>81</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_specs_block> 
+						<first_specs_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>82</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_specs_block>1</first_specs_block></depends>						
+						</first_specs_title>
+						<first_specs_display translate="label">
+							<label>Display Settings</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_display</source_model>
+							<sort_order>83</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_specs_block>1</first_specs_block></depends>	
+						</first_specs_display>
+						<first_specs_attribute translate="label">
+							<label>Text Attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_attribute</source_model>
+							<sort_order>84</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_specs_block>1</first_specs_block></depends>						
+						</first_specs_attribute>						
+                        <heading_footer_first translate="label">
+                            <label>Footer Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_footer_first>								 
+						<first_footer_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>91</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</first_footer_block>  
+						<first_footer_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>92</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_footer_block>1</first_footer_block></depends>	
+						</first_footer_block_static>
+						<first_footer_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>93</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><first_footer_block>2</first_footer_block></depends>	
+						</first_footer_block_text>							 						                                                                                                                                                                         
+					</fields>
+				</first_email>	
+				<second_email translate="label" module="reviewemail">
+					<label>Second Email</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>								
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Edit and personalize all the features within the second e-mail reminder. It is possible to disable this second e-mail if customers have already written a review through the link in the first e-mail reminder. The scheduled number of days will be from the first email.]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+                        <heading_delay_second translate="label">
+                            <label>Configuration</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_delay_second>		
+						<second_email_enabled translate="label">
+							<label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_email_enabled> 
+						<exclusive translate="label">
+							<label>Only send to customers who have not written a first review</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>	
+							<depends><second_email_enabled>1</second_email_enabled></depends>																				
+						</exclusive> 
+						<reviewemail_days translate="label">
+							<label>Schedule After Days</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Schedule email to be sent after x-days after first email]]></tooltip>		
+							<depends><second_email_enabled>1</second_email_enabled></depends>			                            					
+						</reviewemail_days>
+
+						<heading_design translate="label">
+                            <label>Design</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_design>	
+						<second_title translate="label">
+							<label>Email subject</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[use {{orderid}} for ordernumber]]></tooltip>							
+						</second_title>
+  						<email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_template>
+                     	<reviewemail_logo>
+                            <label>Email Logo</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">uploaddir</upload_dir> 
+                            <base_url type="media" scope_info="1">uploaddir</base_url> 
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewemail_logo>
+						<reviewemail_color translate="label">
+							<label>Header Color</label>
+							<frontend_type>text</frontend_type>
+							<validate>color</validate>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Hex colorcode]]></tooltip>																		
+						</reviewemail_color>                            
+						<reviewemail_color_text translate="label">
+							<label>Headertext Color</label>
+							<frontend_type>text</frontend_type>
+							<validate>color</validate>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <tooltip><![CDATA[Hex colorcode]]></tooltip>																		
+						</reviewemail_color_text>                            
+                        <reviewemail_unsubscribe translate="label">
+                            <label>Add Unsubscribe link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewemail_unsubscribe>    
+                        <heading_welcome_second translate="label">
+                            <label>Welcome Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_welcome_second>	
+						<second_welcome_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>31</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_welcome_block>  
+						<second_welcome_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>32</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_welcome_block>1</second_welcome_block></depends>	
+						</second_welcome_block_static>
+						<second_welcome_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>32</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_welcome_block>2</second_welcome_block></depends>	
+						</second_welcome_block_text>						
+                        <heading_review_second translate="label">
+                            <label>Order / Review Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_review_second>						
+						<second_review_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>reviewemail/system_config_source_reviewlink</source_model>
+							<sort_order>41</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_review_block>
+						<second_review_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>42</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_review_block separator=",">1,2,3,4,5</second_review_block></depends>						
+						</second_review_title>						      
+                        <second_review_hash translate="label">
+                            <label>Productpage link hash</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[Use a Hashtag (#) to jump to Review section on your productpage]]></tooltip>					                                                        
+							<depends><second_review_block>3</second_review_block></depends>	
+                        </second_review_hash>
+                        <second_review_custom translate="label">
+                            <label>Custom Review URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip><![CDATA[eg. http://www.yourshop.com/testimonial]]></tooltip>					                                                        
+							<depends><second_review_block>4</second_review_block></depends>	
+                        </second_review_custom>    						                   
+                        <heading_shopreview_second translate="label">
+                            <label>Shopreview Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_shopreview_second>							
+						<second_shopreview_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>51</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_shopreview_block>  
+						<second_shopreview_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>52</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_shopreview_block separator=",">1,2</second_shopreview_block></depends>														
+						</second_shopreview_title>							
+						<second_shopreview_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>53</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_shopreview_block>1</second_shopreview_block></depends>	
+						</second_shopreview_block_static>
+						<second_shopreview_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>54</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_shopreview_block>2</second_shopreview_block></depends>	
+						</second_shopreview_block_text>		
+                        <heading_crosssel_second translate="label">
+                            <label>Cross sell Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_crosssel_second>							
+						<second_crosssel_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>61</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_crosssel_block> 
+						<second_crosssel_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>62</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_crosssel_block>1</second_crosssel_block></depends>								
+						</second_crosssel_title>	
+                        <heading_upsell_second translate="label">
+                            <label>Up sell Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_upsell_second>							
+						<second_upsell_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>71</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_upsell_block> 
+						<second_upsell_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>72</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_upsell_block>1</second_upsell_block></depends>								
+						</second_upsell_title>	
+                        <heading_specs_second translate="label">
+                            <label>Product Attribute Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_specs_second>							
+						<second_specs_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>81</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_specs_block> 
+						<second_specs_title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>82</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_specs_block>1</second_specs_block></depends>						
+						</second_specs_title>
+						<second_specs_display translate="label">
+							<label>Display Settings</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_display</source_model>
+							<sort_order>83</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_specs_block>1</second_specs_block></depends>						
+						</second_specs_display>
+						<second_specs_attribute translate="label">
+							<label>Text Attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_attribute</source_model>
+							<sort_order>84</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_specs_block>1</second_specs_block></depends>						
+						</second_specs_attribute>																			
+                        <heading_footer_second translate="label">
+                            <label>Footer Block</label>
+                            <frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_footer_second>								 
+						<second_footer_block translate="label">
+							<label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_welcome</source_model>
+							<sort_order>91</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</second_footer_block>  
+						<second_footer_block_static translate="label">
+							<label>Static Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>reviewemail/system_config_source_staticblock</source_model>
+							<sort_order>92</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_footer_block>1</second_footer_block></depends>	
+						</second_footer_block_static>
+						<second_footer_block_text translate="label">
+							<label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>93</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><second_footer_block>2</second_footer_block></depends>	
+						</second_footer_block_text>		
+					</fields>
+				</second_email>								
+				<coupon>
+					<label>Coupon Generation</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>8</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<expanded>1</expanded>
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Reward your customers with a discount code and get even more reviews. Create a Shopping cart price rule with the auto generation function enabled and select the trigger. You may choose to show the discount code on the success page whenever the customer has written a review, or send the discount code through an e-mail after receiving or even after you’ve approved the review in your store. Further personalize this message by editing the coupon description field.<br><br>]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+						<enable translate="label">
+							<label>Enable</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<trigger translate="label">
+							<label>Trigger</label>
+							<frontend_type>select</frontend_type>
+							<source_model>reviewemail/system_config_source_coupontrigger</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<tooltip>When to generate coupon</tooltip>
+							<depends><enable>1</enable></depends>						
+						</trigger>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends><trigger>onapprove</trigger></depends>
+                        </email_template>
+						<coupon_message translate="label">
+							<label>Coupon Description</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Message displayed to the customer. Available variables: {{expiration_date}} & {{coupon_code}}]]></comment>
+							<depends><enable>1</enable></depends>						
+						</coupon_message>
+						<heading_rule translate="label">
+							<label>Price Rule</label>
+							<frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</heading_rule>
+						<ruleid translate="label">
+							<label>Shopping Cart Price Rule</label>
+							<frontend_type>select</frontend_type>
+							<source_model>reviewemail/system_config_source_coupons</source_model>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<tooltip>See: "Admin -> Promotion -> Shopping Cart Price Rule"</tooltip>
+						</ruleid>
+						<expire>
+							<label>Days Valid</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</expire> 
+						<heading_code translate="label">
+							<label>Coupon Code</label>
+							<frontend_model>magmodules_core/system_config_form_field_heading</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</heading_code>
+						<length>
+							<label>Length</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>21</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</length>
+						<format>
+							<label>Format</label>
+							<frontend_type>select</frontend_type>
+							<source_model>reviewemail/system_config_source_couponformat</source_model>
+							<sort_order>22</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</format>
+						<dash translate="label">
+							<label>Dash Every X Characters</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>23</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dash>
+						<prefix>
+							<label>Prefix</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>24</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</prefix>
+						<suffix>
+							<label>Suffix</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>25</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</suffix>
+					</fields>
+				</coupon>				
+				<testing translate="label" module="reviewemail">
+					<label>Send Test Email</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>9</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>1</expanded>			
+					<fields>
+                       <note translate="label">
+                            <label><![CDATA[Check if the first and second e-mail reminders suit your needs by sending a test email. Before you hit the send button, ensure that you have saved the config after filling in a valid order number and email address.<br><br>]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+                        <test_order translate="label">
+                            <label>Order Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_order>
+                        <test_email translate="label">
+                            <label>Send Email To</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_email>                        
+						<test_send translate="label">
+							<label>Send Test Email</label>
+                            <frontend_type>button</frontend_type>
+							<frontend_model>reviewemail/adminhtml_render_button</frontend_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</test_send>
+						<test_send_second translate="label">
+							<label>Send Test Email</label>
+                            <frontend_type>button</frontend_type>
+							<frontend_model>reviewemail/adminhtml_render_buttonsecond</frontend_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>																
+						</test_send_second>
+					</fields>
+				</testing>    				                   		
+				<shopreview translate="label" module="reviewemail">
+					<label>Shopreview Intergration</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+		            <expanded>0</expanded>	
+					<fields>									
+                       <note translate="label">
+                            <label><![CDATA[Ask for a general shop review in the same form by integrating the shopreview extension with the product review reminder. This way, you can let your customers write both shop reviews and product reviews in the same form. Check out our shopreview extension right <a href="http://www.magmodules.eu/shopreview.html" target="_blank">here.</a><br><br>]]></label>
+                            <frontend_model>reviewemail/adminhtml_system_config_form_field_note</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </note> 
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>                         
+                        <requiredproduct translate="label">
+                            <label>Minimum of 1 product review</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends><enabled>1</enabled></depends>	                            
+                        </requiredproduct> 
+                        <stopcoupon translate="label">
+                            <label>Force one coupon</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends><enabled>1</enabled></depends>	                            
+							<comment>If yes, there will be no coupon issues for the shopreview if the customer already has a coupon given for writing a product review.</comment>
+                        </stopcoupon> 
+                        <disable_email translate="label">
+                            <label>Disable shopreview emails</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends><enabled>1</enabled></depends>	                            
+							<comment>If yes, all the mails regarding the shopreview will be disabled.</comment>
+                        </disable_email>                                                                         
+					</fields>
+				</shopreview>	
+			</groups>
+		</reviewemail>
+    </sections>
+</config>

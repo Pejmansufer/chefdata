@@ -1,0 +1,220 @@
+"""And"" requires all search terms to be present. ""Or"" only requires one search term to be present.","""And"" requires all search terms to be present. ""Or"" only requires one search term to be present."
+"""which"" Binary Path","""which"" Binary Path"
+"<ul style=""list-style-type:disc; margin-left: 20px;"">
+						                        		<li><b>All match - </b> All search words must be present</li>
+						                        		<li><b>Any match - </b> Any search words must match</li>
+						                        		<li><b>Extended expression match - </b> Match with respect of the expression query syntax.</li>
+						                        	</ul>","<ul style=""list-style-type:disc; margin-left: 20px;"">
+						                        		<li><b>All match - </b> All search words must be present</li>
+						                        		<li><b>Any match - </b> Any search words must match</li>
+						                        		<li><b>Extended expression match - </b> Match with respect of the expression query syntax.</li>
+						                        	</ul>"
+"<ul style=""list-style-type:disc; margin-left: 20px;"">
+						                        		<li><b>None - </b> ""Car"" will only match car and not scar or carrot</li>
+						                        		<li><b>Prefix - </b> ""Car"" will match car and scar, but not carrot</li>
+						                        		<li><b>Suffix - </b> ""Car"" will match car and carrot, but not scar</li>
+						                        		<li><b>Both - </b> ""Car"" will match car, carrot, and scar</li>
+						                        	</ul>","<ul style=""list-style-type:disc; margin-left: 20px;"">
+						                        		<li><b>None - </b> ""Car"" will only match car and not scar or carrot</li>
+						                        		<li><b>Prefix - </b> ""Car"" will match car and scar, but not carrot</li>
+						                        		<li><b>Suffix - </b> ""Car"" will match car and carrot, but not scar</li>
+						                        		<li><b>Both - </b> ""Car"" will match car, carrot, and scar</li>
+						                        	</ul>"
+"A comma separated list of the synonyms of the word","A comma separated list of the synonyms of the word"
+Action,Action
+"Add after","Add after"
+"Add Field Boost","Add Field Boost"
+"Add Stop Word","Add Stop Word"
+"Add Synonym","Add Synonym"
+Advanced,Advanced
+"All match","All match"
+And,And
+"Any match","Any match"
+"Arabic stemmer","Arabic stemmer"
+Attribute,Attribute
+"Binary Path","Binary Path"
+"Binary path to the ""which"" command on your server. Used for checking commands. Leave blank to not check existence of commands.","Binary path to the ""which"" command on your server. Used for checking commands. Leave blank to not check existence of commands."
+"Both prefix and suffix words with wildcard","Both prefix and suffix words with wildcard"
+"Cache Status","Cache Status"
+"Cannot call method as connection mode is not %s","Cannot call method as connection mode is not %s"
+Categories,Categories
+"Category Inclusion","Category Inclusion"
+"Category Search","Category Search"
+"Chars For Tokenization","Chars For Tokenization"
+"Chars To Spaces","Chars To Spaces"
+"Chinese text segmentation","Chinese text segmentation"
+"Chinese text segmentation (batched)","Chinese text segmentation (batched)"
+Configuration,Configuration
+Connection,Connection
+Content,Content
+"Content Headings","Content Headings"
+"Could not create directory: %s","Could not create directory: %s"
+"Could not find command: %s","Could not find command: %s"
+Created,Created
+Cronjob,Cronjob
+"Czech stemmer","Czech stemmer"
+Danish,Danish
+"Danish stemmer (requires libstemmer)","Danish stemmer (requires libstemmer)"
+Delete,Delete
+Description,Description
+"Did you know purchasing %s can speed up your store even more?","Did you know purchasing %s can speed up your store even more?"
+"Disabling this will make it so the magento cronjob will not be used for sphinx search. You must manually register the cronjobs.","Disabling this will make it so the magento cronjob will not be used for sphinx search. You must manually register the cronjobs."
+"Disabling this will make it so the search cache is not used.","Disabling this will make it so the search cache is not used."
+"Disabling will mean categories will not be indexed.","Disabling will mean categories will not be indexed."
+"Disabling will mean pages will not be indexed.","Disabling will mean pages will not be indexed."
+"Disabling will mean sphinx will not be used on the frontend for searching.","Disabling will mean sphinx will not be used on the frontend for searching."
+Dutch,Dutch
+"Dutch stemmer (requires libstemmer)","Dutch stemmer (requires libstemmer)"
+Edit,Edit
+"Enabling will mean product active tags will be added to the index. This can slow indexing.","Enabling will mean product active tags will be added to the index. This can slow indexing."
+"Enabling will mean product categories will be added to the index. This can slow down indexing.","Enabling will mean product categories will be added to the index. This can slow down indexing."
+English,English
+"English / russian stemmers","English / russian stemmers"
+"English lemmatizer (multi root)","English lemmatizer (multi root)"
+"English lemmatizer (single root)","English lemmatizer (single root)"
+"English stemmer","English stemmer"
+"English stemmer (requires libstemmer)","English stemmer (requires libstemmer)"
+"Excluded CMS Pages","Excluded CMS Pages"
+"Expand (conservative)","Expand (conservative)"
+"Expand (liberal)","Expand (liberal)"
+"Extended expression match (recommended)","Extended expression match (recommended)"
+Extendware,Extendware
+"Field Boosters","Field Boosters"
+Finnish,Finnish
+"Finnish stemmer (requires libstemmer)","Finnish stemmer (requires libstemmer)"
+"Flush Search Cache","Flush Search Cache"
+French,French
+"French stemmer (requires libstemmer)","French stemmer (requires libstemmer)"
+General,General
+"General Information","General Information"
+"Generate Config","Generate Config"
+German,German
+"German lemmatizer (multi root)","German lemmatizer (multi root)"
+"German lemmatizer (single root)","German lemmatizer (single root)"
+"German stemmer (requires libstemmer)","German stemmer (requires libstemmer)"
+Host,Host
+Hungarian,Hungarian
+"Hungarian stemmer (requires libstemmer)","Hungarian stemmer (requires libstemmer)"
+ID,ID
+"If enabled then ""cat"" will match cathy.","If enabled then ""cat"" will match cathy."
+"If enabled, ""11b99"" will be tokenized as ""11b99 1199 11 99""","If enabled, ""11b99"" will be tokenized as ""11b99 1199 11 99"""
+"Indexer is already running. Please try again later!","Indexer is already running. Please try again later!"
+Indexing,Indexing
+"Indexing error: %s","Indexing error: %s"
+Inflector,Inflector
+Italian,Italian
+"Italian stemmer (requires libstemmer)","Italian stemmer (requires libstemmer)"
+"List each character (wihout any separation) that you want to convert to spaces.","List each character (wihout any separation) that you want to convert to spaces."
+"List each character (wihout any separation) that you want to tokenize on.","List each character (wihout any separation) that you want to tokenize on."
+Local,Local
+"Local will connect to the local search sphinx installed on the server. Remote is for connecting to search sphinx on an external server.","Local will connect to the local search sphinx installed on the server. Remote is for connecting to search sphinx on an external server."
+"Magento Cronjob Status","Magento Cronjob Status"
+Main,Main
+"Manage Stop Words","Manage Stop Words"
+"Manage Synonyms","Manage Synonyms"
+"Max Memory (mb)","Max Memory (mb)"
+"Max Results","Max Results"
+"Meta Description","Meta Description"
+"Meta Keywords","Meta Keywords"
+"Metaphone coder","Metaphone coder"
+"Min Word Length","Min Word Length"
+Miscellaneous,Miscellaneous
+"Missing data for item","Missing data for item"
+Mode,Mode
+"Morphology Mode","Morphology Mode"
+Name,Name
+"No wildcards","No wildcards"
+None,None
+"Norwegian Bokmal","Norwegian Bokmal"
+"Norwegian stemmer (requires libstemmer)","Norwegian stemmer (requires libstemmer)"
+"Number Tokenization","Number Tokenization"
+Operator,Operator
+Or,Or
+"Page Search","Page Search"
+"Page Title","Page Title"
+"Permission denied","Permission denied"
+"PHP Command","PHP Command"
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+Port,Port
+Portuguese,Portuguese
+"Portuguese stemmer (requires libstemmer)","Portuguese stemmer (requires libstemmer)"
+"Prefix words with wildcard","Prefix words with wildcard"
+"Prioritize or deprioritize certain product attributes.","Prioritize or deprioritize certain product attributes."
+"Product Indexing","Product Indexing"
+"Product Search","Product Search"
+"Reindex All Cron Expr","Reindex All Cron Expr"
+"Reindex Data","Reindex Data"
+"Reindex Updates Cron Expr","Reindex Updates Cron Expr"
+Remote,Remote
+"Remote Path","Remote Path"
+Replace,Replace
+"Restart Sphinx","Restart Sphinx"
+Romanian,Romanian
+"Romanian stemmer (requires libstemmer)","Romanian stemmer (requires libstemmer)"
+Russian,Russian
+"Russian lemmatizer (multi root)","Russian lemmatizer (multi root)"
+"Russian lemmatizer (single root)","Russian lemmatizer (single root)"
+"Russian stemmer","Russian stemmer"
+"Russian stemmer (requires libstemmer)","Russian stemmer (requires libstemmer)"
+Search,Search
+"Search Attributes","Search Attributes"
+"Search cache has been flushed","Search cache has been flushed"
+"Search Mode","Search Mode"
+"Selected CMS pages will be excluded from the results. Use CTRL-Click to select multiple pages","Selected CMS pages will be excluded from the results. Use CTRL-Click to select multiple pages"
+"Set the session level wait_timeout in mysql (in seconds) when indexing. Set to 0 to use default. If you get MySQL Gone Away messagse you need to set this to a higher value.","Set the session level wait_timeout in mysql (in seconds) when indexing. Set to 0 to use default. If you get MySQL Gone Away messagse you need to set this to a higher value."
+Settings,Settings
+"Soundex coder","Soundex coder"
+Spanish,Spanish
+"Spanish stemmer (requires libstemmer)","Spanish stemmer (requires libstemmer)"
+"Sphinx config has been written: %s","Sphinx config has been written: %s"
+"Sphinx failed to start due to already locked pid file: %s","Sphinx failed to start due to already locked pid file: %s"
+"Sphinx failed to start due to invalid indexes: %s","Sphinx failed to start due to invalid indexes: %s"
+"Sphinx failed to start: %s","Sphinx failed to start: %s"
+"Sphinx reindexing has completed","Sphinx reindexing has completed"
+"Sphinx Search","Sphinx Search"
+"Sphinx server has been restarted","Sphinx server has been restarted"
+Status,Status
+Stemmer,Stemmer
+"Stop word","Stop word"
+"Stop word has been deleted","Stop word has been deleted"
+"Stop word has been successfully saved","Stop word has been successfully saved"
+"Stop Words","Stop Words"
+Store,Store
+"Suffix words with wildcard","Suffix words with wildcard"
+Swedish,Swedish
+"Swedish stemmer (requires libstemmer)","Swedish stemmer (requires libstemmer)"
+Synonym,Synonym
+"Synonym has been deleted","Synonym has been deleted"
+"Synonym has been successfully saved","Synonym has been successfully saved"
+Synonyms,Synonyms
+"Tag Inclusion","Tag Inclusion"
+Tags,Tags
+"The cron expression controls how frequently the search index will be completely redone.","The cron expression controls how frequently the search index will be completely redone."
+"The cron expression controls how frequently updates will be reindexed. This should be more frequent than the reindex all cron expr.","The cron expression controls how frequently updates will be reindexed. This should be more frequent than the reindex all cron expr."
+"The default weight attached to any field is 1. You should enter a whole number higher than 1 to prioritize that attribute.","The default weight attached to any field is 1. You should enter a whole number higher than 1 to prioritize that attribute."
+"The full path on the remote server where sphinx configuration and indexes are stored. Example: /var/sphinx","The full path on the remote server where sphinx configuration and indexes are stored. Example: /var/sphinx"
+"The full path where the sphinx binaries are located. Exmaple: /usr/bin","The full path where the sphinx binaries are located. Exmaple: /usr/bin"
+"The host the sphinx server where the connection will be made.","The host the sphinx server where the connection will be made."
+"The language rules that will be used for stemming / lemmatization. <b>Note: </b> Sphinx will need to be installed with support for the chosen morphology backend or none will be used.","The language rules that will be used for stemming / lemmatization. <b>Note: </b> Sphinx will need to be installed with support for the chosen morphology backend or none will be used."
+"The maximum memory in megabytes the indexer can use","The maximum memory in megabytes the indexer can use"
+"The maximum number of results returned by a search. Have a limit can speed up some searches.","The maximum number of results returned by a search. Have a limit can speed up some searches."
+"The number of characters needed for a word before a wild card query will be performed","The number of characters needed for a word before a wild card query will be performed"
+"The php command used for the feeds of items. You can add a config file here such as ""php -c [path to config] -f "" (php file will be appended to the end)","The php command used for the feeds of items. You can add a config file here such as ""php -c [path to config] -f "" (php file will be appended to the end)"
+"The port of the sphinx server. Default port is 3312","The port of the sphinx server. Default port is 3312"
+"The search mode can make the search more or less precise. Typically only phrase, all, or any would be used:","The search mode can make the search more or less precise. Typically only phrase, all, or any would be used:"
+"There are no indexes to search. Please ensure you have set the Status to Enabled otherwise sphinx will not be used.","There are no indexes to search. Please ensure you have set the Status to Enabled otherwise sphinx will not be used."
+"These attributes will be used for searching.","These attributes will be used for searching."
+"These attributes will be used for searching. You must re-index ""Search Suggest"" in System -> Index Management after changing","These attributes will be used for searching. You must re-index ""Search Suggest"" in System -> Index Management after changing"
+"Tokenizing on ""-"" will turn ""fat-cat"" into ""fat-cat fat cat fatcat""","Tokenizing on ""-"" will turn ""fat-cat"" into ""fat-cat fat cat fatcat"""
+"Turkish stemmer (requires libstemmer)","Turkish stemmer (requires libstemmer)"
+"Unknown index name type encountered","Unknown index name type encountered"
+"Unknown type encountered: %s","Unknown type encountered: %s"
+Updated,Updated
+"Wait Timeout","Wait Timeout"
+Weight,Weight
+"Wildcard Min Length","Wildcard Min Length"
+"Wildcard Mode","Wildcard Mode"
+Word,Word
+"Words less than this will not be indexed. Set to 0 to index all.","Words less than this will not be indexed. Set to 0 to index all."
+"You might need to reindex search sphinx before the settings will fully take effect.","You might need to reindex search sphinx before the settings will fully take effect."
+"You must specify a store ID","You must specify a store ID"

@@ -1,0 +1,94 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="footer-main-section-1"> 
+	<div class="container">	
+		<div class="row">
+
+			<div class="col-lg-6 social-block">
+				<div class="row">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-social')->toHtml(); ?>
+				</div>
+
+			</div>
+
+			<div class="col-lg-6">
+				<div class="row">
+					<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml(); ?>
+				</div>
+
+			</div>
+			
+		</div>	
+	</div>
+</div>
+<div class="footer-main"> 
+	<div class="container">
+		<div class="footer section-2">
+			<div class="footer-left">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-section2-left')->toHtml(); ?>
+			</div>
+			<div class="footer-right">
+				<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-section2-right')->toHtml(); ?>
+				
+		
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer-bottom">		
+        <?php //echo $this->getChildHtml() ?>
+		<ul class="linklist">
+			<li><a href="/about-us">About Us</a></li>
+			<li><a href="/financing">Financing</a></li>
+			<li><a href="/conditions-of-use">Conditions of Use</a></li>
+			<li><a href="/contact-us">Contact Us</a></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/privacy-policy">Privacy Policy</a></li>
+			<li><a href="/sitemap">Sitemap</a></li>
+		</ul>
+		<div class="footer-card"><img src="<?php echo $this->getSkinUrl('images/footer-card.png')?>" alt="" /></div>		
+        <address class="copyright"><?php echo $this->getCopyright() ?></address>
+    
+</div>
+
+<script>
+
+		setTimeout(function(){
+			
+			$zopim.livechat.setOnStatus(
+
+			function zopim_status_change(status){
+				for(i=0;i<document.getElementsByClassName('btn-live-chat').length;i++){
+					document.getElementsByClassName('btn-live-chat')[i].innerHTML=status;
+				}
+			});
+			
+		},3000);
+
+</script>

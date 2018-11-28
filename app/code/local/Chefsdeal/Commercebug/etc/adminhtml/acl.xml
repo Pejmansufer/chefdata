@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<config><acl><resources><resource id="Chefsdeal_Commercebug::admin"><resource id="Chefsdeal_Commercebug::system"><resource id="Chefsdeal_Commercebug::config"><resource id="Chefsdeal_Commercebug::commercebug" title="Configuration for Advanced Debugger"/></resource></resource></resource></resources></acl></config>

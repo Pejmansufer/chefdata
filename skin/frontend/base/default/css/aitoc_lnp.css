@@ -1,0 +1,84 @@
+
+/**
+ * True AJAX Navigation Filter
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Lnp
+ * @version      1.0.3
+ * @license:     n/a
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+#narrow-by-list .lnp_filter a {
+	background: url("../images/aitoc_lnp/checkbox.gif") no-repeat scroll -70px 3px rgba(0, 0, 0, 0);
+    padding-left: 15px;
+}
+#narrow-by-list .lnp_filter span.disabled {
+    background: url("../images/aitoc_lnp/checkbox.gif") no-repeat scroll -10px -57px rgba(0, 0, 0, 0);
+    padding-left: 15px;
+}
+#narrow-by-list .lnp_filter a.selected {
+    background-position: -50px -17px;
+    font-weight: bold;
+}
+
+#narrow-by-list .lnp_filter_category .level1 {
+	padding-left: 15px;
+}
+
+#narrow-by-list .lnp_filter_category .level2 {
+    padding-left: 30px;
+}
+
+#narrow-by-list .lnp_filter_category .level3 {
+    padding-left: 45px;
+}
+
+#narrow-by-list .lnp_filter_category .level4 {
+    padding-left: 60px;
+}
+
+#narrow-by-list .lnp_filter_category .level5 {
+    padding-left: 75px;
+}
+
+#narrow-by-list dt a.btn-remove {
+    cursor: pointer;
+}
+
+.block-layered-nav,
+.toolbar {
+    position: relative;
+}
+
+.aitoc_lnp_progress {
+    background: #FFFFFF url("../images/aitoc_lnp/progress.gif") no-repeat center center;
+    height: 100%;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 500;
+}
+
+#narrow-by-list .lnp_filter .slider {
+	position: relative;
+	z-index: 9;
+	height: 18px;
+	margin-bottom: 5px;
+	background: url(../images/aitoc_lnp/slider-bg.gif) no-repeat 50% 50%;
+	cursor: pointer;
+	width: 170px;
+}
+#narrow-by-list .lnp_filter .slider .handle {
+	top: 3px;
+	width: 8px;
+	height: 14px;
+	background: transparent url(../images/aitoc_lnp/slider-handle.png) no-repeat;
+	cursor: move;
+	position: absolute;
+}
+
+.aitoc_lnp_no_products {
+	padding: 20px;
+}

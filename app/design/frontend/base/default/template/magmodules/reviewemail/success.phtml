@@ -1,0 +1,43 @@
+<?php
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+ 
+ $email_id = Mage::getSingleton('core/session')->getEmailId();
+ $order_id = Mage::getSingleton('core/session')->getOrderId();
+ $store_id = Mage::app()->getStore()->getStoreId();
+ $coupon_msg = '';
+
+ if($order_id) {
+	$coupons = Mage::getModel('reviewemail/coupons')->load($order_id, 'order_id');
+	if($coupons->getCouponId()) {
+		$couponr = Mage::getModel('salesrule/coupon')->load($coupons->getCouponId());
+		if($coupon_msg = Mage::getStoreConfig('reviewemail/coupon/coupon_message', $store_id)) {
+			$coupon_msg = str_replace('{{coupon_code}}', '<u>' . $couponr->getCode() . '</u>', $coupon_msg);
+			$coupon_experation_date = Mage::helper('core')->formatDate($couponr->getExpirationDate(), 'medium', true);
+			$coupon_msg = str_replace('{{expiration_date}}', $coupon_experation_date, $coupon_msg);
+		}
+	}		
+ }
+ 
+?> 
+<div class="reviewemail-submit">
+	<div class="page-title"><h1><?php echo $this->__('Thank you for your review!') ?></h1></div>
+	<p><?php echo Mage::getStoreConfig('reviewemail/frontend/success'); ?></p>
+	<?php if($coupon_msg) { ?>
+		<div class="page-title"><h1><?php echo $this->__('Rewarded coupons') ?></h1></div>	
+		<p class="reviewemail-coupon"><?php echo $coupon_msg; ?></p>
+	<?php } ?>
+</div>	

@@ -1,0 +1,118 @@
+<?php
+if ($this->isActivePopUp() && Mage::registry('current_product')):
+?>
+<script>
+jQuery(document).ready(function(){
+	//setTimeout(function(){
+		EsNewsSubscribers.boxOpen();
+		jQuery('#esns_background_layer').css('height', jQuery(document).height()+'px');
+		jQuery('#esns_box_layer').css('margin-top', '-'+(jQuery('#esns_box_layer').height()/2) +'px');
+		jQuery('#esns_box_layer').css('margin-left', '-'+(jQuery('#esns_box_layer').width()/2) +'px');
+	//}, 45000);
+})
+
+
+   
+
+jQuery(document).click(function(event) { 
+    if(!jQuery(event.target).closest('#esns_box_layer').length) {
+        if(jQuery('#esns_box_layer').is(":visible")) {
+             jQuery("#esns_background_layer").hide();
+
+        }
+    }        
+})
+
+
+</script>
+
+<div id="esns_background_layer">
+	<?php 
+	$product_id = Mage::registry('current_product')->getId();
+	$_product= Mage::getModel('catalog/product')->load($product_id);
+	if($_product->getSpecialPrice()){
+		$price = $_product->getSpecialPrice();
+	}else{
+		$price = $_product->getPrice();
+	}
+	if($price < 1000){
+		$cprice = "$25";
+		$ccode = "25OFF";
+	}else if($price >= 1000 && $price < 3000){
+		$cprice = "$50";
+		$ccode = "50OFF"; 
+	}else{
+		$cprice = "$75";
+		$ccode = "75OFF";
+	}
+	?>
+    <div id="esns_box_layer">
+        <div id="esns_box_close"></div>
+        <div id="esns_box_title">
+			<h1>Get Instant Coupons</h1>
+			<h3>Save <?php echo $cprice;?> today!</h3>
+        </div>
+        <div class="esns_box_lines"></div>
+        <div id="esns_box_block_3">
+            <div style="padding: 38px 0; border: 4px dotted #ff0000; text-align: center; margin-top: 25px; font-size: 20px; color: #ff0000;">Please Use Coupon Code: <span class="cpn"><?php echo $ccode;?></span></div>
+        </div>
+        <div class="esns_box_lines"></div>
+    </div>
+</div>
+<?php endif; ?> 
+<?php
+if ($this->isActivePopUp() && Mage::getBlockSingleton('page/html_header')->getIsHomePage()):
+?>
+<script>
+    <?php if (is_numeric($this->getCookieLifeTime())): ?>
+    EsNewsSubscribers.setCookieLiveTime(<?php echo $this->getCookieLifeTime(); ?>);
+    <?php endif; ?>
+    <?php if ($this->getCookieName()): ?>
+    EsNewsSubscribers.setCookieName('<?php echo $this->getCookieName(); ?>');
+    <?php endif; ?>
+    EsNewsSubscribers.setBaseUrl('<?php echo $this->getBaseUrl(); ?>');
+	
+	jQuery(document).ready(function(){
+		//setTimeout(function(){
+			if (EsNewsSubscribers.readCookie() != 1) {
+				EsNewsSubscribers.createCookie();
+				EsNewsSubscribers.boxOpen();
+			}
+			jQuery('#esns_background_layer').css('height', jQuery(document).height()+'px');
+			jQuery('#esns_box_layer').css('margin-top', '-'+(jQuery('#esns_box_layer').height()/2) +'px');
+			jQuery('#esns_box_layer').css('margin-left', '-'+(jQuery('#esns_box_layer').width()/2) +'px');
+		//}, 5000);
+	});
+
+	jQuery(document).click(function(event) { 
+		if(!jQuery(event.target).closest('#esns_box_layer').length) {
+			if(jQuery('#esns_box_layer').is(":visible")) {
+				 jQuery("#esns_background_layer").hide();
+
+			}
+		}        
+	});
+</script>
+
+<div id="esns_background_layer">
+    <div id="esns_box_layer">
+        <div id="esns_box_close"></div>
+        <div id="esns_box_title">
+			<h3><?php echo $this->__('sign-up for our e-newsletter and you will receive a coupon for your next purchase'); ?></h3>
+			<!--<h3>Save <?php echo $cprice;?> today!</h3>-->
+        </div>
+        <div class="esns_box_lines"></div>
+        <div id="esns_box_block_3">
+            <div id="esns_box_subscribe">
+				<div id="esns_box_subscribe_response_error"></div>
+				<div id="esns_box_subscribe_response_success"></div>
+				<div id="esns_box_subscribe_form">
+					<div id="esns_box_subscribe_input"><input onclick="if(this.value=='<?php echo $this->__('Email'); ?>') this.value=''" onblur="if(this.value=='') this.value='<?php echo $this->__('Email'); ?>'" id="esns_email" name="subscribe_email" value="<?php echo $this->__('Email'); ?>" type="text"></div>
+					<div id="esns_box_subscribe_submit"><a href="javascript:void(0)" id="esns_submit" ><?php echo $this->__('Subscribe'); ?></a></div>
+				</div>
+			</div>
+        </div>
+        <div class="esns_box_lines"></div>
+    </div>
+</div>
+<?php endif; ?>

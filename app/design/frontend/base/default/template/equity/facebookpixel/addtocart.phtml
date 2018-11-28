@@ -1,0 +1,10 @@
+<?php $product = $this->_getLastAddedProduct() ?>
+<script>
+window.fbq('track', 'AddToCart'<?php if($this->_trackDetails()): ?>, {
+	content_name: '<?php echo addcslashes($this->_getProductName($product),"'") ?>',
+	content_ids: [<?php echo $this->_getProductTrackID($product) ?>],
+	content_type: 'product',
+	value: <?php echo $this->_getProductPrice($product) ?>,
+	currency: '<?php echo $this->getStoreCurrency($product) ?>'
+}<?php endif ?>);
+</script>

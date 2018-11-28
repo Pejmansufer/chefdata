@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewsphinx>
+                <resource>extendware/ewsphinx</resource>
+				<children>
+					<synonyms translate="title" module="ewsphinx">
+						<title>Synonyms</title>
+						<sort_order>1</sort_order>
+						<action>extendware_ewsphinx/adminhtml_synonym</action>
+						<resource>extendware/ewsphinx/synonym</resource>
+					</synonyms>
+					<stopwords translate="title" module="ewsphinx">
+						<title>Stop Words</title>
+						<sort_order>2</sort_order>
+						<action>extendware_ewsphinx/adminhtml_stopword</action>
+						<resource>extendware/ewsphinx/stopword</resource>
+					</stopwords>
+				</children>
+			</ewsphinx>
+		</quickaccess>
+	</extendware>
+	<menu></menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewsphinx">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewsphinx translate="title" module="ewsphinx">
+                        		<title>Sphinx Search</title>
+                        		<children>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewsphinx translate="title">
+						                                <title>General</title>
+						                            </ewsphinx>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewsphinx>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

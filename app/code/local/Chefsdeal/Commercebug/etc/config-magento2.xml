@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config><default>
+		<commercebug>
+			<options>
+				<show_interface>1</show_interface>
+				<path_skin>{{base_skin}}/frontend/commercebug</path_skin>				
+				<check_for_updates>1</check_for_updates>
+				<update_last_check>{"date":"March 30, 2010","html":"This is where the update will go"}</update_last_check>
+				<keyboard_shortcuts>1</keyboard_shortcuts>
+				<!-- <access_class>commercebug/ison</access_class> -->
+				<access_class>Chefsdeal_Commercebug_Model_Ison</access_class>
+				<log_format_class>commercebug/formatlog_raw</log_format_class>
+				<log_format_class_custom>commercebug/formatlog_raw</log_format_class_custom>
+				<standard_classes>
+Mage_Core_Model_App
+Mage_Core_Model_App_Area
+Mage_Core_Model_Cache
+Mage_Core_Model_Config
+Mage_Core_Model_Config_Base
+Mage_Core_Model_Config_Element
+Mage_Core_Model_Config_Options
+Mage_Core_Model_Cookie
+Mage_Core_Model_Design
+Mage_Core_Model_Design_Package
+Mage_Core_Model_Layout
+Mage_Core_Model_Layout_Element
+Mage_Core_Model_Layout_Update
+Mage_Core_Model_Locale
+Mage_Core_Model_Message_Collection
+Mage_Core_Model_Session
+Mage_Core_Model_Store
+Mage_Core_Model_Store_Exception
+Mage_Core_Model_Store_Group
+Mage_Core_Model_Translate
+Mage_Core_Model_Translate_Expr
+Mage_Core_Model_Translate_Inline
+Mage_Core_Model_Url
+Mage_Core_Model_Website
+Mage_Log_Model_Visitor
+Mage_PageCache_Model_Observer
+Mage_Persistent_Model_Observer
+Mage_Persistent_Model_Observer_Session
+Mage_Persistent_Model_Session
+                </standard_classes>
+<!-- 
+				<log_format_class>Chefsdeal_Commercebug_Helper_Formatlog_Raw</log_format_class>
+				<log_format_class_custom>Chefsdeal_Commercebug_Helper_Formatlog_Raw</log_format_class_custom>
+ -->
+			</options>
+		</commercebug>
+	</default></config>

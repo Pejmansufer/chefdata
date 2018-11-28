@@ -1,0 +1,102 @@
+<!--@subject {{var title}} @-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+a { color: {{var color}}; text-decoration: none; }
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+	<tr>
+		<td align="center" valign="top" style="padding:20px 0 20px 0">
+			<table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;" >
+				<tr>
+					<td valign="top" colspan="2">
+						<a href="{{store url=""}}"><img src="{{var logo}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a>
+					</td>
+				</tr>
+
+				<tr>
+					<td valign="top" colspan="2">
+						<p><strong>Hi {{var customer_name}},</strong></p>
+						{{depend welcome_block}}
+							<p>{{var welcome_block_content}}</p>
+						{{/depend}}						
+					</td>
+				</tr>
+
+				{{depend review_block}}
+					<tr>
+						<td valign="top" colspan="2" style="background: {{var color}}; color: {{var textcolor}};"><strong>{{var review_block_title}}</strong></td>
+					</tr>					
+					<tr>
+						<td valign="top" colspan="2">
+							<p>{{block type='core/template' area='frontend' template='magmodules/reviewemail/email/products.phtml' order=$order color=$color emailid=$emailid button='Write a review'}}</p>
+						</td>
+					</tr>	
+				{{/depend}}										
+
+				{{depend specs_block_content}}
+					<tr>
+						<td valign="top" colspan="2" style="background: {{var color}}; color: {{var textcolor}};"><strong>{{var specs_block_title}}</strong></td>
+					</tr>					
+					<tr>
+						<td valign="top" colspan="2">
+							<p>{{var specs_block_content}}</p>
+						</td>
+					</tr>	
+				{{/depend}}	
+
+				{{depend shopreview_block}}
+					<tr>
+						<td valign="top" colspan="2" style="background: {{var color}}; color: {{var textcolor}};"><strong>{{var shopreview_block_title}}</strong></td>
+					</tr>					
+					<tr>
+						<td valign="top" colspan="2">
+							<p>{{var shopreview_block_content}}</p>
+						</td>
+					</tr>	
+				{{/depend}}	
+								
+				{{depend crosssel_block}}
+					<tr>
+						<td valign="top" colspan="2" style="background: {{var color}}; color: {{var textcolor}};"><strong>{{var crosssel_block_title}}</strong></td>
+					</tr>					
+					<tr>
+						<td valign="top" colspan="2">
+							<p>{{block type='core/template' area='frontend' template='magmodules/reviewemail/email/crosssell.phtml' order=$order color=$color}}</p>
+						</td>
+					</tr>				
+				{{/depend}}
+
+				{{depend upsell_block}}
+					<tr>
+						<td valign="top" colspan="2" style="background: {{var color}}; color: {{var textcolor}};"><strong>{{var upsell_block_title}}</strong></td>
+					</tr>					
+					<tr>
+						<td valign="top" colspan="2">
+							<p>{{block type='core/template' area='frontend' template='magmodules/reviewemail/email/upsell.phtml' order=$order color=$color}}</p>
+						</td>
+					</tr>				
+				{{/depend}}
+															   
+				{{depend footer_block}}
+					<tr>
+						<td valign="top" colspan="2"><p>{{var footer_block_content}}</p></td>
+					</tr>				
+				{{/depend}}
+			</table>
+			<p>
+				<font color="#ccc" size="-2">
+					U ontvangt deze e-mailnieuwsbrief omdat u recentelijk een aanschaf heeft gedaan in onze webwinkel.<br/>
+					{{depend unsubscribe_link}}                
+						Klik <a href="{{var base_url}}reviewemail/index/unsubscribe/email/{{var email}}">hier</a> indien u deze mail niet meer wenst te ontvangen. <br/>
+					{{/depend}}						
+				</font>
+			</p>
+		</td>
+	</tr>
+</table>
+</div>
+</body>

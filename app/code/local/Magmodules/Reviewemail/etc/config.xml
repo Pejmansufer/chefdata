@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+ -->
+<config>
+    <modules>
+        <Magmodules_Reviewemail>
+            <version>3.0.5</version>
+        </Magmodules_Reviewemail>
+    </modules>
+    <frontend>
+        <routers>
+            <reviewemail>
+                <use>standard</use>
+                <args>
+                    <module>Magmodules_Reviewemail</module>
+                    <frontName>reviewemail</frontName>
+                </args>
+            </reviewemail>
+        </routers>
+        <layout>
+            <updates>
+                <reviewemail>
+                    <file>magmodules_reviewemail.xml</file>
+                </reviewemail>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magmodules_Reviewemail>
+                    <files>
+                        <default>Magmodules_Reviewemail.csv</default>
+                    </files>
+                </Magmodules_Reviewemail>
+            </modules>
+        </translate>        
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <magmodules_reviewemail after="Mage_Adminhtml">Magmodules_Reviewemail_Adminhtml</magmodules_reviewemail>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+		<layout>
+			<updates>
+				<reviewemail>
+					<file>magmodules_reviewemail.xml</file>
+				</reviewemail>
+			</updates>
+		</layout>
+        <translate>
+            <modules>
+                <Magmodules_Reviewemail>
+                    <files>
+                        <default>Magmodules_Reviewemail.csv</default>
+                    </files>
+                </Magmodules_Reviewemail>
+            </modules>
+        </translate>
+        <events>				
+            <core_config_data_save_after>
+                <observers>
+                    <has_value_for_reviewemail_configuration_changed>
+                        <type>model</type>
+                        <class>Magmodules_Reviewemail_Model_System_Config_Model_Enable</class>
+                        <method>has_value_for_configuration_changed</method>
+                    </has_value_for_reviewemail_configuration_changed>
+                </observers>
+            </core_config_data_save_after>
+        </events>		
+		<menu>
+			<newsletter>
+				<children>
+					<reviewemail translate="title" module="reviewemail">
+						<title>Product Review Reminder</title>
+						<sort_order>200</sort_order>
+						<children>
+							<schedule translate="title" module="reviewemail">
+								<title>Scheduled emails</title>
+								<action>adminhtml/reviewemail</action>
+							</schedule>
+							<history translate="title" module="reviewemail">
+								<title>Sent history</title>
+								<action>adminhtml/reviewhistory</action>
+							</history>
+							<exclude translate="title" module="reviewemail">
+								<title>Exclude List</title>
+								<action>adminhtml/reviewexclude</action>
+							</exclude>
+							<coupons translate="title" module="reviewemail">
+								<title>Coupons</title>
+								<action>adminhtml/reviewcoupons</action>
+							</coupons>							
+						</children>
+					</reviewemail>
+				</children>
+			</newsletter>
+		</menu>	
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<newsletter>
+							<children>
+								<reviewemail translate="title">
+									<title>Product Review Reminder</title>
+									<sort_order>100</sort_order>
+										<children>
+											<schedule translate="title" module="reviewemail">
+												<title>Scheduled Emails</title>
+											</schedule>
+											<history translate="title" module="reviewemail">
+												<title>Sent History</title>
+											</history>
+											<exclude translate="title" module="reviewemail">
+												<title>Exclude List</title>
+											</exclude>  
+											<coupons translate="title" module="reviewemail">
+												<title>Coupons</title>
+											</coupons>  											 											                                     
+										</children>
+								</reviewemail>
+							</children>
+						</newsletter>
+						<system>
+							<children>
+								<config>
+									<children>
+										<reviewemail translate="title" module="reviewemail">
+											<title>Review Email</title>
+										</reviewemail>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl> 
+    </adminhtml>   
+    <global>
+        <models>
+            <reviewemail>
+                <class>Magmodules_Reviewemail_Model</class>
+                <resourceModel>reviewemail_mysql4</resourceModel>
+            </reviewemail>
+            <reviewemail_mysql4>
+                <class>Magmodules_Reviewemail_Model_Mysql4</class>
+                <entities>
+                    <reviewemail>
+                        <table>reviewemail</table>
+                    </reviewemail>
+                    <exclude>
+                        <table>reviewemail_exclude</table>
+                    </exclude>  
+                    <coupons>
+                        <table>reviewemail_coupons</table>
+                    </coupons>  
+                    <reviews>
+                        <table>reviewemail_reviews</table>
+                    </reviews>                                                                             
+                </entities>              
+            </reviewemail_mysql4>
+        </models>
+        <resources>
+            <reviewemail_setup>
+                <setup>
+                    <module>Magmodules_Reviewemail</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </reviewemail_setup>
+            <reviewemail_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </reviewemail_write>
+            <reviewemail_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </reviewemail_read>
+        </resources>
+        <blocks>
+            <reviewemail>
+                <class>Magmodules_Reviewemail_Block</class>
+            </reviewemail>
+        </blocks>
+        <helpers>
+            <reviewemail>
+                <class>Magmodules_Reviewemail_Helper</class>
+            </reviewemail>
+        </helpers>
+        <events>       
+            <sales_order_shipment_save_after>
+                <observers>
+                    <reviewemail>
+                        <type>singleton</type>
+                        <class>reviewemail/observer</class>
+                        <method>processScheduleAfterShipment</method>
+                    </reviewemail>
+                </observers>
+            </sales_order_shipment_save_after>
+            <sales_order_save_commit_after>
+                <observers>
+                    <reviewemail>
+                        <type>singleton</type>
+                        <class>reviewemail/observer</class>
+                        <method>processSchedule</method>
+                    </reviewemail>
+                </observers>
+            </sales_order_save_commit_after>
+ 			<review_save_after>
+                <observers>
+                    <reviewemail>
+                        <type>singleton</type>
+                        <class>reviewemail/observer</class>
+                        <method>checkCoupons</method>
+                    </reviewemail>
+                </observers>
+            </review_save_after>            
+        </events>  
+        <template>
+            <email>
+               <reviewemail_first_email_email_template translate="label" module="reviewemail">
+                   <label>Reviewemail Template (first)</label>
+                   <file>magmodules_reviewemail.html</file>
+                   <type>html</type>
+               </reviewemail_first_email_email_template>   
+               <reviewemail_second_email_email_template translate="label" module="reviewemail">
+                   <label>Reviewemail Template (second)</label>
+                   <file>magmodules_reviewemail_second.html</file>
+                   <type>html</type>
+               </reviewemail_second_email_email_template>   
+               <reviewemail_coupon_email_template translate="label" module="reviewemail">
+                   <label>Reviewemail Coupon Template</label>
+                   <file>magmodules_reviewemail_coupon.html</file>
+                   <type>html</type>
+               </reviewemail_coupon_email_template>                                          
+            </email>
+        </template>
+		<events>
+			<core_block_abstract_to_html_after>
+				<observers>
+					<reviewemail_core_block_abstract_to_html_after>
+                        <type>model</type>
+						<class>reviewemail/observer</class>
+						<method>setAdminBlock</method>
+					</reviewemail_core_block_abstract_to_html_after>
+				</observers>
+			</core_block_abstract_to_html_after>
+		</events>
+    </global>
+    <crontab>
+        <jobs>
+            <reviewemail_sent>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>reviewemail/observer::sendByCron</model></run>
+            </reviewemail_sent>
+        </jobs>
+    </crontab>
+	<default>
+		<reviewemail>
+			<general>
+				<enabled>0</enabled>
+			</general>
+			<config>
+				<cron>0</cron>	
+				<reviewemail_bccenabled>0</reviewemail_bccenabled>
+				<link_bundle>1</link_bundle>
+				<link_group>1</link_group>	
+				<review_bundle>1</review_bundle>	
+				<review_group>1</review_group>
+				<toolbar_block>0</toolbar_block>
+				<orders_block>1</orders_block>																													
+			</config>
+			<frontend>
+				<welcome><![CDATA[Thank you for your recent purchase with number #{{orderid}}! With your review, you help us, as well as other customers other customers gain even more relevant information about the product. You can always check on your previous orders in your account. Thank you again for purchasing at our store and we hope you had a great shopping experience. We already look forward to your experiences!]]></welcome>				
+				<coupon><![CDATA[Write a review and get a discount code on your next order!]]></coupon>
+				<success><![CDATA[Thank you for your recent purchase at our store. By the time you receive this e-mail, you should have already received the product and begun using it. We hope that the product meets your expectations. We would like to hear about your experiences. If you have any questions or problems regarding the product or your recent purchase, please let us know.]]></success>
+				<after_submit>0</after_submit>				
+				<checked>1</checked>			
+			</frontend>			
+			<first_email>
+				<reviewemail_status>complete</reviewemail_status>
+				<reviewemail_days>14</reviewemail_days>
+				<reviewemail_backlog>30</reviewemail_backlog>								
+				<first_title><![CDATA[Your opinion of the items from order #{{orderid}}]]></first_title>				
+				<email_template>reviewemail_first_email_email_template</email_template>				
+				<reviewemail_color>31A7C6</reviewemail_color>
+				<reviewemail_color_text>FFFFFF</reviewemail_color_text>
+				<reviewemail_unsubscribe>1</reviewemail_unsubscribe>
+				<first_welcome_block>2</first_welcome_block>
+				<first_welcome_block_text><![CDATA[Thank you for your recent purchase at our store. By the time you receive this e-mail, you should have already received the product and begun using it. We hope that the product meets your expectations. We would like to hear about your experiences. If you have any questions or problems regarding the product or your recent purchase, please let us know.]]></first_welcome_block_text>
+				<first_review_block>1</first_review_block>
+				<first_review_title><![CDATA[Review our products]]></first_review_title>
+				<first_shopreview_block>disable</first_shopreview_block>
+				<first_shopreview_title><![CDATA[Review our service]]></first_shopreview_title>
+				<first_shopreview_block_text><![CDATA[We are always working on a better store experience so next to your experience about the product we are very interested in your experience about the shipping, price and usability of our store. Please let us know where we doing a great job, and where there's still room for improvement.You can leave a review about our store here: -add reviewlink-]]></first_shopreview_block_text>
+				<first_crosssel_title><![CDATA[We have selected some accessories]]></first_crosssel_title>
+				<first_crosssel_block>0</first_crosssel_block>
+				<first_upsell_title><![CDATA[We have selected some accessories]]></first_upsell_title>
+				<first_upsell_block>0</first_upsell_block>
+				<first_footer_block>2</first_footer_block>
+				<first_footer_block_text><![CDATA[We really appreciate your time and we wish to thank you for shopping at our store. To help us in improving our services and products, we would like to send you a reminder later on to write a product review after you have spent sufficient time using the product. If you do not wish to receive it, you may unsubscribe by clicking the unsubscribe button at the bottom of the e-mail.]]></first_footer_block_text>
+			</first_email>
+			<second_email>
+				<second_email_enabled>0</second_email_enabled>		
+				<exclusive>1</exclusive>
+				<reviewemail_days>7</reviewemail_days>
+				<second_title><![CDATA[Reminder: Your opinion of the items from order #{{orderid}}]]></second_title>
+				<email_template>reviewemail_second_email_email_template</email_template>				
+				<reviewemail_color>31A7C6</reviewemail_color>
+				<reviewemail_color_text>FFFFFF</reviewemail_color_text>
+				<reviewemail_unsubscribe>1</reviewemail_unsubscribe>				
+				<second_welcome_block>0</second_welcome_block>
+				<second_welcome_block_text><![CDATA[It seems that you didn't written a review about the recently bought yet, we hope that the product meets your expectations and we would like to hear about your experiences. If you have any questions or problems regarding the product or your recent purchase, please let us know.]]></second_welcome_block_text>
+				<second_review_block>0</second_review_block>
+				<second_review_block_title><![CDATA[Review our products]]></second_review_block_title>
+				<second_shopreview_block>disable</second_shopreview_block>
+				<second_shopreview_title><![CDATA[Review our service]]></second_shopreview_title>
+				<second_shopreview_block_text><![CDATA[We are always working on a better store experience so next to your experience about the product we are very interested in your experience about the shipping, price and usability of our store. Please let us know where we doing a great job, and where there's still room for improvement.You can leave a review about our store here: -add reviewlink-]]></second_shopreview_block_text>
+				<second_crosssel_title><![CDATA[We have selected some accessories]]></second_crosssel_title>
+				<second_crosssel_block>0</second_crosssel_block>
+				<second_upsell_title><![CDATA[We have selected some accessories]]></second_upsell_title>
+				<second_upsell_block>0</second_upsell_block>								
+				<second_footer_block>2</second_footer_block>
+				<second_footer_block_text><![CDATA[We really appreciate your time and we wish to thank you for shopping at our store. To help us in improving our services and products, we would like to send you a reminder later on to write a product review after you have spent sufficient time using the product. If you do not wish to receive it, you may unsubscribe by clicking the unsubscribe button at the bottom of the e-mail.]]></second_footer_block_text>
+			</second_email>
+			<coupon>
+				<enable>0</enable>
+				<trigger>onpage</trigger>
+				<coupon_message><![CDATA[Thank you for taking the time to write a review! Here is a discount code to show our appreciation. You can use the discount code {{coupon_code}} to obtain a 20% discount. Act quickly because the discount is only available until {{expiration_date}}!]]></coupon_message>				
+				<expire>30</expire>
+				<length>12</length>
+				<format>alphanum</format>
+				<dash>4</dash>
+				<prefix>REV-</prefix>
+				<suffix>-THNX</suffix>
+			</coupon>
+			<shopreview>
+				<enabled>0</enabled>
+			</shopreview>
+		</reviewemail>
+	</default>        
+</config>

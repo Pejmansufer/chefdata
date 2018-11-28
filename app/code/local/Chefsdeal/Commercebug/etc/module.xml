@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <module name="Chefsdeal_Commercebug" version="2.2" active="true">
+        <sequence>
+        </sequence>
+        <depends>
+        </depends>
+    </module>
+</config>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+        <reference name="root">
+            <block type="core/text_list" name="notification_toolbar" as="notification_toolbar">
+                <block type="adminhtml/notification_toolbar" name="notification_toolbarmain" as="notification_toolbarmain" acl="system/adminnotification/show_toolbar" template="notification/toolbar.phtml"></block>
+                <block type="reviewemail/adminhtml_notifications" name="reviewemail_notifications" as="reviewemail_notifications" acl="catalog/reviews_ratings/reviews/pending" template="magmodules/reviewemail/page/notifications.phtml"></block>
+            </block>
+        </reference>
+    </default>
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addJs"><file>jscolor/jscolor.js</file></action>
+		</reference>
+	</adminhtml_system_config_edit>
+    <adminhtml_reviewemail_index>
+        <reference name="content">
+            <block type="reviewemail/adminhtml_reviewemail" name="reviewemail" />
+        </reference>
+    </adminhtml_reviewemail_index>
+    <adminhtml_reviewhistory_index>
+        <reference name="content">
+            <block type="reviewemail/adminhtml_history" name="history" />
+        </reference>
+    </adminhtml_reviewhistory_index>
+    <adminhtml_reviewexclude_index>
+        <reference name="content">
+            <block type="reviewemail/adminhtml_exclude" name="exclude" />
+        </reference>
+    </adminhtml_reviewexclude_index>
+    <adminhtml_reviewcoupons_index>
+        <reference name="content">
+            <block type="reviewemail/adminhtml_coupons" name="coupons" />
+        </reference>
+    </adminhtml_reviewcoupons_index>
+    <adminhtml_catalog_product_review_pending>
+        <reference name="notification_toolbar">
+            <remove name="reviewemail_notifications"/>
+        </reference>
+    </adminhtml_catalog_product_review_pending>
+</layout>

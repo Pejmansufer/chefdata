@@ -1,0 +1,19 @@
+
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     n/a
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+#adj-nav-navigation-top div.adjnav-filter {
+    zoom: 1;
+    *display: inline;
+}
+
+#adj-nav-navigation-top .block-layered-nav dd {
+    *display: inline;
+    zoom: 1;
+}

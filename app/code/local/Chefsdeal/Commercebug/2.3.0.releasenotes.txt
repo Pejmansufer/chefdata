@@ -1,0 +1,7 @@
+- Added Graphviz to logs
+
+- Fixed intermittent "can't login after installing" errors
+
+- Removed extraneous Commerce Bug 2 logging
+
+- Added 404 helper tab for debugging MVC routing errors

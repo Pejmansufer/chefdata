@@ -1,0 +1,146 @@
+<?php
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+
+$_order = $this->getOrder(); 
+$color = $this->getColor();
+$email_id = $this->getEmailid();
+
+$baseurl = Mage::app()->getStore($_order->getStoreId())->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+$set = Mage::app()->setCurrentStore($_order->getStoreId());				
+
+if($email_id == '1') {
+	$link = Mage::getStoreConfig('reviewemail/first_email/first_review_block'); 
+	$hash = Mage::getStoreConfig('reviewemail/first_email/first_review_hash'); 
+	$custom = Mage::getStoreConfig('reviewemail/first_email/first_review_custom'); 	
+} else {
+	$link = Mage::getStoreConfig('reviewemail/second_email/second_review_block'); 
+	$hash = Mage::getStoreConfig('reviewemail/second_email/second_review_hash'); 
+	$custom = Mage::getStoreConfig('reviewemail/second_email/second_review_custom'); 		
+}
+
+$link_bundle = Mage::getStoreConfig('reviewemail/config/link_bundle'); 
+$link_group	= Mage::getStoreConfig('reviewemail/config/link_group'); 
+$review_bundle = Mage::getStoreConfig('reviewemail/config/review_bundle'); 
+$review_group = Mage::getStoreConfig('reviewemail/config/review_group'); 
+
+?>
+<?php if(($_order) && ($_items = $this->helper('reviewemail')->getAllReviewProducts($_order))) { ?>
+<table cellspacing="0" cellpadding="0" border="0" width="650" >
+	<tbody>
+	<?php 
+		foreach($this->helper('reviewemail')->getAllReviewProducts($_order) as $_item) {
+			$_product = Mage::getModel('catalog/product')->setStoreId($_order->getStoreId())->load($_item->getProductId());	
+			$product_url = $_product->getProductUrl();
+			
+			// Check for parent product (in bundle / order)
+			$_parent = ''; 	$parent_review_url = '';
+			if($link_bundle || $link_group) {
+				$options = $_item->getProductOptions();
+				if(isset($options['super_product_config']['product_id'])) {
+					$parentId = $options['super_product_config']['product_id'];
+					$_parent = Mage::getModel('catalog/product')->setStoreId($_order->getStoreId())->load($parentId);												
+					if(($_parent->getTypeId() == 'bundle') || ($_parent->getTypeId() == 'grouped')) {						
+						
+						// 1) GROUPED
+						if(($_parent->getTypeId() == 'grouped') && $link_group) {
+							$product_url = $_parent->getProductUrl();
+						}
+						if(($_parent->getTypeId() == 'grouped') && $review_group) {
+							$parent_review_url = Mage::getUrl('review/product/list', array('id' => $_parent->getId(), 'category'  => $_parent->getCategoryId()));
+						}
+						
+						// 2) Bundle
+						if(($_parent->getTypeId() == 'bundle') && $link_bundle) {
+							$product_url = $_parent->getProductUrl();					
+						}
+						if(($_parent->getTypeId() == 'bundle') && $review_bundle) {
+							$parent_review_url = Mage::getUrl('review/product/list', array('id' => $_parent->getId(), 'category'  => $_parent->getCategoryId()));			
+						}
+					}
+				}
+			}
+			
+			// Added for Magento bug for shops without placeholder
+			try { 
+				if($_parent) {
+					$img = Mage::helper('catalog/image')->init($_parent, 'image')->resize(80);
+				} else {
+					$img = Mage::helper('catalog/image')->init($_product, 'image')->resize(80);				
+				}	
+			} catch (Exception $e) {
+				$img = Mage::app()->getStore($_order->getStoreId())->getBaseUrl() . '/skin/frontend/base/default/images/catalog/product/placeholder/small_image.jpg';
+			}
+
+			if($img) {
+				$img = str_replace('https','http', $img);
+			}
+				
+			$colspan = '2';
+	
+			switch ($link) {
+				case '1':
+					$order_id = $_order->getId(); 
+					$email = urlencode($_order->getCustomerEmail());
+					$review_url = $baseurl . 'reviewemail/index/check/email/' . $email . '/order_id/' . $order_id;
+					$review_button = '<a style="color:#FFFFFF; font-weight:bold; border-radius:5px 5px 5px 5px; font-size:10px; text-decoration:none; background:' . $color . '; padding: 3px 5px;" href="' . $review_url . '" title="' . $this->getButton() .'">' . $this->getButton() .'</a>';
+					break;
+				case '2':
+					$review_url = Mage::getUrl('review/product/list', array('id' => $_product->getId(), 'category'  => $_product->getCategoryId()));
+					if($_parent) {
+						$review_url = Mage::getUrl('review/product/list', array('id' => $_parent->getId(), 'category'  => $_parent->getCategoryId()));				
+					}
+					$review_button = '<a style="color:#FFFFFF; font-weight:bold; border-radius:5px 5px 5px 5px; font-size:10px; text-decoration:none; background:' . $color . '; padding: 3px 5px;" href="' . $review_url . '#review-form" title="' . $this->getButton() .'">' . $this->getButton() .'</a>';
+					break;
+				case '3':
+					$review_url = $_product->getProductUrl();
+					if($_parent) {
+						$review_url = $_parent->getProductUrl();
+					}
+					$review_button = '<a style="color:#FFFFFF; font-weight:bold; border-radius:5px 5px 5px 5px; font-size:10px; text-decoration:none; background:' . $color . '; padding: 3px 5px;" href="' . $review_url . $hash . '" title="' . $this->getButton() .'">' . $this->getButton() .'</a>';
+					break;
+				case '4':
+					$review_url = $custom;
+					$review_button = '<a style="color:#FFFFFF; font-weight:bold; border-radius:5px 5px 5px 5px; font-size:10px; text-decoration:none; background:' . $color . '; padding: 3px 5px;" href="' . $review_url . '" title="' . $this->getButton() .'">' . $this->getButton() .'</a>';
+					break;
+				case '5':
+					$review_button = '';
+					$colspan = '1';
+					break;
+				default:
+					$review_url = Mage::getUrl('review/product/list', array('id' => $_product->getId(), 'category'  => $_product->getCategoryId()));
+					if($parent_review_url) {
+						$review_url = $parent_review_url;					
+					}
+					$review_button = '<a style="color:#FFFFFF; font-weight:bold; border-radius:5px 5px 5px 5px; font-size:10px; text-decoration:none; background:' . $color . '; padding: 3px 5px;" href="' . $review_url . '" title="' . $this->getButton() .'">' . $this->getButton() .'</a>';
+			}	 	
+		?>
+		<?php if($_product->getStatus() == '1') { ?>
+			<tr>
+				<td align="center" style="padding:0px 5px 5px 5px;" rowspan="2"><img src="<?php echo $img; ?>" width="80"></td>
+				<td style="padding:5px 5px 5px 10px; height: 30px;" bgcolor="#F6F6F6" valign="middle"><a href="<?php echo $product_url; ?>" style="text-decoration: none;"><strong><font color="<?php echo $color; ?>"><?php echo $_item->getName(); ?></font></strong></a></td>
+				<?php if($review_button) { ?>
+					<td align="right" width="160" bgcolor="#F6F6F6" valign="middle" style="padding-right: 10px;"><?php echo $review_button; ?></td>
+				<?php } ?>	
+			</tr>
+			<tr>
+				<td valign="top" style="padding:5px 5px 5px 10px;" colspan="<?php echo $colspan; ?>"><?php echo $_product->getShortDescription(); ?><br/></td>
+			</tr>
+		<?php } ?>	
+	<?php } ?>
+    </tbody>
+</table>    
+<?php } ?>

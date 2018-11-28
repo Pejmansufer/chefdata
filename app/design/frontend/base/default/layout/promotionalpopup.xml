@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+-->
+<layout version="0.1.0">
+    <default>
+    <reference name="head">
+		 <action method="addCss"><stylesheet>trm/promotional-popups/cssreset-context-min.css</stylesheet></action>
+		 <action method="addJs"><script>trm/utilities/cookie.js</script></action>
+		 <action method="addJs"><script>trm/utilities/modalvideo.js</script></action>
+		 <action method="addJs"><script>trm/utilities/promotionalpopups.js</script></action>
+    </reference>
+	<reference name="after_body_start">
+	 <block type="core/template" before="-" as="promotionalpopupBase" name="promotionalpopupBase" template="promotionalpopup/popup-base.phtml" />
+	</reference>
+</default>
+
+</layout> 

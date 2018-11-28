@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+ -->
+<config>
+    <modules>
+        <Trmmarketing_Promotionalpopup>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Trmmarketing_Promotionalpopup>
+    </modules>
+</config> 

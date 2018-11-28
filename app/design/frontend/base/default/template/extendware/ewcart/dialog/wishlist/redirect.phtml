@@ -1,0 +1,17 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<ul class="messages ap-dialog-messages">
+	<li class="notice-msg ap-dialog-notice-message">
+		<span><?php echo $this->__('You must be logged in to use the wishlist. Redirecting to account login page.'); ?></span>
+	</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+	<button class="button ap-dialog-button" type="button" onclick="location.href='<?php echo $this->getRedirectUrl(); ?>';"><span><span><?php echo $this->__('Manually Redirect'); ?></span></span></button>
+</div>
+<script type="text/javascript">    
+//<![CDATA[
+location.href=<?php echo json_encode($this->getRedirectUrl()); ?>;
+//]]>
+</script>

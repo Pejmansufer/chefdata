@@ -1,0 +1,203 @@
+<?php $_config = $this->mHelper('config'); ?>
+var EWCart = Class.create({
+    width: <?php echo $_config->getWidth(); ?>,
+    overlay: <?php echo (int)$_config->isOverlayEnabled() ? 'true' : 'false'; ?>,
+    overlayClose: false,
+    initialize: function (options) {
+        Object.extend(this, options || {});
+    },
+
+    rewritePage: function () {
+        $$('a').each(function(e) {
+            var rw = 0;
+            if (e.href.indexOf('javascript:') == -1) {
+	            <?php if ($_config->isCartDeleteEnabled() === true): ?>
+				if (e.href.indexOf('/checkout/cart/delete/') > 0) {
+					this.rewriteForProcess('dcart', e);
+					rw = 1;
+				}
+				<?php endif;?>
+				
+				<?php if ($_config->isWishlistAddEnabled() === true): ?>
+				if (e.href.indexOf('/wishlist/index/add/') > 0) {
+					e.writeAttribute('onclick', 'ewcart.addToWishlist(\'' + e.href + '\'); return false;');
+					rw = 1;
+				}
+				<?php endif;?>
+				
+				<?php if ($_config->isWishlistDeleteEnabled() === true): ?>
+				if (e.href.indexOf('/wishlist/index/remove/') > 0) {
+					this.rewriteForProcess('dwishlist', e);
+					rw = 1;
+				}
+				<?php endif; ?>
+				
+				<?php if ($_config->isCompareAddEnabled() === true): ?>
+				if (e.href.indexOf('/catalog/product_compare/add/') > 0) {
+					e.writeAttribute('onclick', 'ewcart.addToCompare(\'' + e.href + '\'); return false;');
+					rw = 1;
+				} 
+				<?php endif; ?>
+				
+				<?php if ($_config->isCompareDeleteEnabled() === true): ?>
+				if (e.href.indexOf('/catalog/product_compare/remove/') > 0) {
+					this.rewriteForProcess('dcompare', e);
+					rw = 1;
+				} 
+				<?php endif; ?>
+				
+				<?php if ($_config->isCompareClearEnabled() === true): ?>
+				if (e.href.indexOf('/catalog/product_compare/clear/') > 0) {
+					this.rewriteForProcess('ccompare', e);
+					rw = 1;
+				}
+				<?php endif; ?>
+				
+				if (rw) {
+					e.writeAttribute('href', 'javascript:(function(){(function(){'+$(e).getAttribute('onclick')+'})()})()');
+				}
+			}
+        }.bind(this));
+        
+        this.rewriteForm();
+    },
+    
+    rewriteForm: function() {
+    	<?php if ($_config->isCartAddEnabled() === true): ?>
+        if (typeof productAddToCartForm!='undefined' && location.href.indexOf('/checkout/cart/configure/') <= 0) {
+	        productAddToCartForm.submit=function(){
+	            if(this.validator.validate()){
+	                ewcart.open(this.form.action.replace('/checkout/', '/ewcart/'), <?php echo json_encode($this->__('Add to cart')); ?>, {params: this.form.serialize()+'&__ready=1', method: 'post'});
+	            }
+	        }.bind(productAddToCartForm);
+	    }
+	    <?php endif; ?>
+	},
+   
+    rewriteForProcess: function(t, e) {
+    	$(e).writeAttribute('onclick', 'ewcart.process(\'' + t + '\', \'' + e.href + '\', this); return false;');
+	},
+	
+	confirm: function(s) {
+		if (s) return confirm(s);
+		return 1;
+	},
+    
+    ajax: function(url) {
+    	url = this.rewriteUrl(url);
+    	new Ajax.Request(url, {
+            method: 'get',
+            onSuccess: function (transport) {
+            	var response = new String(transport.responseText);
+            	response.extractScripts().map(function(script) {
+					try {
+						(window.execScript) ? window.execScript(script) : window.setTimeout(script, 0);
+					} catch (e) {}
+				}.bind(window));
+            }.bind(this)
+        });
+    },
+    
+    fade: function(e) {
+        e.fade({ duration:0.4, from:1, to:0.2 }); 
+        e.style.backgroundImage = 'url(<?php echo $this->getSkinUrl('extendware/ewcore/images/shared/spinner50x50.gif'); ?>)';
+        e.style.backgroundRepeat = 'no-repeat';
+        e.style.backgroundPosition = 'center center';
+    },
+    
+    process: function(t, url, e) {
+    	var c = f = m = 1;
+    	<?php if ($_config->isWishlistDeleteEnabled() === true): ?>
+    	if (t == 'dwishlist') {
+    		c = <?php echo $this->getConfirmationJs($_config->getWishlistDeleteConfirmation());?>;
+    		url = url.replace('/wishlist/index/remove', '/ewcart/wishlist/remove');
+    	} 
+    	<?php endif; ?>
+    	<?php if ($_config->isCartDeleteEnabled() === true): ?>
+    	if (t == 'dcart') {
+    		c = <?php echo $this->getConfirmationJs($_config->getCartDeleteConfirmation());?>;
+    		url = url.replace('/checkout/', '/ewcart/');
+    	}
+    	<?php endif; ?>
+    	<?php if ($_config->isCompareDeleteEnabled() === true): ?>
+    	if (t == 'dcompare') {
+    		c = <?php echo $this->getConfirmationJs($_config->getCompareDeleteConfirmation());?>;
+    		url = url.replace('/catalog/product_compare/remove', '/ewcart/compare/remove');
+    	}
+    	<?php endif; ?>
+    	<?php if ($_config->isCompareClearEnabled() === true): ?>
+    	if (t == 'ccompare') {
+    		c = <?php echo $this->getConfirmationJs($_config->getCompareClearConfirmation());?>;
+    		url = url.replace('/catalog/product_compare/clear', '/ewcart/compare/clear');
+    		f = 2;
+    	}
+    	<?php endif; ?>
+    	
+    	if (c && e) {
+    		try {
+    			if (f == 1) this.fade($(e).up('tr') ? $(e).up('tr') : $(e).up('li'));
+    			else this.fade($(e).up('div').up('div'));
+    		} catch (exc) {}
+    		this.ajax(url);
+    	}
+  	},
+	<?php if ($_config->isWishlistAddEnabled() === true): ?>
+    addToWishlist: function(url) {
+    	url = url.replace('/wishlist/index/add', '/ewcart/wishlist/add');
+        this.open(url,  <?php echo json_encode($this->__('Add to wishlist')); ?>);
+    },
+	<?php endif; ?>
+	
+	<?php if ($_config->isCompareAddEnabled() === true): ?>
+    addToCompare: function(url) {
+        url = url.replace('/catalog/product_compare/add', '/ewcart/compare/add');
+        this.open(url,  <?php echo json_encode($this->__('Add to compare')); ?>);
+    },
+    <?php endif; ?>
+
+    open: function(url,title,params){    
+	    url=this.rewriteUrl(url);
+	    EWModalbox.setOptions({
+	        title:title,
+	        width:this.width,
+	        overlay:this.overlay,
+	        overlayClose:this.overlayClose,
+	        maxTop: <?php echo (int)$this->mHelper('config')->getMaxTop(); ?>,
+	        transitions: <?php echo ($this->mHelper('config')->isTransitionsEnabled() ? 'true' : 'false'); ?>
+	    });
+	    EWModalbox.show(url,params);
+	},
+	
+	close: function(s){
+		EWModalbox.hide(s, {transitions:true});
+	},
+	
+	rewriteUrl:function(url){
+		url = url.replace('http://', window.location.protocol+'//');
+        return url.replace('https://', window.location.protocol+'//');
+	}
+});
+
+<?php if ($_config->isCartAddEnabled() === true): ?>
+setLocation=function(url){
+    if(url.indexOf('/checkout/cart/add/') > 0){
+        url=url.replace('/checkout/','/ewcart/');
+        ewcart.open(url, <?php echo json_encode($this->__('Add to cart')); ?>);
+    } else window.location.href=url;
+};
+
+setPLocation=function(url,setFocus){
+    if(url.indexOf('/checkout/cart/add/') > 0){
+        setLocation(url);
+    } else{
+        if(setFocus) window.opener.focus();
+	    window.opener.location.href = url;
+    }
+};
+<?php endif; ?>
+
+var ewcartTrigger = function(){
+	ewcart = new EWCart();
+	ewcart.rewritePage();
+};
+Event.observe(document, 'dom:loaded', ewcartTrigger);

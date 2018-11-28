@@ -1,0 +1,161 @@
+<?php
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+
+if(Mage::getStoreConfig('reviewemail/general/enabled')) { 
+
+	$order_id = $this->getRequest()->getParam('order_id'); 
+	$order = Mage::getModel("sales/order")->load($order_id);
+
+	$firstemail	= Mage::getModel('reviewemail/reviewemail')->loadByOrderId($order_id, '1'); 
+	$secondemail = Mage::getModel('reviewemail/reviewemail')->loadByOrderId($order_id, '2'); 
+	$excludelist = Mage::getModel('reviewemail/exclude')->isOnList($order->getCustomerEmail()); 
+
+	if($review_id = $firstemail->getReviewemailId()) {
+		$customer_reviews = Mage::getModel('reviewemail/reviews')->loadByReviewemailId($review_id); 
+		$coupons = Mage::getModel('reviewemail/coupons')->checkForCouponCode($review_id); 
+	} else {
+		$customer_reviews = '';
+		$coupons = '';	
+	}
+
+	$exclude_buttons = '';
+	$review_buttons = '';
+	$review_second_text = '';
+	$review_second_buttons = '';
+	$coupon_reviews = '';
+
+	// ===== FIRST EMAIL
+
+	if($firstemail->getOrderId() > 0) {
+	
+		$review_id = $firstemail->getReviewemailId();
+
+		if($firstemail->getStatus() == 'sent') {
+			$review_text 	 = '<p>' . $this->__('Reviewemail sent on: %s', Mage::helper('core')->formatDate($firstemail->getSentAt(), 'medium', true)) . '<p>'; 
+			if(!$excludelist->getExcludeId() > 0) {
+				$review_buttons  = '<button title="' . $this->__('Send again') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/sendnow/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Send again') . '</span></span></span></button>';
+			}
+		}	
+
+		if($firstemail->getStatus() == 'scheduled') {
+			$review_text 	 = '<span>' . $this->__('Reviewemail scheduled for: %s', Mage::helper('core')->formatDate($firstemail->getSheduledAt(), 'medium', true)) . '</span>'; 
+			$review_buttons  = '<button title="' . $this->__('Send Now!') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/sendnow/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Send Now!') . '</span></span></span></button> &nbsp; ';
+			$review_buttons .= '<button title="' . $this->__('Remove from que') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/removeque/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Remove from que') . '</span></span></span></button>';
+		}
+	
+		if($firstemail->getStatus() == 'deleted') {
+			$review_text 	 = '<span>' . $this->__('Reviewemail was deleted on: %s (not sent!)', Mage::helper('core')->formatDate($firstemail->getUpdatedAt(), 'medium', true)) . '</span>'; 
+			$review_buttons .= '<button title="' . $this->__('Add from que') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/addbacktoque/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Add back to que') . '</span></span></span></button>';
+		}
+	
+	} else {
+
+		$configstatus = Mage::getStoreConfig('reviewemail/first_email/reviewemail_status', $order->getStoreId());
+		$orderstatus = $order->getStatus();
+	
+		if($orderstatus != $configstatus) {
+			$review_text	 = '<span>' . $this->__('Reviewemail has not yet been scheduled, orderstatus is not qualified') . '</span>'; 
+		} else {
+			$review_text	 = '<span>' . $this->__('Reviewemail has not been scheduled')  . '</span>'; 
+			$review_buttons .= '<button title="' . $this->__('Add to que') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/addtoque/order_id/' . $order_id) . '\');"><span><span><span>' . $this->__('Add to que') . '</span></span></span></button>';
+		}
+	
+	}
+
+	// ===== SECOND EMAIL
+
+	if($secondemail->getOrderId() > 0) { 
+	
+		$review_id = $secondemail->getReviewemailId();
+	
+		if($secondemail->getStatus() == 'sent') {
+			$review_second_text 	 = '<p>' . $this->__('Second reviewemail sent on: %s', Mage::helper('core')->formatDate($secondemail->getSentAt(), 'medium', true)) . '<p>'; 
+			if(!$excludelist->getExcludeId() > 0) {
+				$review_second_buttons  = '<button title="' . $this->__('Send again') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/sendnow/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Send again') . '</span></span></span></button>';
+			}
+		}
+
+		if($secondemail->getStatus() == 'scheduled') {
+			$review_second_text 	 = '<span>' . $this->__('Second email scheduled for: %s', Mage::helper('core')->formatDate($secondemail->getSheduledAt(), 'medium', true)) . '</span>'; 
+			$review_second_buttons  = '<button title="' . $this->__('Send Now!') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/sendnow/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Send Now!') . '</span></span></span></button> &nbsp; ';
+			$review_second_buttons .= '<button title="' . $this->__('Remove from que') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewemail/removeque/review_id/' . $review_id) . '\');"><span><span><span>' . $this->__('Remove from que') . '</span></span></span></button>';
+		}
+
+		if($secondemail->getStatus() == 'deleted') {
+			$review_second_text 	 = '<span>' . $this->__('Reviewemail was deleted on: %s (not sent!)', Mage::helper('core')->formatDate($secondemail->getUpdatedAt(), 'medium', true)) . '</span>'; 
+		}
+
+	}
+
+	// ===== EXCLUDE
+
+	if($excludelist->getExcludeId() > 0) {
+	
+		$exclude_status =  $this->__('Added through admin');
+		if($excludelist->getStatus() == '2') {
+			$exclude_status =  $this->__('Opt-out through email');	
+		}
+	
+		$exclude_text	= '<strong>' . $this->__('%s is on exclude list (%s on %s)', $excludelist->getEmail(), $exclude_status, Mage::helper('core')->formatDate($excludelist->getDate(), 'short', true)) . '</strong>';
+		$exclude_buttons  = '<button title="' . $this->__('Remove from exclude list') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewexclude/remove/order_id/' . $order_id) . '\');"><span><span><span>' . $this->__('Remove from exclude list') . '</span></span></span></button>';			
+
+	} else {
+
+		$exclude_text	= 'Email: ' . $order->getCustomerEmail();
+		$exclude_buttons .= '<button title="' . $this->__('Add to exclude list') . '" type="button" onClick="setLocation(\'' . Mage::helper("adminhtml")->getUrl('*/reviewexclude/add/order_id/' . $order_id) . '\');"><span><span><span>' . $this->__('Add to exclude list') . '</span></span></span></button>';		
+
+	}
+
+	// ===== REVIEWS
+	if($customer_reviews) {
+		$coupon_reviews .= $this->__('Reviews: %s review(s)', $customer_reviews->getSize());
+	}	
+
+	// ===== COUPONS
+
+	if($coupons) {
+		$couponr = Mage::getModel('salesrule/coupon')->load($coupons->getCouponId());
+		$coupon_code = $couponr->getCode();
+		$coupon_experation_date = $couponr->getExpirationDate();
+	
+		if($coupon_code) {
+			if(strlen($coupon_reviews) > 1) {
+				$coupon_reviews .= ', ';
+			}	
+			$coupon_reviews .= $this->__('Coupon: %s (Valid until: %s)', $coupon_code, $coupon_experation_date);
+		}	
+	}	
+?>
+	<div class="entry-edit">
+		<div class="entry-edit-head">
+			<h4 class="icon-head head-products"><?php echo $this->__('Reviewemail'); ?></h4>
+		</div>
+		<fieldset>
+			<div style="float: left; width: 70%"><?php echo $review_text; ?></div>
+			<div style="float: left; width: 30%; text-align: right;"><?php echo $review_buttons; ?></div>
+			<?php if($review_second_text): ?>
+				<div style="float: left; width: 70%; border-top: 1px solid #ccc; padding-top: 5px; margin-top: 5px;"><?php echo $review_second_text; ?></div>
+				<div style="float: left; width: 30%; text-align: right; text-align: right; border-top: 1px solid #ccc; padding-top: 5px; margin-top: 5px;"><?php echo $review_second_buttons; ?></div>
+			<?php endif; ?>
+			<div style="float: left; width: 70%; border-top: 1px solid #ccc; padding-top: 5px; margin-top: 5px;"><?php echo $exclude_text; ?></div>
+			<div style="float: left; width: 30%; text-align: right; border-top: 1px solid #ccc; padding-top: 5px; margin-top: 5px;"><?php echo $exclude_buttons; ?></div>
+			<?php if($coupon_reviews): ?>
+				<div style="float: left; width: 100%; border-top: 1px solid #ccc; padding-top: 5px; margin-top: 5px;"><?php echo $coupon_reviews; ?></div>
+			<?php endif; ?>
+		</fieldset>
+	</div>
+<?php } ?>	

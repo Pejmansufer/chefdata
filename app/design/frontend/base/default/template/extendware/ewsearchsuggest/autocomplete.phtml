@@ -1,0 +1,124 @@
+<?php
+$count = 0;
+$query = Mage::helper('catalogsearch')->getQueryText();
+$pImageWidth = $this->mHelper('config')->getProductImageWidth();
+$pImageHeight = $this->mHelper('config')->getProductImageHeight();
+
+$containerStyle = $this->mHelper('config')->getBoxWidth() > 0 ? 'width: ' . $this->mHelper('config')->getBoxWidth() . 'px;' : '';
+$containerStyle .= $this->mHelper('config')->getMaxBoxHeight() > 0 ? 'max-height: ' . $this->mHelper('config')->getMaxBoxHeight() . 'px;' : '';
+?>
+<div id="ewsearchsuggest" class="ewcontainer" style="<?php echo $containerStyle; ?>">
+	<?php if ($this->hasQuerySuggestions()): ?>
+			<div class="ewqueries <?php echo ($count > 0 ? 'ewseparator' : ''); ?>">
+			<?php $maxNameLength = $this->mHelper('config')->getQueryMaxNameLength(); ?>
+			<h3 class="ewheader"><?php echo $this->__('Suggested Searches'); ?></h3>
+			<div class="ewlist">
+				<?php foreach ($this->getQuerySuggestions() as $suggestion): ?>
+				<?php $name = $suggestion->getData('ewname') ?>
+				<?php $url = $suggestion->getData('ewurl'); ?>
+				<div class="ewitem" onclick="setLocation('<?php echo $url; ?>');">
+					<div class="ewdetails">
+						<div class="ewname"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($name, $maxNameLength), $query); ?></a></div> 
+						<div class="ewdescription">(<?php echo $suggestion->getNumResults(); ?>)</div>
+					</div>
+				</div>
+				&nbsp; &nbsp;
+				<?php endforeach; ?>
+			</div>
+			</div>
+			<?php $count++; ?>
+		<?php endif; ?>
+	<?php if ($this->hasContentResults(true) === false): ?>
+		<div class="ewno-results <?php echo ($count > 0 ? 'ewseparator' : ''); ?>">
+			<h3 class="ewheader"><?php echo $this->__('No Results Found'); ?></h3>
+			<div class="ewlist">
+				<div class="ewitem">
+					<div class="ewdetails">
+						<div class="ewdescription"><?php echo $this->mHelper('config')->getNoResultsMessage(); ?></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php $count++; ?>
+	<?php else: ?>
+		<?php if ($this->hasGroupedProducts()): ?>
+			<?php foreach ($this->getGroupedProducts() as $group): ?>
+			<div class="ewproducts <?php echo ($count > 0 ? 'ewseparator' : ''); ?>">
+			<h3 class="ewheader"><a href="<?php echo $group['search_url']; ?>"><?php echo $this->mHelper()->getSnippet($group['header'], $this->mHelper('config')->getProductCategoryMaxNameLength(), null, true); ?></a></h3>
+			<div class="ewlist">
+				<?php foreach ($group['products'] as $product): ?>
+				<?php $name = $product->getData('ewname'); ?>
+				<?php $description = $product->getData('ewdescription'); ?>
+				<?php $url = $product->getData('ewurl'); ?>
+				<?php $maxNameLength = $this->mHelper('config')->getProductMaxNameLength(); ?>
+				<?php $maxDescriptionLength = $this->mHelper('config')->getProductMaxDescriptionLength(); ?>
+				<div class="ewitem" onclick="setLocation('<?php echo $url; ?>');">
+					<div class="ewimage">
+						<?php $pImage = '<img src="'.$this->helper('catalog/image')->init($product, 'image')->resize($pImageWidth, $pImageHeight).'" width="'.$pImageWidth.'" height="'.$pImageHeight.'" alt="'.$this->htmlEscape($name).'" title="'.$this->htmlEscape($name).'"/>'; ?>
+					    <a href="<?php echo $url; ?>"><?php echo $this->helper('catalog/output')->productAttribute($product, $pImage, 'image'); ?></a>
+					</div>
+					<div class="ewdetails">
+						<div class="ewname"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($name, $maxNameLength), $query); ?></a></div>
+						<div class="ewdescription"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($description, $maxDescriptionLength, $query), $query); ?></a></div>
+						<div class="ewprice-box"><?php echo $this->getPriceHtml($product); ?></div>
+					</div>
+				 </div>
+				<?php endforeach; ?>
+			</div>
+			<?php if ($this->getTotalProductCount() > $this->getProductCount()): ?>
+			<div class="ewmore" onclick="setLocation('<?php echo $group['search_url']; ?>');"><a href="<?php echo $group['search_url']; ?>"><?php echo $this->__('View Results Page >>'); ?></a></div>
+			<?php endif; ?>
+			</div>
+			<?php endforeach; ?>
+			<?php $count++; ?>
+		<?php endif; ?>
+		<?php if ($this->hasCategories()): ?>
+			<div class="ewcategories <?php echo ($count > 0 ? 'ewseparator' : ''); ?>">
+			<h3 class="ewheader"><?php echo $this->__('Categories'); ?></h3>
+			<div class="ewlist">
+				<?php foreach ($this->getCategories() as $category): ?>
+				<?php $name = $category->getData('ewname'); ?>
+				<?php $description = $category->getData('ewdescription'); ?>
+				<?php $url = $category->getData('ewurl'); ?>
+				<?php $maxNameLength = $this->mHelper('config')->getCategoryMaxNameLength(); ?>
+				<?php $maxDescriptionLength = $this->mHelper('config')->getCategoryMaxDescriptionLength(); ?>
+				<div class="ewitem" onclick="setLocation('<?php echo $url; ?>');">
+					<div class="ewdetails">
+						<div class="ewname"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($name, $maxNameLength, null, true), $query); ?></a></div>
+						<div class="ewdescription"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($description, $maxDescriptionLength, $query), $query); ?></a></div>
+					</div>
+				 </div>
+				<?php endforeach; ?>
+			</div>
+			</div>
+			<?php $count++; ?>
+		<?php endif; ?>
+		<?php if ($this->hasPages()): ?>
+			<div class="ewpages <?php echo ($count > 0 ? 'ewseparator' : ''); ?>">
+			<h3 class="ewheader"><?php echo $this->__('Pages'); ?></h3>
+			<div class="ewlist">
+				<?php foreach ($this->getPages() as $page): ?>
+				<?php $name = $page->getData('ewname'); ?>
+				<?php $description = $page->getData('ewdescription'); ?>
+				<?php $url = $page->getData('ewurl'); ?>
+				<?php
+					if ($this->mHelper('config')->getPageDescriptionSource() == 'content') {
+						$filter = Mage::getSingleton('ewsearchsuggest/page_template_filter')->load(Mage::app()->getStore()->getId(), 'frontend');
+						$description = $filter->process($description);
+					}
+				?>
+				<?php $maxNameLength = $this->mHelper('config')->getPageMaxNameLength(); ?>
+				<?php $maxDescriptionLength = $this->mHelper('config')->getPageMaxDescriptionLength(); ?>
+				<div class="ewitem" onclick="setLocation('<?php echo $url; ?>');">
+					<div class="ewdetails">
+						<div class="ewname"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($name, $maxNameLength), $query); ?></a></div>
+						<div class="ewdescription"><a href="<?php echo $url; ?>"><?php echo $this->mHelper()->highlight($this->mHelper()->getSnippet($description, $maxDescriptionLength, $query), $query); ?></a></div>
+					</div>
+				 </div>
+				<?php endforeach; ?>
+			</div>
+			</div>
+			<?php $count++; ?>
+		<?php endif; ?>
+	<?php endif; ?>
+</div>

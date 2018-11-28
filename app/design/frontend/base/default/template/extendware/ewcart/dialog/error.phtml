@@ -1,0 +1,25 @@
+<ul class="messages ap-dialog-messages">
+	<?php
+		$_messages = $this->getMessages();
+		foreach ($_messages as $_message) {
+			echo '<li class="error-msg ap-dialog-error-message">' . $_message  . "</li>";
+		}
+	?>
+</ul>
+<div style="text-align: center">
+	<button class="button ap-dialog-button" type="button" onclick="ewcart.close();"><span><span><?php echo $this->__('Continue Shopping'); ?></span></span></button>
+</div>
+<script type="text/javascript">    
+//<![CDATA[
+<?php if ((int)$this->mHelper('config')->getDialogDisplayTime() > 0):?>
+ewcart.close(<?php echo (int)$this->mHelper('config')->getDialogDisplayTime(); ?>);
+<?php endif; ?>
+<?php
+	$_javascript = $this->getJavascript();
+	foreach ($_javascript as $_js) {
+		echo "{$_js}\n";
+	}
+?>
+ewcart.rewritePage();
+//]]>
+</script>

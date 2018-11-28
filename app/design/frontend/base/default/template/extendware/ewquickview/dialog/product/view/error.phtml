@@ -1,0 +1,23 @@
+<ul class="messages ap-dialog-messages">
+	<?php
+		$_messages = $this->getMessages();
+		foreach ($_messages as $_message) {
+			echo '<li class="error-msg ap-dialog-error-message">' . $_message  . "</li>";
+		}
+	?>
+</ul>
+<div style="text-align: center">
+	<button class="button ap-dialog-button" type="button" onclick="ewquickview.close();"><span><?php echo $this->__('Continue Shopping'); ?></span></button>
+	&nbsp;
+	<button class="button ap-dialog-button" type="button" onclick="location.href='<?php echo $this->getProduct()->getProductUrl();?>'; ewcart.close();"><span><?php echo $this->__('Visit Product Page'); ?></span></button>
+</div>
+<script type="text/javascript">    
+//<![CDATA[
+<?php
+	$_javascript = $this->getJavascript();
+	foreach ($_javascript as $_js) {
+		echo "{$_js}\n";
+	}
+?>
+//]]>
+</script>

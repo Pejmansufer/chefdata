@@ -1,0 +1,110 @@
+/**
+ * Add In Mage::
+ *
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the EULA at http://add-in-mage.com/support/presales/eula-community/
+ *
+ *
+ * PROPRIETARY DATA
+ * 
+ * This file contains trade secret data which is the property of Add In Mage:: Ltd. 
+ * Information and source code contained herein may not be used, copied, sold, distributed, 
+ * sub-licensed, rented, leased or disclosed in whole or in part to anyone except as permitted by written
+ * agreement signed by an officer of Add In Mage:: Ltd. 
+ * A separate installation package must be downloaded for each new Magento installation from Add In Mage web site.
+ * You may modify the source code of the software to get the functionality you need for your store. 
+ * You must retain, in the source code of any Derivative Works that You create, 
+ * all copyright, patent, or trademark notices from the source code of the Original Work.
+ * 
+ * 
+ * @copyright   Copyright (c) 2012 Add In Mage:: Ltd. (http://www.add-in-mage.com)
+ * @license     http://add-in-mage.com/support/presales/eula-community/  End User License Agreement (EULA)
+ * @author      Add In Mage:: Team <team@add-in-mage.com>
+ */
+
+/** The style rules for toast notification container. **/
+
+div.notification-bar-wrapper {
+	background-color: #fff;   /** You can change the background color here. The format of the color is HEX. **/
+	color: #333;	/** You can change the color of notification text here. The format of the color is HEX. **/
+	zoom: 1;
+	width: 100%;
+	padding: 23px 0;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 16px;
+	text-align: center;
+	display: none;
+	position:fixed;
+	left:0;	
+	z-index: 999;
+}
+
+/** The style rules for toast notification container. Position - top (defaul position).  **/
+
+div.notification-bar-wrapper.tn-position-top {
+	top:-40px;
+	border-bottom:1px solid #ccc;
+}
+
+/** The style rules for toast notification container. Position - bottom.  **/
+
+div.notification-bar-wrapper.tn-position-bottom {
+	bottom: -71px;
+	border-top:1px solid #ccc;
+}
+
+/** The style rules for the close button of toast notification   **/
+
+div.notification-bar-close {
+	color: #555;  /** You can change the button color here. The format of the color is HEX. **/
+	cursor: pointer;
+	font: bold 16px/18px Tahoma, sans-serif;
+	position: absolute;
+	right: 31px;
+	top: 25px;
+}
+/** The style rules for notifications of the "success" type  **/
+
+#notification-bar .nb-success-msg {
+	background: #9CCB28;  /** You can change the background color here. The format of the color is HEX. **/
+}
+.nb-success-msg .notification-bar-notice {
+	color:	#fff;  /** You can change the text color here. The format of the color is HEX. **/
+}
+.nb-success-msg .notification-bar-close {
+	color:#fff; /** You can change the close button color here. The format of the color is HEX. **/
+}
+/** The style rules for notifications of the "notice" type   **/
+
+#notification-bar .nb-notice-msg {
+	background: #169AC2; /** You can change the background color here. The format of the color is HEX. **/
+}
+.nb-notice-msg .notification-bar-notice {
+	color:	#fff; /** You can change the text color here. The format of the color is HEX. **/
+}
+.nb-notice-msg .notification-bar-close {
+	color: #fff;  /** You can change the close button color here. The format of the color is HEX. **/
+}
+/** The style rules for notifications of the "error" type   **/
+
+#notification-bar .nb-error-msg {
+	background: #E45837; /** You can change the background color here. The format of the color is HEX. **/
+}
+.nb-error-msg .notification-bar-notice {
+	color: #fff; /** You can change the text color here. The format of the color is HEX. **/
+}
+.nb-error-msg .notification-bar-close {
+	color: #fff; /** You can change the background color here. The format of the color is HEX. **/
+}
+/** The style rules for notifications of the "warning" type   **/
+
+#notification-bar .nb-warning-msg {
+	background: #FFA600; /** You can change the background color here. The format of the color is HEX. **/
+}
+.nb-warning-msg .notification-bar-notice {
+	color: #000; /** You can change the text color here. The format of the color is HEX. **/
+}
+.nb-warning-msg .notification-bar-close {
+	color: #000; /** You can change the background color here. The format of the color is HEX. **/
+}

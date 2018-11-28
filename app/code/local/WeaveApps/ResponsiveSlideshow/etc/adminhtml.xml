@@ -1,0 +1,51 @@
+<?xml version="1.0"?> 
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<responsiveslideshow>
+										<title>ResponsiveSlideshow</title>
+									</responsiveslideshow>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<weaveapps translate="title" module="responsiveslideshow">
+						<title>WeaveApps</title>
+						<sort_order>71</sort_order>               
+						<children>
+							 <cms>
+							<responsiveslideshow translate="title" module="responsiveslideshow">
+								<title>Responsive Slideshow</title>
+								<sort_order>0</sort_order>
+								<children>
+									<items translate="title" module="responsiveslideshow">
+										<title>Manage Slides</title>
+										<sort_order>0</sort_order>
+										<action>responsiveslideshow/adminhtml_responsiveslideshow</action>
+									</items>
+			    					<items_group translate="title" module="responsiveslideshow">
+			                            <title>Manage Groups</title>
+			                            <sort_order>1</sort_order>
+			                            <action>responsiveslideshow/adminhtml_responsiveslideshowgroup</action>
+			                        </items_group>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/responsiveslideshow</action>
+									</configuration>
+								</children>
+							</responsiveslideshow>
+							 </cms>
+						</children>
+					</weaveapps>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>

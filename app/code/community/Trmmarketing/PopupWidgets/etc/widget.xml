@@ -1,0 +1,976 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2013-2015 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+-->
+<widgets>
+    <popupwidgets_youtubeplayer type="popupwidgets/youtubeplayer" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - You Tube Player for Magento Pop-up</name>
+        <description>Adds a You Tube player for use in Magento Pop-ups extension</description>
+        <parameters>
+			<youtubeid translate="label">
+                <visible>1</visible>
+                <label>YouTube Video ID</label>
+                <description>YouTube Video ID: Example XXXXXX is the ID http://youtu.be/XXXXXX </description>
+                <type>text</type>
+            </youtubeid>
+			<videowidth translate="label">
+                <visible>1</visible>
+                <label>Width</label>
+                <description>Width of video, Example: 720</description>
+                <type>text</type>
+            </videowidth>
+			<videoheight translate="label">
+                <visible>1</visible>
+                <label>Height</label>
+                <description>Height of video, Example: 480</description>
+                <type>text</type>
+            </videoheight>
+			<videoautoplay translate="label">
+			<visible>1</visible>
+                <label>Autoplay Video</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </videoautoplay>
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/youtubeplayer.phtml</value>
+                        <label>Standard YouTube Player</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_youtubeplayer>
+	<popupwidgets_wistiaplayer type="popupwidgets/wistiaplayer" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Wistia Player for Magento Pop-up</name>
+        <description>Adds a Wistia player for use in Magento Pop-ups extension</description>
+        <parameters>
+			<wistiaid translate="label">
+                <visible>1</visible>
+                <label>Wistia Video ID</label>
+                <type>text</type>
+            </wistiaid>
+			<videowidth translate="label">
+                <visible>1</visible>
+                <label>Width</label>
+                <description>Width of video, Example: 720</description>
+                <type>text</type>
+            </videowidth>
+			<videoheight translate="label">
+                <visible>1</visible>
+                <label>Height</label>
+                <description>Height of video, Example: 480</description>
+                <type>text</type>
+            </videoheight>
+			<toptext translate="label">
+                <visible>1</visible>
+                <label>Email Top Text</label>
+                <type>text</type>
+            </toptext>
+			<bottomtext translate="label">
+                <visible>1</visible>
+                <label>Email Bottom Text</label>
+                <type>text</type>
+            </bottomtext>
+			<videoautoplay translate="label">
+			<visible>1</visible>
+                <label>Autoplay Video</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </videoautoplay>
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/wistiaplayer.phtml</value>
+                        <label>Standard Wistia Player</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_wistiaplayer>
+	<popupwidgets_subscribeajax type="popupwidgets/subscribeajax" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Ajax Newsletter Subscription for Magento Pop-up</name>
+        <description>Adds a ajax newsletter sign-up for use in Magento Pop-ups extension</description>
+        <parameters>
+			<submitbuttonlabel translate="label">
+                <visible>1</visible>
+                <label>Submit Button Text</label>
+                <description>The text that is displayed on the submit button</description>
+                <type>text</type>
+            </submitbuttonlabel>
+			<emaildefaulttext translate="label">
+                <visible>1</visible>
+                <label>Input Default Text</label>
+                <description>The text that is displayed in the input box by default</description>
+                <type>text</type>
+            </emaildefaulttext>
+			<emailsuccesstext translate="label">
+                <visible>1</visible>
+                <label>Sign-up Success Text</label>
+                <description>The text that is displayed when a visitors subscribes</description>
+                <type>text</type>
+            </emailsuccesstext>
+			<autoclosesuccess>
+				<visible>1</visible>
+                <label>Close on Sign-up after</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>Do not auto-close</label>
+                    </no>
+					<zerosec translate="label">
+                        <value>instant</value>
+                        <label>Instantly</label>
+                    </zerosec>
+					<onesec translate="label">
+                        <value>1</value>
+                        <label>1 Second</label>
+                    </onesec>
+					<twosec translate="label">
+                        <value>2</value>
+                        <label>2 Seconds</label>
+                    </twosec>
+					<threesec translate="label">
+                        <value>3</value>
+                        <label>3 Seconds</label>
+                    </threesec>
+					<fivesec translate="label">
+                        <value>5</value>
+                        <label>5 Seconds</label>
+                    </fivesec>
+					<tensec translate="label">
+                        <value>10</value>
+                        <label>10 Seconds</label>
+                    </tensec>
+					<twentysec translate="label">
+                        <value>20</value>
+                        <label>20 Seconds</label>
+                    </twentysec>
+					<thirtysec translate="label">
+                        <value>30</value>
+                        <label>30 Seconds</label>
+                    </thirtysec>
+                </values>
+			</autoclosesuccess>
+			<tracksubconversion translate="label">
+			<visible>1</visible>
+                <label>Track Conversion</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>yes</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </tracksubconversion>
+			<conversionsuccesslabel translate="label">
+                <visible>1</visible>
+                <label>GA Conversion Event Label</label>
+                <comment>The event label that will be passed to Google Analytics upon conversion.</comment>
+				<type>text</type>
+            </conversionsuccesslabel>
+			<subsuccessexpiry translate="label">
+			<visible>1</visible>
+                <label>Cookie expiry on sign-up</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>nochange</value>
+                        <label>Use pop-up expirey</label>
+                    </no>
+					<session translate="label">
+                        <value></value>
+                        <label>Session</label>
+                    </session>
+					<twentysec translate="label">
+                        <value>20</value>
+                        <label>20 Seconds</label>
+                    </twentysec>
+					<onehundredsec translate="label">
+                        <value>100</value>
+                        <label>100 Seconds</label>
+                    </onehundredsec>
+					<thirtymin translate="label">
+                        <value>1800</value>
+                        <label>30 Minutes</label>
+                    </thirtymin>
+					<onehour translate="label">
+                        <value>3600</value>
+                        <label>1 Hour</label>
+                    </onehour>
+					<twelvehour translate="label">
+                        <value>43200</value>
+                        <label>12 Hours</label>
+                    </twelvehour>
+					<twentyfourhour translate="label">
+                        <value>86400</value>
+                        <label>24 Hours</label>
+                    </twentyfourhour>
+					<twoday translate="label">
+                        <value>172800</value>
+                        <label>2 Days</label>
+                    </twoday>
+					<oneweek translate="label">
+                        <value>604800</value>
+                        <label>1 Week</label>
+                    </oneweek>
+					<twoweek translate="label">
+                        <value>1209600</value>
+                        <label>2 Weeks</label>
+                    </twoweek>
+					<onemonth translate="label">
+                        <value>2419200</value>
+                        <label>1 Month</label>
+                    </onemonth>
+					<threemonth translate="label">
+                        <value>7257600</value>
+                        <label>3 Months</label>
+                    </threemonth>
+					<sixmonth translate="label">
+                        <value>14515200</value>
+                        <label>6 Months</label>
+                    </sixmonth>
+					<oneyear translate="label">
+                        <value>29030400</value>
+                        <label>1 Year</label>
+                    </oneyear>
+                </values>
+            </subsuccessexpiry>
+			
+			<sendemail translate="label">
+                <visible>1</visible>
+                <label>Send Email</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>yes</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </sendemail>
+			
+			<couponid translate="label">
+                <visible>1</visible>
+                <label>Shopping Cart Promotion</label>
+                <comment>The shopping cart promotion to generate the coupon from.</comment>
+				<type>select</type>
+				<source_model>popupwidgets/promotionids</source_model>
+            </couponid>
+			
+			<couponlength translate="label">
+                <visible>1</visible>
+                <label>Coupon Code Length</label>
+				<type>text</type>
+            </couponlength>
+			
+			<emailtemplate translate="label">
+			<visible>1</visible>
+                            <label>Email Template</label>
+                            <type>select</type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                       
+                        </emailtemplate>
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+					<subajax translate="label">
+                        <value>popupwidgets/subscribe-ajax.phtml</value>
+                        <label>Ajax newsletter signup</label>
+                    </subajax>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_subscribeajax>
+	<popupwidgets_subscribetermsajax type="popupwidgets/subscribetermsajax" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Ajax Newsletter Subscription with Terms for Magento Pop-up</name>
+        <description>Adds a ajax newsletter sign-up with terms for use in Magento Pop-ups extension</description>
+        <parameters>
+			<submitbuttonlabel translate="label">
+                <visible>1</visible>
+                <label>Submit Button Text</label>
+                <description>The text that is displayed on the submit button</description>
+                <type>text</type>
+            </submitbuttonlabel>
+			<emaildefaulttext translate="label">
+                <visible>1</visible>
+                <label>Input Default Text</label>
+                <description>The text that is displayed in the input box by default</description>
+                <type>text</type>
+            </emaildefaulttext>
+			<emailsuccesstext translate="label">
+                <visible>1</visible>
+                <label>Sign-up Success Text</label>
+                <description>The text that is displayed when a visitors subscribes</description>
+                <type>text</type>
+            </emailsuccesstext>
+			<autoclosesuccess  translate="label">
+				<visible>1</visible>
+                <label>Close on Sign-up after</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>Do not auto-close</label>
+                    </no>
+					<zerosec translate="label">
+                        <value>instant</value>
+                        <label>Instantly</label>
+                    </zerosec>
+					<onesec translate="label">
+                        <value>1</value>
+                        <label>1 Second</label>
+                    </onesec>
+					<twosec translate="label">
+                        <value>2</value>
+                        <label>2 Seconds</label>
+                    </twosec>
+					<threesec translate="label">
+                        <value>3</value>
+                        <label>3 Seconds</label>
+                    </threesec>
+					<fivesec translate="label">
+                        <value>5</value>
+                        <label>5 Seconds</label>
+                    </fivesec>
+					<tensec translate="label">
+                        <value>10</value>
+                        <label>10 Seconds</label>
+                    </tensec>
+					<twentysec translate="label">
+                        <value>20</value>
+                        <label>20 Seconds</label>
+                    </twentysec>
+					<thirtysec translate="label">
+                        <value>30</value>
+                        <label>30 Seconds</label>
+                    </thirtysec>
+                </values>
+			</autoclosesuccess>
+			<tracksubconversion translate="label">
+			<visible>1</visible>
+                <label>Track Conversion</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>yes</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </tracksubconversion>
+			<conversionsuccesslabel translate="label">
+                <visible>1</visible>
+                <label>GA Conversion Event Label</label>
+                <comment>The event label that will be passed to Google Analytics upon conversion.</comment>
+				<type>text</type>
+            </conversionsuccesslabel>
+			<subsuccessexpiry translate="label">
+			<visible>1</visible>
+                <label>Cookie expiry on sign-up</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>nochange</value>
+                        <label>Use pop-up expirey</label>
+                    </no>
+					<session translate="label">
+                        <value></value>
+                        <label>Session</label>
+                    </session>
+					<twentysec translate="label">
+                        <value>20</value>
+                        <label>20 Seconds</label>
+                    </twentysec>
+					<onehundredsec translate="label">
+                        <value>100</value>
+                        <label>100 Seconds</label>
+                    </onehundredsec>
+					<thirtymin translate="label">
+                        <value>1800</value>
+                        <label>30 Minutes</label>
+                    </thirtymin>
+					<onehour translate="label">
+                        <value>3600</value>
+                        <label>1 Hour</label>
+                    </onehour>
+					<twelvehour translate="label">
+                        <value>43200</value>
+                        <label>12 Hours</label>
+                    </twelvehour>
+					<twentyfourhour translate="label">
+                        <value>86400</value>
+                        <label>24 Hours</label>
+                    </twentyfourhour>
+					<twoday translate="label">
+                        <value>172800</value>
+                        <label>2 Days</label>
+                    </twoday>
+					<oneweek translate="label">
+                        <value>604800</value>
+                        <label>1 Week</label>
+                    </oneweek>
+					<twoweek translate="label">
+                        <value>1209600</value>
+                        <label>2 Weeks</label>
+                    </twoweek>
+					<onemonth translate="label">
+                        <value>2419200</value>
+                        <label>1 Month</label>
+                    </onemonth>
+					<threemonth translate="label">
+                        <value>7257600</value>
+                        <label>3 Months</label>
+                    </threemonth>
+					<sixmonth translate="label">
+                        <value>14515200</value>
+                        <label>6 Months</label>
+                    </sixmonth>
+					<oneyear translate="label">
+                        <value>29030400</value>
+                        <label>1 Year</label>
+                    </oneyear>
+                </values>
+            </subsuccessexpiry>
+			<termscallout translate="label">
+                <visible>1</visible>
+                <label>Terms Callout Text</label>
+                <description>The text that after the checkbox</description>
+                <type>text</type>
+            </termscallout>
+			<termslinklabel translate="label">
+                <visible>1</visible>
+                <label>Terms Link Label</label>
+                <description>The text that is displayed on the terms link</description>
+                <type>text</type>
+            </termslinklabel>
+			<termslink translate="label">
+                <visible>1</visible>
+                <label>Terms URL</label>
+                <description>The URL for the terms</description>
+                <type>text</type>
+            </termslink>
+			
+			<sendemail translate="label">
+                <visible>1</visible>
+                <label>Send Email</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>no</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>yes</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </sendemail>
+			
+			<couponid translate="label">
+                <visible>1</visible>
+                <label>Shopping Cart Promotion</label>
+                <comment>The shopping cart promotion to generate the coupon from.</comment>
+				<type>select</type>
+				<source_model>popupwidgets/promotionids</source_model>
+            </couponid>
+			
+			<couponlength translate="label">
+                <visible>1</visible>
+                <label>Coupon Code Length</label>
+				<type>text</type>
+            </couponlength>
+			
+			<emailtemplate translate="label">
+			<visible>1</visible>
+                            <label>Email Template</label>
+                            <type>select</type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                       
+                        </emailtemplate>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+					<subajax translate="label">
+                        <value>popupwidgets/subscribeterms-ajax.phtml</value>
+                        <label>Ajax newsletter signup with terms</label>
+                    </subajax>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_subscribetermsajax>
+	<popupwidgets_countdown type="popupwidgets/countdown" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Countdown to Shopping Cart Promotional End Date for Magento Pop-up</name>
+        <description>Adds a countdown to the end date of a shopping cart promotion rule for use in Magento Pop-ups extension</description>
+        <parameters>
+			<couponcode translate="label">
+                <visible>1</visible>
+				<required>1</required>
+                <label>Coupon Code</label>
+                <description>Coupon Code</description>
+                <type>text</type>
+            </couponcode>
+			
+			
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/countdown.phtml</value>
+                        <label>Countdown to Shopping Cart Promotion End Date</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_countdown>
+	<popupwidgets_countdowntopopupexpiry type="popupwidgets/countdowntopopupexpiry" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Countdown to Pop-up Until Date for Magento Pop-up</name>
+        <description>Adds a countdown to the pop-up until date for use in Magento Pop-ups extension</description>
+        <parameters>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/countdown-to-popup-expiry.phtml</value>
+                        <label>Countdown to Pop-up Until Date</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_countdowntopopupexpiry>
+	<popupwidgets_privacy type="popupwidgets/privacy" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Privacy Table Widget</name>
+        <description>Adds cookies used in Magento Pop-ups extension</description>
+        <parameters>
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <append translate="label">
+                        <value>popupwidgets/privacy-append.phtml</value>
+                        <label>Append privacy to existing table</label>
+                    </append>
+					<newtable translate="label">
+                        <value>popupwidgets/privacy-newtable.phtml</value>
+                        <label>Create new privacy table</label>
+                    </newtable>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_privacy>
+	<popupwidgets_closebutton type="popupwidgets/closebutton" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Close button for Magento Pop-up</name>
+        <description>Adds a close button for use in Magento Pop-ups extension</description>
+        <parameters>
+			<closebuttontext translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Text</label>
+                <description>Close button text</description>
+                <type>text</type>
+            </closebuttontext>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/closebutton.phtml</value>
+                        <label>Close Button</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_closebutton>
+	
+	<popupwidgets_clickopenbutton type="popupwidgets/clickopenbutton" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Open Pop-up Link for Magento Pop-up</name>
+        <description>Adds a link to open a pop-up for use in Magento Pop-ups extension</description>
+        <parameters>
+			<clickopenbuttontext translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Text</label>
+                <description>Open button text</description>
+                <type>text</type>
+            </clickopenbuttontext>
+			
+			<openpopupid translate="label">
+                <visible>1</visible>
+				<required>1</required>
+                <label>Select Popup</label>
+                <type>select</type>
+                <source_model>popupwidgets/popups</source_model>
+            </openpopupid>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/clickopenbutton.phtml</value>
+                        <label>Open Button</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_clickopenbutton>
+	
+	<popupwidgets_linkbutton type="popupwidgets/linkbutton" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Link for Magento Pop-up</name>
+        <description>Adds a link for use in Magento Pop-ups extension</description>
+        <parameters>
+			<linkbuttontext translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Text</label>
+                <description>Button text</description>
+                <type>text</type>
+            </linkbuttontext>
+			<linkurl translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link URL</label>
+                <type>text</type>
+            </linkurl>
+			<addcss translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link css</label>
+                <type>text</type>
+            </addcss>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/linkbutton.phtml</value>
+                        <label>General Link</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_linkbutton>
+	
+	<popupwidgets_socialshare type="popupwidgets/socialshare" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Social Share for Magento Pop-up</name>
+        <description>Adds social sharing buttons for use in Magento Pop-ups extension</description>
+        <parameters>
+			
+			<facebookshare translate="label">
+			<visible>1</visible>
+                <label>Facebook Share</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </facebookshare>
+			<facebookshareurl translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Facebook Share URL</label>
+                <type>text</type>
+				<comment>Eg. http://www.example.com</comment>
+            </facebookshareurl>
+			
+			<googleplusshare translate="label">
+			<visible>1</visible>
+                <label>Google+ Share</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </googleplusshare>
+			<googleplusshareurl translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Google+ Share URL</label>
+                <type>text</type>
+				<comment>Eg. http://www.example.com</comment>
+            </googleplusshareurl>
+			
+			<twittershare translate="label">
+			<visible>1</visible>
+                <label>Twitter Share</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </twittershare>
+			<twittertweet translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Twitter Tweet</label>
+                <type>text</type>
+				<comment>Eg. Check out this great product http://www.example.com</comment>
+            </twittertweet>
+			
+			<pinterestshare translate="label">
+			<visible>1</visible>
+                <label>Pinterest Share</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </pinterestshare>
+			<pinterestpinurl translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Pinterest Pin URL</label>
+                <type>text</type>
+				<comment>Eg. http://www.example.com</comment>
+            </pinterestpinurl>
+			<pinterestmediaurl translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Media URL</label>
+                <type>text</type>
+				<comment>Eg. http://www.example.com/media/image.jpg</comment>
+            </pinterestmediaurl>
+			<pinterestdescription translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Pin Description</label>
+                <type>text</type>
+            </pinterestdescription>
+			
+			<linkedinshare translate="label">
+			<visible>1</visible>
+                <label>LinkedIn Share</label>
+                <type>select</type>
+                <values>
+                    <no translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </no>
+					<yes translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </yes>
+                </values>
+            </linkedinshare>
+			<linkedinshareurl translate="label comment">
+                <visible>1</visible>
+				<required>0</required>
+                <label>LinkedIn Share URL</label>
+                <type>text</type>
+				<comment>Eg. http://www.example.com</comment>
+            </linkedinshareurl>
+			<linkedintitle translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Title</label>
+                <type>text</type>
+            </linkedintitle>
+			<linkedinsummary translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Summary</label>
+                <type>text</type>
+            </linkedinsummary>
+			<linkedinsource translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Source</label>
+                <type>text</type>
+            </linkedinsource>
+			
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/socialshare.phtml</value>
+                        <label>Standard Social Sharing Links</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_socialshare>
+	
+	
+	<popupwidgets_forcepopup type="popupwidgets/forcepopup" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Force a Pop-up for Magento Pop-up</name>
+        <description>Adds a forced pop-up for use in Magento Pop-ups extension</description>
+        <parameters>
+			<forcepopupid translate="label">
+                <visible>1</visible>
+				<required>1</required>
+                <label>Select Popup</label>
+                <type>select</type>
+                <source_model>popupwidgets/popups</source_model>
+            </forcepopupid>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/forcepopup.phtml</value>
+                        <label>Force Pop-up</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_forcepopup>
+	
+	<popupwidgets_exitpopup type="popupwidgets/exitpopup" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Exit Pop-up for Magento Pop-up</name>
+        <description>Adds an exit pop-up for use in Magento Pop-ups extension</description>
+        <parameters>
+			<exitpopupid translate="label">
+                <visible>1</visible>
+				<required>1</required>
+                <label>Select Popup</label>
+                <type>select</type>
+                <source_model>popupwidgets/popups</source_model>
+            </exitpopupid>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/exitpopup.phtml</value>
+                        <label>Exit Pop-up</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_exitpopup>
+	
+	<popupwidgets_simpleaddtocart type="popupwidgets/simpleaddtocart" translate="name description" module="popupwidgets">
+        <name>TRM Marketing - Simple Product Add to Cart Link Magento Pop-up</name>
+        <description>Adds an add to cart link for a simple product with no custom options for use in Magento Pop-ups extension</description>
+        <parameters>
+			<linkbuttontext translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Link Text</label>
+                <description>Link text</description>
+                <type>text</type>
+            </linkbuttontext>
+			<popupproductid translate="label">
+                <visible>1</visible>
+				<required>0</required>
+                <label>Simple Product ID</label>
+				<description>This product cannot require any custom options</description>
+                <type>text</type>
+            </popupproductid>
+			
+            <template translate="label" value="">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>popupwidgets/simpleaddtocart.phtml</value>
+                        <label>Simple Product Add to Cart Link</label>
+                    </list>
+                </values>
+            </template>
+        </parameters>
+    </popupwidgets_simpleaddtocart>
+</widgets>

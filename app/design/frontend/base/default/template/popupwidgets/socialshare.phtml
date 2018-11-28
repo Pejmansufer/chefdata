@@ -1,0 +1,30 @@
+<?php
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+?>
+<div class="popups-socialshare">
+<?php 
+$baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+//share on Facebook button
+if($facebookshare) echo '<a href="https://www.facebook.com/sharer/sharer.php?u='.$facebookshareurl.'" target="_blank" class="popup-socialshare-button"><img src="'.$baseMedia.'promotional-popups/socialshare/facebook/64.png"></a>'; 
+
+//tweet on Twitter button
+if($twittershare) echo '<a href="https://twitter.com/home?status='.$twittertweet.'" target="_blank" class="popup-socialshare"><img src="'.$baseMedia.'promotional-popups/socialshare/twitter/64.png"></a>'; 
+
+//pin on Pinterest button
+if($pinterestshare) echo '<a href="https://pinterest.com/pin/create/button/?url='.$pinterestpinurl.'&media='.$pinterestmediaurl.'&description='.$pinterestdescription.'" target="_blank" class="popup-socialshare"><img src="'.$baseMedia.'promotional-popups/socialshare/pinterest/64.png"></a>';
+
+//share on Google+ button
+if($googleplusshare) echo '<a href="https://plus.google.com/share?url='.$googleplusshareurl.'" target="_blank" class="popup-socialshare"><img src="'.$baseMedia.'promotional-popups/socialshare/googleplus/64.png"></a>';
+
+//share on LinkedIn button
+if($linkedinshare) echo '<a href="https://www.linkedin.com/shareArticle?mini=true&url='.$linkedinshareurl.'&title='.$linkedintitle.'&summary='.$linkedinsummary.'&source='.$linkedinsource.'" target="_blank" class="popup-socialshare"><img src="'.$baseMedia.'promotional-popups/socialshare/linkedin/64.png"></a>';
+
+
+?>
+

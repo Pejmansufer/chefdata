@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <tabs>
+        <litextension translate="label">
+            <label>LitExtension</label>
+            <sort_order>2000</sort_order>
+        </litextension>
+    </tabs>
+    <sections>
+        <le_cartmigration>
+            <class>separator-top</class>
+            <label>Cart Migration</label>
+            <tab>litextension</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <taxes>
+                            <label>Taxes Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </taxes>
+                        <manufacturers>
+                            <label>Manufacturers Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </manufacturers>
+                        <categories>
+                            <label>Categories Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </categories>
+                        <products>
+                            <label>Products Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </products>
+                        <customers>
+                            <label>Customres Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customers>
+                        <orders>
+                            <label>Orders Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </orders>
+                        <reviews>
+                            <label>Reviews Per Batch</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviews>
+                        <delay>
+                            <label>Delay Time</label>
+                            <comment><![CDATA[Unit is second]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delay>
+                        <retry translate="label comment">
+                            <label>Auto Retry After</label>
+                            <comment><![CDATA[Unit is second, 0 = disabled]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </retry>
+                    </fields>
+                </general>
+            </groups>
+        </le_cartmigration>
+    </sections>
+</config>

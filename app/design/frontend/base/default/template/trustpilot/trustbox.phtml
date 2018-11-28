@@ -1,0 +1,9 @@
+<?php if($this->getTrustBoxStatus()=='enabled'): ?>
+	<script type="text/javascript" async>
+		document.addEventListener('DOMContentLoaded', function() {
+            if (<?php echo $this->getTrustBoxPage($this->getNameInLayout()); ?>) {
+                tp('trustBox', JSON.parse('<?php echo $this->getTrustBoxConfig(); ?>'));
+            }
+        });
+	</script>
+<?php endif; ?>

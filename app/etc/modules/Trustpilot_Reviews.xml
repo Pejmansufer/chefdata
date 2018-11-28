@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Trustpilot_Reviews>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Trustpilot_Reviews>
+    </modules>
+</config>

@@ -1,0 +1,4 @@
+- Myriad Changes for Magento 2 Compatibility
+
+- Hardened CSS to avoid leaking into other jQuery UI implementations
+

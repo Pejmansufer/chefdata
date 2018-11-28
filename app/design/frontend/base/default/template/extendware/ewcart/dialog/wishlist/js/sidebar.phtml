@@ -1,0 +1,12 @@
+<?php
+if (Mage::helper('wishlist')->getItemCount() > 0) {
+	echo 'var __ewWishlistSidebar = ' . json_encode(Mage::helper('ewcart')->getWishlistSideBarHtml()) . ';';
+	echo "try {";
+		echo "$$('div.block-wishlist', 'div.mini-wishlist').first().replace(__ewWishlistSidebar);";
+	echo "} catch (e) {";
+		echo "$$('div.block-cart', 'div.mini-cart').first().insert({after: __ewWishlistSidebar});";
+	echo "}";
+} else {
+	// remove the block from the page if there are no items
+	echo "$$('div.block-wishlist', 'div.mini-wishlist').invoke('replace', '');";
+}

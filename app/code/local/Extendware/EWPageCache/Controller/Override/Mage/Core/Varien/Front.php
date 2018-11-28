@@ -1,0 +1,17 @@
+<?php /*obfv1*/
+// Copyright © 2015 Extendware
+// Are you trying to customize your extension? Contact us (http://www.extendware.com/contacts/) and we can help!
+// Please note, not all files are encoded and different extensions have different levels of encoding.
+// We are always happy to provide guideance if you are experiencing an issue!
+
+
+
+/**
+ * This class overrides a core file. Class hierarchy is [magento rewrite if it exists] extends [this class] extends [core file]. Below is a list of methods found in this class.
+ *
+ * @method mixed public dispatch()
+ * @method mixed public init()
+ *
+ */
+
+$_F=__FILE__;$_X="eJytV+lu2zgQ/p+nYIEClrOJrcO6nLppDhctFtkG8aL9sSgEihraLBRJJak43qIPtK+xT7ZDybHTbhJYbePAgMThN9c3h49fvjiuFhUZ7pcpv3H2h3vDITkrq5UU84Um//5DXNvxyfRWQ5EtqQRzfiKBrMqaaLkSxZzokrBa6fJa/N28lwSMuBJlcYxYhaZMk1oRa6F1NR4Ol8vlADaAA1ZeD1krpYZ9QouMLIEwWpAF5NUzo/AyB6qAFKWGA/NNaJ4TLnJQBBEIFKzMIGuuZoJzkFDorRGKLOgN3DvJ4QZyRUre3kQfBkbLB2jQaL6kK3OnqlbGt0qWNyIDMq/xmxYMiOCN+43q2wqkQBgTCDRZKFXDsz38G+7v75F98udCKMJyqlDfDUiJGGg0YSVeNh4MyFlzuBAgqWSLFUKQv67pHA0tiYSlFLrRKIxHQmn1sfUsQzG9Ab/3cgP9cUBOIS+XBpGSHO8al69BL0qU42WN4RIF2YIM0GBj86tWhlyLW4xqVae5YBg+VVHNFlb/URFRCN0c4/9w77il1l7r/JZByfTDJbp3RtkCEkMPWeY5yOTdOjzJBZ7iAUq+pya2yWtZ3uUz+wVIySkezoF8ubOb1wXTSJS1A3jwPGHOyKN+yoI4g9hjGU/jUTByQ+7GIVDHt8MRdWIekgkxWsZjQ1aQVg+WFT4zY1Ovf2QyZ+2OdvhSqI1L04KmOWRvC3SNizkaNplMsOhqaJjeBbWW4sIkD9S5UJ9rmguOfFNrSE5zBcZtBcoUTCKyTjbPQTeBxbTMWoS3mdVH578igXUtC1JRU3jjcRtgc/B96Lf0asMfUydNWWyPHOaEnh1xo41yO+O+bduBz8B2Wehg+K8Fk6UW12CZ0CD488SN3dQHL/Cp7WZ26rks4FnmBjTM0jgFJ7bd1Ikd56nkmZ6EUe91AjT5mwHezKhc3U+itaHCL4Da8KCNlRP4ge2nYRwy5kPqch/8KIMwcDBLzOMMHIcGjKO3j9TOBbbPPLmCzzUonVzKkmEaS5ls9I/HWH0SO/RZk2a9dWdX5cZUYIuyg71HpuHpo3WKsB1b/YZrV6Aq7OpgHvEtOnRaZqsutjyNqRBx+3y05rAh7dfHAvim4U9yTjUdjxXomcamg0VQ1Hm+DlXX3H8wPUp/m/OmUNfF3wXrdYmTUz6N+ArPoLixetMPyfn04l0ym169n14llyez2eWbq5PZtNcnzyakp6P81Hl/vvw9LK+KaYVvS0msdh4k7Yiy/h/ehlpW/4D0hDr5RG977aR/VNCYbeS+YXtXRa9x9CzWr3ZReF/+G8WGvXc9bNupDCXAxO/LGlbCHK0yjSRJ7rWSJK3N6oErQu+ArJtUmSZKU9lU0kPIncoawdCVhLXFqawWH4maMNycihYvjiIOQeqNfHBYBFEcZYwFnuN5jPrAKQ+AZ6M4RTzru55KDju05DXfd+LT5EE+fWkAnhirOw809DqLwtShEaWun6Hhrgs2FghWR+x5sR2lowxXxzBCr52Bc9fVdo7Viw4qWoMghpj6YRZFmQ8R820vcCOsUzse0ZE3ioCGwMLIayZbYdmD6IBcYx3YA//gJxODe5vX78aF3yYdTO7IMuPe7tE76ACOPi4XuAET6ycD9qKLUkxvrXKAynIQpekOHdk0mXSmU5dMWhI7oGUfEPTsmBw6ZEwaUmzf2/2hsza9/XTfWR6aMj+0qzxZ/6L4BEy3ujpMfpwKRXnYonQk1I/E4vG5u40I9zmL3IC7kROmsTtiTpBxHkdxNqJBHKeh7fAY7HgTkQdnFz7hElfn8AdFqvcHvcPe4Gnx7e+lna+cNKt6K95xQu2QzPvB+uGUWqLQ/VYZwsxw5Oagy+K7zb4ZyupuuW1MUOeY7jq/v0Dsnpt2E+i63W5+HT03P8HbmvsPRD54sw==";$_D=strrev("edoced_46esab");eval(gzuncompress($_D($_X)));

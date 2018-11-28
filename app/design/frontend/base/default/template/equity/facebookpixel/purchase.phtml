@@ -1,0 +1,8 @@
+<script>
+fbq('track','Purchase', {
+	value: '<?php echo $this->getOrderAmount(); ?>', 
+	currency: '<?php echo $this->getStoreCurrency(); ?>',
+	content_ids: [<?php echo $this->getOrderIDs() ?>],
+  	content_type: 'product',
+});
+</script>

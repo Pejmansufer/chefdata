@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Add In Mage::
+ *
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the EULA at http://add-in-mage.com/support/presales/eula-community/
+ *
+ *
+ * PROPRIETARY DATA
+ * 
+ * This file contains trade secret data which is the property of Add In Mage:: Ltd. 
+ * Information and source code contained herein may not be used, copied, sold, distributed, 
+ * sub-licensed, rented, leased or disclosed in whole or in part to anyone except as permitted by written
+ * agreement signed by an officer of Add In Mage:: Ltd. 
+ * A separate installation package must be downloaded for each new Magento installation from Add In Mage web site.
+ * You may modify the source code of the software to get the functionality you need for your store. 
+ * You must retain, in the source code of any Derivative Works that You create, 
+ * all copyright, patent, or trademark notices from the source code of the Original Work.
+ * 
+ * 
+ * MAGENTO EDITION NOTICE
+ * 
+ * This software is designed for Magento Community edition.
+ * Add In Mage:: Ltd. does not guarantee correct work of this extension on any other Magento edition.
+ * Add In Mage:: Ltd. does not provide extension support in case of using a different Magento edition.
+ * 
+ * 
+ * @category    AddInMage
+ * @package     AddInMage_ToastNotifications
+ * @copyright   Copyright (c) 2012 Add In Mage:: Ltd. (http://www.add-in-mage.com)
+ * @license     http://add-in-mage.com/support/presales/eula-community/  End User License Agreement (EULA)
+ * @author      Add In Mage:: Team <team@add-in-mage.com>
+ */
+-->
+<config>
+  <tabs>
+    <addinmage translate="label" module="toastnotifications">
+      <label>Add In Mage:: Extensions</label>
+      <sort_order>1</sort_order>
+      <class>add-in-mage-tab</class>
+    </addinmage>
+  </tabs>
+  <sections>
+    <addinmage_toastnotifications translate="label" module="toastnotifications">
+      <label>Toast Notifications</label>
+      <tab>addinmage</tab>
+      <sort_order>4</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label">
+          <label>Toast Notifications Settings</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <use_in_frontend translate="label comment">
+              <label>Use on Frontend</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Override Magento built-in messages with toast notifications in the store.</comment>
+            </use_in_frontend>
+            <use_in_adminhtml translate="label comment">
+              <label>Use on Backend</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Override Magento built-in messages with toast notifications in the Admin Panel.</comment>
+            </use_in_adminhtml>
+          </fields>
+        </general>
+        <frontend_settings translate="label">
+          <label>Frontend Settings</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>2</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <hiding_mode translate="label comment">
+              <label>Hiding Mode</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_modes</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Notifications can disappear automatically or after customers click Close.</comment>
+            </hiding_mode>
+            <delay translate="label comment">
+              <label>Display Duration</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>The amount of time customers will see the toast notification (sec).</comment>
+            </delay>
+            <appearance translate="label comment">
+              <label>Appearance Speed</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>Specify appearance animation speed (sec).</comment>
+            </appearance>
+            <disappearance translate="label comment">
+              <label>Disappearance Speed</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>4</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>Specify disappearance animation speed (sec).</comment>
+            </disappearance>
+            <delay_before translate="label comment">
+              <label>Delay Before Appearance</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>5</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Make a pause before showing the toast notification (sec).</comment>
+            </delay_before>
+            <opacity translate="label comment">
+              <label>Toast Notification Opacity</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_opacity</source_model>
+              <sort_order>6</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Choose the degree of toast notification transparency.</comment>
+            </opacity>
+            <position translate="label comment">
+              <label>Position</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_position</source_model>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Choose where you'd like the toast notification to appear.</comment>
+            </position>
+          </fields>
+        </frontend_settings>
+        <adminhtml_settings translate="label">
+          <label>Backend Settings</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>3</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <hiding_mode translate="label comment">
+              <label>Hiding Mode</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_modes</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Notifications can disappear automatically or after customers click Close.</comment>
+            </hiding_mode>
+            <delay translate="label comment">
+              <label>Display Duration</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>The amount of time customers will see the toast notification (sec).</comment>
+            </delay>
+            <appearance translate="label comment">
+              <label>Appearance Speed</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>Specify appearance animation speed (sec).</comment>
+            </appearance>
+            <disappearance translate="label comment">
+              <label>Disappearance Speed</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>4</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <hiding_mode>auto</hiding_mode>
+              </depends>
+              <comment>Specify disappearance animation speed (sec).</comment>
+            </disappearance>
+            <delay_before translate="label comment">
+              <label>Delay Before Appearance</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>5</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Make a pause before showing the toast notification (sec).</comment>
+            </delay_before>
+            <opacity translate="label comment">
+              <label>Toast Notification Opacity</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_opacity</source_model>
+              <sort_order>6</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Choose the degree of toast notification transparency.</comment>
+            </opacity>
+            <position translate="label comment">
+              <label>Position</label>
+              <frontend_type>select</frontend_type>
+              <source_model>toastnotifications/configuration_position</source_model>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Choose where you'd like the toast notification to appear.</comment>
+            </position>
+          </fields>
+        </adminhtml_settings>
+        <hint>
+          <frontend_model>toastnotifications/description</frontend_model>
+          <sort_order>0</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+        </hint>
+      </groups>
+    </addinmage_toastnotifications>
+  </sections>
+</config>

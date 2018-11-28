@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SmashingMagazine_MyCarrier>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </SmashingMagazine_MyCarrier>
+    </modules>
+</config>

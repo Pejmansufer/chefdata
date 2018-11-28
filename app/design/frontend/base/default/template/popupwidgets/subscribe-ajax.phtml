@@ -1,0 +1,50 @@
+<?php
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+?>
+
+
+<div id="popup-subscribe-container">
+    <!-- ajax BOF -->
+    <div class="promotional-popup-loader" id="promotional-popup-loader" style="text-align:center; display:none;">
+			<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). 'promotional-popups/promotional-popup-loader.gif'; ?>" />
+	</div>	
+	<div id="promotional-popup-feedback" style="display:none" class="promotional-popup-feedback">
+    
+	</div>
+	
+	<form name="newsletter-validate-detail-promotional-popup" id="newsletter-validate-detail-promotional-popup" method="post" onsubmit="return false;"> 
+    <input type="hidden" id="popup-autoclosesuccess" value="<?php echo $autoclosesuccess; ?>" />
+    <input type="hidden" id="popup-tracksubconversion" value="<?php echo $tracksubconversion; ?>" />
+    <input type="hidden" id="popup-subsuccessexpiry" value="<?php echo $subsuccessexpiry; ?>" />
+    <input type="hidden" id="popup-conversionsuccesslabel" value="<?php echo $conversionsuccesslabel; ?>" />
+     <input type="hidden" id="popup-subscriberurl" value="<?php echo $this->getUrl('promotionalpopup/index/subscribe', array('_forced_secure' => $this->getRequest()->isSecure())) ?>" />
+     
+     <input type="hidden" id="popup-emailsuccesstext" value="<?php echo $emailsuccesstext; ?>" />
+     <input type="hidden" id="popup-noguest" value="<?php echo Mage::getStoreConfig('trmpopupconfig/trmpopupsubscribe_group/noguest',Mage::app()->getStore()); ?>" />
+    <input type="hidden" id="popup-customeremail" value="<?php echo Mage::getStoreConfig('trmpopupconfig/trmpopupsubscribe_group/customeremail',Mage::app()->getStore()); ?>" />
+    <input type="hidden" id="popup-noduplicates" value="<?php echo Mage::getStoreConfig('trmpopupconfig/trmpopupsubscribe_group/noduplicates',Mage::app()->getStore()); ?>" />
+    
+    <input type="hidden" id="popup-sendemail" value="<?php echo $sendemail; ?>" />
+    <input type="hidden" id="popup-couponid" value="<?php echo $couponid; ?>" />
+    <input type="hidden" id="popup-couponlength" value="<?php echo $couponlength; ?>" />
+    <input type="hidden" id="popup-emailtemplate" value="<?php echo $emailtemplate; ?>" />
+    
+    
+    
+        <div class="popup-subscribe-form">
+		 <div class="input-box">
+          <input type="text" name="email" id="popup-newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text validate-email input-subscribe"  value="<?php echo $emaildefaulttext;  ?>" onfocus="clearSubText(this)" onblur="addSubText(this);" />
+          <div id="error-promotional-popup-msg" class="validation-advice" style="display:none;">Please insert a valid email address.</div>
+		</div>
+				 <button type="button" title="<?php if($submitbuttonlabel != ""): echo $submitbuttonlabel; else: echo $this->__('Subscribe'); endif; ?>" onclick="subscribeFunctionPromotionalPopup();" class="button"><?php if($submitbuttonlabel != ""): echo $submitbuttonlabel; else: echo $this->__('Subscribe'); endif; ?></button>
+				
+       </div>
+    </form>	
+   
+    <!-- ajax EOF -->
+</div>

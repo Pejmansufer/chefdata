@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <WeaveApps_ResponsiveSlideshow>
+            <active>true</active>
+            <codePool>local</codePool>
+        </WeaveApps_ResponsiveSlideshow>
+    </modules>
+</config> 

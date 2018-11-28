@@ -1,0 +1,44 @@
+<?php
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */  
+			
+			$resource = Mage::getSingleton('core/resource');
+			$read= $resource->getConnection('core_read');
+			$popupTable = $resource->getTableName('promotionalpopup');
+			$store_id = $this->helper('core')->getStoreId();
+			$select = $read->select()
+			   ->from($popupTable,array('promotionalpopup_id','cookie_value','sort_order'))
+			   ->where('status=1')
+			   ->order('sort_order ASC') ;
+			   
+			$promotionalpopups = $read->fetchAll($select);
+			
+			if (count($popups) > 0):
+			?>
+            
+<h2><a name="list"></a>List of cookies for promotional pop-ups</h2>
+<p>The table below lists the cookies we collect for tracking what promotional pop-ups have been seen within the store.</p>            
+<table class="data-table">
+<thead>
+<tr><th>COOKIE name</th><th>COOKIE Description</th></tr>
+</thead> 
+<tbody>     
+            <?php
+			
+			foreach ($popups as $item) :
+		
+				echo "<tr><th>".strtoupper($item['cookie_value'])."</th><td>Promotional Pop-up cookie.</td></tr>";
+				
+			endforeach;
+			
+			
+			
+			
+			?> 
+
+</tbody>
+</table><?php endif; ?>

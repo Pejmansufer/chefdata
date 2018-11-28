@@ -1,0 +1,114 @@
+<tr>
+    <td class="label">Products <span class="required">*</span></td>
+    <td class="value">
+        <div>
+            <div class="products group_container options-box" id="products">
+                <div>
+                    <?php echo $this->getSelectHtml(); ?>
+                </div>
+                <div class="no-display option-box chooser_container" id="products_chooser">
+                    <p>
+                        <input type="text" class="entities" name="parameters[products][entities]" value="<?php echo $this->getElement()->getValue('entities'); ?>" readonly="readonly" />
+                        &nbsp;
+                        <a class="widget-option-chooser" href="javascript:void(0)" onclick="ProductsChooserInstance.displayEntityChooser('products_chooser')" title="Open Chooser"><img src="<?php echo Mage::getDesign()->getSkinUrl('images/rule_chooser_trigger.gif') ?>" class="v-middle" alt="Open Chooser" /></a>
+                        &nbsp;
+                        <a href="javascript:void(0)" onclick="ProductsChooserInstance.hideEntityChooser('products_chooser')" title="Apply"><img src="<?php echo Mage::getDesign()->getSkinUrl('images/rule_component_apply.gif') ?>" class="v-middle" alt="Apply" /></a>
+                    </p>
+                    <div class="chooser"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+            var ProductsChooserInstance = {
+                displayEntityChooser : function(chooser) {
+                    additional = {};
+                    additional.url = '<?php echo $this->getProductsChooserUrl() ?>';
+                    additional.post_parameters = $H({'category' : $('widget_instace_tabs_properties_section_content').down('input[name="parameters[category]"]').value});
+                    if (chooser && additional) {
+                        this.displayChooser(chooser, additional);
+                    }
+                },
+                hideEntityChooser : function(chooser) {
+                    chooser = $(chooser).down('div.chooser');
+                    if (chooser) {
+                        chooser.addClassName('no-display');
+                        chooser.hide();
+                    }
+                },
+                displayChooser : function(chooser, additional) {
+                    chooser = $(chooser).down('div.chooser');
+                    entities = chooser.up('div.chooser_container').down('input[type="text"].entities').value;
+                    postParameters = $H({selected:entities});
+                    url = '';
+                    if (additional) {
+                        if (additional.url) url = additional.url;
+                        if (additional.post_parameters) {
+                            additional.post_parameters.each(function(pair){
+                                postParameters.set(pair.key,pair.value);
+                            });
+                        }
+                    }
+                    if (chooser && url) {
+                        chooser.innerHTML = '';
+                        if (chooser.innerHTML == '') {
+                            new Ajax.Request(url, {
+                                method: 'post',
+                                parameters: postParameters,
+                                onSuccess: function(transport) {
+                                    try {
+                                        if (transport.responseText) {
+                                            Element.insert(chooser, transport.responseText);
+                                            chooser.removeClassName('no-display');
+                                            chooser.show();
+                                        }
+                                    } catch (e) {
+                                        alert('Error occurs during loading chooser.');
+                                    }
+                                }
+                            });
+                        } else {
+                            chooser.removeClassName('no-display');
+                            chooser.show();
+                        }
+                    }
+                },
+                togglePageGroupChooser : function(value) {
+                    element = $('products_chooser');
+                    if (element && (chooser = element.up('div.group_container').down('div.chooser_container'))) {
+                        if (value != 'specific') {
+                            chooser.addClassName('no-display');
+                            chooser.hide();
+                        } else {
+                            chooser.removeClassName('no-display');
+                            chooser.show();
+                        }
+                    }
+                },
+                checkProduct : function(event) {
+                    chooser = event.target.up('div.chooser');
+                    entitiesElm = chooser.up('div.chooser_container').down('input[type="text"].entities');
+                    ids = [];
+                    chooser.select('input[type="checkbox"].entities').each(function(elm){
+                        if (elm.checked) {
+                            ids.push(elm.value);
+                        }
+                    });
+
+                    if (entitiesElm) {
+                        entitiesElm.value = ids.join(',');
+                    }
+                }
+            };
+            Ext.onReady(function(){
+                ProductsChooserInstance.togglePageGroupChooser('<?php echo $this->getElement()->getValue('display_mode') ?>');
+                Event.observe(document, 'product:changed', function(event){
+                    ProductsChooserInstance.checkProduct(event);
+                });
+            });
+            //]]>
+        </script>
+    </td>
+</tr>

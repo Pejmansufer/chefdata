@@ -1,0 +1,23 @@
+<?php
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     HxObcXe62uQsQGs98TzFPLxwiM3aCakojlW7nJdmvI
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+$data = $this->getPriceInputData() ?>
+<ol>
+<li>
+<input class="input-text" type="text" maxlength="12" size="4" id="adj-nav-price-from---<?php echo $this->_filter->getRequestVar()?>" value="<?php echo $data['from'] ?>"
+onclick="if(this.value==this.name) this.value='';"  name="<?php echo $this->__('From')?>"/>
+<span class="adj-nav-separator">-</span>
+<input class="input-text" type="text" maxlength="12" size="4" id="adj-nav-price-to---<?php echo $this->_filter->getRequestVar()?>" value="<?php echo $data['to'] ?>"
+onclick="if(this.value==this.name) this.value='';" name="<?php echo $this->__('To')?>"/>
+<button type="button" class="button" id="adj-nav-price-go---<?php echo $this->_filter->getRequestVar()?>"><span><?php echo $this->__('Go')?></span></button>
+</li>
+</ol>
+
+<input type="hidden" value="<?php echo $this->_filter->getRequestVar()?>" class="adj-nav-price-input-id">

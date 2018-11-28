@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webtex_ProductSliderPro>
+            <active>true</active>
+            <codePool>local</codePool>
+            <name>Webtex Product Slider Pro</name>
+        </Webtex_ProductSliderPro>
+    </modules>
+</config>

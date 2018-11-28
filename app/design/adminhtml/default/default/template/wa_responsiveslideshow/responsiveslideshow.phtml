@@ -1,0 +1,48 @@
+<?php echo $this->getTabsHtml() ?>
+<script type="text/javascript">
+    //<![CDATA[
+    function load_responsiveslideshow_funcs(){        
+<?php if (($block = $this->getLayout()->getBlock('responsiveslideshowgroup.grid.responsiveslideshow')) && ($_gridJsObject = $block->getJsObjectName())): ?>
+            if(!$('in_responsiveslideshowgroup_responsiveslideshows')){
+                setTimeout('load_responsiveslideshow_funcs()',500);
+                return false;
+            }
+            var selectedresponsiveslideshows=$H(<?php echo $this->getresponsiveslideshowsJson(); ?>);            
+            $('in_responsiveslideshowgroup_responsiveslideshows').value = selectedresponsiveslideshows.toQueryString();
+            
+            function registerSelectedresponsiveslideshow(grid, element, checked){
+                if(checked){
+                    selectedresponsiveslideshows.set(element.value, element.value);
+                }
+                else{
+                    selectedresponsiveslideshows.unset(element.value);
+                }
+                $('in_responsiveslideshowgroup_responsiveslideshows').value = selectedresponsiveslideshows.toQueryString();                
+                grid.reloadParams = {'selected_responsiveslideshows[]':selectedresponsiveslideshows.keys()};
+            }    
+            function selectedresponsiveslideshowRowClick(grid, event){
+                var trElement = Event.findElement(event, 'tr');
+                var isInput   = Event.element(event).tagName == 'INPUT';
+                if(trElement){
+                    var checkbox = Element.getElementsBySelector(trElement, 'input');
+                    if(checkbox[0]){
+                        var checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
+<?php echo $_gridJsObject ?>.setCheckboxChecked(checkbox[0], checked);
+                    }
+                }
+            }
+            var tabIndex = 1000;
+            function selectedresponsiveslideshowRowInit(grid, row){
+                var checkbox = $(row).getElementsByClassName('checkbox')[0];
+
+            }
+<?php echo $_gridJsObject ?>.rowClickCallback 		= selectedresponsiveslideshowRowClick;
+<?php echo $_gridJsObject ?>.initRowCallback 		= selectedresponsiveslideshowRowInit;
+<?php echo $_gridJsObject ?>.checkboxCheckCallback	= registerSelectedresponsiveslideshow;
+<?php echo $_gridJsObject ?>.rows.each(function(row){selectedresponsiveslideshowRowInit(<?php echo $_gridJsObject ?>, row)});
+
+<?php endif; ?>
+    }
+    load_responsiveslideshow_funcs();
+    //]]>
+</script>

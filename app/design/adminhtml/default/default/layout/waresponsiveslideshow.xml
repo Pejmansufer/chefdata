@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+	</default>
+    <responsiveslideshow_adminhtml_responsiveslideshow_index>
+		<reference name="head">	
+    		<action method="addJs"><script>weaveapps/wa.wa.slide.js</script></action>
+    	</reference>
+
+        <reference name="content">
+            <block type="responsiveslideshow/adminhtml_responsiveslideshow" name="responsiveslideshow" />
+        </reference>
+    </responsiveslideshow_adminhtml_responsiveslideshow_index>
+    
+    <responsiveslideshow_adminhtml_responsiveslideshowgroup_index>
+        <reference name="content">
+            <block type="responsiveslideshow/adminhtml_responsiveslideshowgroup" name="responsiveslideshowgroup" />
+        </reference>
+    </responsiveslideshow_adminhtml_responsiveslideshowgroup_index>
+
+    <responsiveslideshow_adminhtml_responsiveslideshow_edit>
+        <reference name="head"> 
+            <action method="addJs"><script>weaveapps/wa.wa.slide.js</script></action>
+            <action method="addJs"><script>weaveapps/spectrum/spectrum.js</script></action>
+            <action method="addCss"><stylesheet>weaveapps/css/spectrum.css</stylesheet></action>
+             <action method="addJs"><script>weaveapps/wa.text.js</script></action>
+    </reference>
+
+    </responsiveslideshow_adminhtml_responsiveslideshow_edit>
+
+    <responsiveslideshow_adminhtml_responsiveslideshowgroup_edit>
+        <reference name="head"> 
+            <action method="addJs"><script>weaveapps/wa.wa.slide.js</script></action>
+            <action method="addJs"><script>weaveapps/spectrum/spectrum.js</script></action>
+            <action method="addCss"><stylesheet>weaveapps/css/spectrum.css</stylesheet></action>
+            <action method="addJs"><script>weaveapps/wa.text.js</script></action>
+        </reference>
+    </responsiveslideshow_adminhtml_responsiveslideshowgroup_edit>
+</layout>

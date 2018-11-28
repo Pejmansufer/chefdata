@@ -1,0 +1,17 @@
+<ol class="attribute-box <?php echo $this->_filter->getAttributeModel()->getAttributeCode(); ?>-attr">
+<?php 
+    list($from, $to) = $this->_filter->getInputtedRange();
+    
+    $from = (float)$from;
+    $to = (float)$to;
+    
+    if ($from < 0.01) $from = $this->__('From');
+    if ($to < 0.01) $to = $this->__('To');
+?>
+	<li>
+		<input class="input-text" type="text" maxlength="15" size="6" id="attr-price-from" value="<?php echo $from; ?>" onclick="if(this.value==this.name) this.value='';"  name="<?php echo $this->__('From')?>"/>
+		<span class="attr-price-separator">-</span>
+		<input class="input-text" type="text" maxlength="15" size="6" id="attr-price-to" value="<?php echo $to; ?>" onclick="if(this.value==this.name) this.value='';" name="<?php echo $this->__('To')?>"/>
+		<button class="button" value="<?php echo $this->__('Go')?>" id="attr-price-submit"><span><?php echo $this->__('Go')?></span></button>
+	</li>
+</ol>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @category    Trmmarketing
+ * @package     Trmmarketing_PopupWidgets
+ * @copyright   Copyright (c) 2014 TRM Marketing LLC
+ * @license     http://www.trm-marketing.com/solutions/license/TRM-Marketing-Standard-License-Agreement.html
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <trmpopupconfig translate="title" module="promotionalpopup">
+                                        <title>Pop-up Configuration</title>
+                                        <sort_order>100</sort_order>
+                                    </trmpopupconfig>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                 </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="equity_facebookpixel/pixel"
+                   name="equity_facebookpixel_pixel"
+                   as="equity_facebookpixel.pixel"
+                   template="equity/facebookpixel/pixel.phtml">
+            </block>
+
+            <block type="equity_facebookpixel/addtocart"
+                   name="equity_facebookpixel_addtocart"
+                   as="equity_facebookpixel.addtocart"
+                   template="equity/facebookpixel/addtocart.phtml">
+            </block>
+        </reference>
+    </default>
+
+    <catalog_product_view>
+      <reference name="head">
+        <block type="equity_facebookpixel/viewcontent"
+          name="viewcontent"
+          as="equity_facebookpixel.viewcontent"
+          template="equity/facebookpixel/viewcontent.phtml">
+        </block>
+      </reference>
+    </catalog_product_view>
+
+    <catalogsearch_result_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/search"
+                   name="equity_facebookpixel_search"
+                   as="equity_facebookpixel.search"
+                   template="equity/facebookpixel/search.phtml">
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="head">
+            <block type="equity_facebookpixel/search"
+                   name="equity_facebookpixel_search"
+                   as="equity_facebookpixel.search"
+                   template="equity/facebookpixel/search.phtml">
+            </block>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <customer_account_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/completeregistration"
+                   name="equity_facebookpixel_completeregistration"
+                   as="equity_facebookpixel.completeregistration"
+                   template="equity/facebookpixel/completeregistration.phtml"/>
+        </reference>
+    </customer_account_index>
+
+    <wishlist_index_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/addtowishlist"
+                   name="equity_facebookpixel_addtowishlist"
+                   as="equity_facebookpixel.addtowishlist"
+                   template="equity/facebookpixel/addtowishlist.phtml"/>
+        </reference>
+    </wishlist_index_index>
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/addpaymentinfo"
+                   name="equity_facebookpixel_addpaymentinfo"
+                   as="equity_facebookpixel.addpaymentinfo"
+                   template="equity/facebookpixel/addpaymentinfo.phtml">
+            </block>
+        </reference>
+    </checkout_onepage_index>
+
+    <onestepcheckout_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/addpaymentinfo"
+                   name="equity_facebookpixel_addpaymentinfo"
+                   as="equity_facebookpixel.addpaymentinfo"
+                   template="equity/facebookpixel/addpaymentinfo.phtml">
+            </block>
+        </reference>
+    </onestepcheckout_index>
+
+    <firecheckout_index_index>
+        <reference name="before_body_end">
+            <block type="equity_facebookpixel/initiatecheckoutfire"
+                   name="equity_facebookpixel_initiatecheckoutfire"
+                   as="equity_facebookpixel.initiatecheckoutfire"
+                   template="equity/facebookpixel/initiatecheckoutfire.phtml">
+            </block>
+        </reference>
+    </firecheckout_index_index>
+
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.review.info.items.before">
+            <block type="equity_facebookpixel/initiatecheckout"
+                   name="equity_facebookpixel_initiatecheckout"
+                   as="equity_facebookpixel.initiatecheckout"
+                   template="equity/facebookpixel/initiatecheckout.phtml">
+            </block>
+        </reference>
+    </checkout_onepage_review>
+
+    <onestepcheckout_index_index>
+        <reference name="before_body_end">
+            <block type="equity_facebookpixel/initiatecheckoutosc"
+                   name="equity_facebookpixel_initiatecheckoutosc"
+                   as="equity_facebookpixel.initiatecheckoutosc"
+                   template="equity/facebookpixel/initiatecheckoutosc.phtml">
+            </block>
+        </reference>
+    </onestepcheckout_index_index>
+
+    <checkout_onepage_success>
+        <reference name="head">
+            <block type="equity_facebookpixel/purchase"
+                   name="equity_facebookpixel_purchase"
+                   as="equity_facebookpixel.purchase"
+                   template="equity/facebookpixel/purchase.phtml">
+            </block>
+        </reference>
+    </checkout_onepage_success>
+
+    <contacts_index_index>
+        <reference name="head">
+            <block type="equity_facebookpixel/lead"
+                   name="equity_facebookpixel_lead"
+                   as="equity_facebookpixel.lead"
+                   template="equity/facebookpixel/lead.phtml"/>
+        </reference>
+    </contacts_index_index>
+
+</layout>

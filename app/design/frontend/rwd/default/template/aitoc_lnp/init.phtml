@@ -1,0 +1,96 @@
+<?php
+/**
+ * True AJAX Navigation Filter
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Lnp
+ * @version      1.0.3
+ * @license:     5yEEIv2brioTzqR4NOEj8kLlnoHJGME9SM9DBHNkeS
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+if ($this->isAllowed()) : ?>
+<script type="text/javascript">
+// remove hrefs from default filters' links to prevent accidental page reload
+$$('#narrow-by-list dd a').each(function(elem){
+    elem.href='#';
+});
+
+var aitocLnp = null;
+Event.observe( window, 'load', function (){
+    aitocLnp = new Aitoc_Lnp_Core_App({
+        settings:{
+            protocol: <?php echo $this->getDataProtocol() ?>, // data protocol
+            displayNumbers: <?php echo Mage::helper('aitoc_lnp')->displayNumbers() ?>,
+            theme: '<?php echo Mage::helper('aitoc_lnp/theme')->getThemeName() ?>', // 'default' or 'ultimo' or 'rwd'
+            theme_options: '<?php echo Mage::helper('aitoc_lnp/theme')->getOptions(); ?>'.evalJSON(),
+            category_id: <?php echo Mage::helper('aitoc_lnp')->getCurrentCategory()->getId() ?>,
+            debug_enabled: <?php echo $this->isDebugEnabled() ? 'true' : 'false' ?>,
+            cookie: {
+                domain: '<?php echo Mage::app()->getCookie()->getDomain()?>',
+                path: '<?php echo Mage::app()->getCookie()->getPath()?>',
+                lifetime: '<?php echo Mage::app()->getCookie()->getLifetime()?>'
+            }
+        },
+        components: 'Aitoc_Lnp_List,Aitoc_Lnp_Layered'.split(','),
+        Data: {
+            fetchUrl: '<?php echo Mage::getUrl('aitoc_lnp/data/fetch'); ?>',
+            parseInto: {
+                form_key: '<?php echo Mage::getSingleton('core/session')->getFormKey() ?>',
+                uenc: '<?php echo Mage::helper('core/url')->getEncodedUrl() ?>'
+            }
+        },
+        List: {
+            grid_columns: <?php echo Mage::helper('aitoc_lnp/theme')->getGridColumnCount(); ?>,
+            grid_classes: '<?php echo Mage::helper('aitoc_lnp/theme')->getGridClasses(); ?>',
+            list_classes: '<?php echo Mage::helper('aitoc_lnp/theme')->getListClasses(); ?>',
+            text_no_products: '<?php echo $this->__('Products matching the criteria not found.') ?>',
+            Toolbar: {
+                tools: {
+                    Mode: {
+                        modes: <?php echo $this->getModesJson() ?>,
+                        mode: '<?php echo $this->getToolbarBlock()->getCurrentMode() ?>', //default mode
+                        text_grid: '<?php echo Mage::helper('catalog')->__('Grid') ?>', // translation
+                        text_list: '<?php echo Mage::helper('catalog')->__('List') ?>' // translation
+                    },
+                    Limiter: {
+                        limits: <?php echo $this->getLimitsJson() ?>,
+                        limit: <?php echo $this->getDefaultLimitsJson() ?>,
+                        text_all: '<?php echo Mage::helper('catalog')->__('All'); ?>' // translation
+                    },
+                    Sorter: {
+                        orders: <?php echo $this->getOrdersJson() ?>,
+                        order: '<?php echo $this->getToolbarBlock()->getCurrentOrder() ?>', // default sort order
+                        direction: '<?php echo $this->getToolbarBlock()->getCurrentDirection() ?>' // default order direction
+                    },
+                    Pager: {
+                        item_count: <?php echo (int)$this->getItemCount() ?>,
+                        
+                        frame: <?php echo (int)Mage::getStoreConfig('design/pagination/pagination_frame') ?>,
+                        jump : <?php echo (int)Mage::getStoreConfig('design/pagination/pagination_frame_skip') ?>,
+                        label_prev: '<?php echo Mage::helper('aitoc_lnp/theme')->getPrevLabel() ?>',
+                        label_next: '<?php echo Mage::helper('aitoc_lnp/theme')->getNextLabel() ?>',
+                        
+                        text_totals_small: '<?php echo Mage::helper('catalog')->__('%s Item(s)', '{{0}}')?>', //translation
+                        text_totals_full:  '<?php echo Mage::helper('catalog')->__('%s-%s of %s', '{{0}}', '{{1}}', '{{2}}')?>', //translation
+                        text_page:         '<?php echo Mage::helper('page')->__('Page:')?>', //translation
+                        text_next:         '<?php echo Mage::helper('page')->__('Next'); ?>',
+                        text_prev:         '<?php echo Mage::helper('page')->__('Previous'); ?>'
+                    },
+                    Direction: {
+                        text_asc : '<?php echo Mage::helper('catalog')->__('Set Ascending Direction') ?>',
+                        text_desc: '<?php echo Mage::helper('catalog')->__('Set Descending Direction') ?>'
+                    }
+                },
+                html: '<?php echo $this->getToolbarHtml() ?>'
+            }
+        },
+        Layered: {
+            currency_symbol: '<?php echo Mage::helper('aitoc_lnp')->getCurrencySymbol() ?>',
+            text_range: '<?php echo $this->__('Range')?>',
+            filters: <?php echo $this->getFiltersJson() ?>
+        }
+    });
+    aitocLnp.run();
+});
+</script>
+<?php endif; ?>

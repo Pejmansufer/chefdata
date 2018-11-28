@@ -1,0 +1,112 @@
+<?php
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     HxObcXe62uQsQGs98TzFPLxwiM3aCakojlW7nJdmvI
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+?>
+<div id="adj-nav-navigation">
+<?php if ($this->canShowBlock()): ?>
+    <input type="hidden" id="adjnav-attr-expand" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show More Attributes')) ?>"/>
+    <input type="hidden" id="adjnav-attr-collapse" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show Less Attributes')) ?>"/>
+    <input type="hidden" id="adjnav-attr-val-expand" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show More')) ?>"/>
+    <input type="hidden" id="adjnav-attr-val-collapse" value="<?php echo $this->htmlEscape(Mage::helper('adjnav')->__('Show Less')) ?>"/>
+
+    <?php $state = $this->getStateInfo() ?>
+    <?php echo $this->getStateHtml() ?>
+    <?php if ($this->canShowOptions()): ?>
+    <div class="block block-layered-nav adj-nav block-layered-nav--no-filters">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Shop by')?></span></strong>
+        </div>
+        <div class="block-content toggle-content">
+
+            <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
+                    <dl id="narrow-by-list">
+                        <?php if ($state[1] && $this->bNeedClearAll()): ?>
+                            <div class="actions adj-clear-all"><a onclick="return false;" class="adj-nav-clearall"
+                                                                  href="<?php echo $this->htmlEscape($this->getClearAllUrl()) ?>"><?php echo $this->__('Clear All') ?></a>
+                            </div>
+                        <?php endif ?>
+
+                        <?php $_filters = $this->getFilters() ?>
+                        <?php foreach ($_filters as $_filter): ?>
+                            <?php if ($_filter->getItemsCount()): ?>
+                                <dt class="adj-nav-dt <?php if ($_filter->getIsOther()) : ?>adjnav-attr-other<?php endif ?>">
+                                    <?php if ($clearUrl = $_filter->getClearUrl()): ?>
+                                        <a onclick="return false;" id="<?php echo $_filter->getVar() ?>-clear"
+                                           <?php if (!$this->getIsRemoveLinks()): ?>href="<?php echo $this->htmlEscape($clearUrl) ?>" <?php endif; ?>
+                                           class="btn-remove adj-nav-clear <?php if (Mage::getStoreConfig('design/adjnav/reload_categories') && 'cat' == $_filter->getVar()) {
+                                               echo ' adj-nav-cat-reload ';
+                                           } ?>"
+                                           title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->__('Remove This Item')?></a>
+                                    <?php endif ?>
+                                    <?php echo $this->__($_filter->getName()) ?>
+                                </dt>
+                                <dd <?php echo $this->getHeightStyle()?>
+                                    id="adj-nav-filter-<?php echo $_filter->getVar() ?>"
+                                    class="<?php if ($_filter->getIsOther()) : ?>adjnav-attr-other<?php endif ?>"><?php echo $_filter->getHtml() ?></dd>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
+                    <dl>
+                        <?php if ($this->isShowMoreAttributesButton()) : ?>
+                            <dd class="adj-nav-dt adjnav-attr-more-dd">
+                                <a href="javascript:void(0);"
+                                   class="adjnav-attr-more"><?php echo $this->__('Show More Attributes') ?></a>
+                            </dd>
+                        <?php endif ?>
+                    </dl>
+                    <script type="text/javascript">
+                        $.ready(function(){
+
+                            if(typeof AdjnavBlock == 'undefined')
+                            {
+                                document.observe("dom:loaded", function() {
+                                    decorateDataList('narrow-by-list');
+                                    nav_sidebar = new AdjnavBlock('narrow-by-list');
+                                    adjnavNavigation.addBlock(nav_sidebar);
+                                });
+                            }
+                            else
+                            {
+                                decorateDataList('narrow-by-list');
+                                nav_sidebar = new AdjnavBlock('narrow-by-list');
+                                adjnavNavigation.addBlock(nav_sidebar);
+                            }
+                        });
+
+                    </script>
+            <?php endif; ?>
+        </div>
+        <div class="adj-nav-progress" style="display:none"></div>
+    </div>
+
+    <script type="text/javascript">
+        $.ready(function(){
+
+            if(typeof AdjnavAttribute == 'undefined')
+            {
+                document.observe("dom:loaded", function() {
+                    featured_attributes = new AdjnavAttribute('#narrow-by-list dt.adjnav-attr-other', '#narrow-by-list dd.adjnav-attr-other');
+                    adjnavNavigation.clearObservers('#narrow-by-list a.attr-val-more');
+                    featured_values = new AdjnavAttributeValues('#narrow-by-list a.attr-val-more');
+                    adjnavNavigation.adjnavMenuEnquireRegister(true);
+
+                });
+            }
+            else
+            {
+                featured_attributes = new AdjnavAttribute('#narrow-by-list dt.adjnav-attr-other', '#narrow-by-list dd.adjnav-attr-other');
+                adjnavNavigation.clearObservers('#narrow-by-list a.attr-val-more');
+                featured_values = new AdjnavAttributeValues('#narrow-by-list a.attr-val-more');
+            }
+        });
+
+    </script>
+<?php endif; ?>
+</div>

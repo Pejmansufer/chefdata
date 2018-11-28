@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Add In Mage::
+ *
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the EULA at http://add-in-mage.com/support/presales/eula-community/
+ *
+ *
+ * PROPRIETARY DATA
+ * 
+ * This file contains trade secret data which is the property of Add In Mage:: Ltd. 
+ * Information and source code contained herein may not be used, copied, sold, distributed, 
+ * sub-licensed, rented, leased or disclosed in whole or in part to anyone except as permitted by written
+ * agreement signed by an officer of Add In Mage:: Ltd. 
+ * A separate installation package must be downloaded for each new Magento installation from Add In Mage web site.
+ * You may modify the source code of the software to get the functionality you need for your store. 
+ * You must retain, in the source code of any Derivative Works that You create, 
+ * all copyright, patent, or trademark notices from the source code of the Original Work.
+ * 
+ * 
+ * MAGENTO EDITION NOTICE
+ * 
+ * This software is designed for Magento Community edition.
+ * Add In Mage:: Ltd. does not guarantee correct work of this extension on any other Magento edition.
+ * Add In Mage:: Ltd. does not provide extension support in case of using a different Magento edition.
+ * 
+ * 
+ * @category    AddInMage
+ * @package     AddInMage_ToastNotifications
+ * @copyright   Copyright (c) 2012 Add In Mage:: Ltd. (http://www.add-in-mage.com)
+ * @license     http://add-in-mage.com/support/presales/eula-community/  End User License Agreement (EULA)
+ * @author      Add In Mage:: Team <team@add-in-mage.com>
+ */
+-->
+<config>
+  <modules>
+    <AddInMage_ToastNotifications>
+      <version>1.1.0</version>
+    </AddInMage_ToastNotifications>
+  </modules>
+  <default>
+    <addinmage_toastnotifications>
+      <general>
+        <use_in_frontend>0</use_in_frontend>
+        <use_in_adminhtml>0</use_in_adminhtml>
+      </general>
+      <frontend_settings>
+        <hiding_mode>auto</hiding_mode>
+        <delay>5</delay>
+        <appearance>0.3</appearance>
+        <disappearance>0.5</disappearance>
+        <delay_before>1.25</delay_before>
+        <opacity>0.9</opacity>
+        <position>top</position>
+      </frontend_settings>
+      <adminhtml_settings>
+        <hiding_mode>auto</hiding_mode>
+        <delay>5</delay>
+        <appearance>0.3</appearance>
+        <disappearance>0.5</disappearance>
+        <delay_before>1.25</delay_before>
+        <opacity>0.9</opacity>
+        <position>top</position>
+      </adminhtml_settings>
+    </addinmage_toastnotifications>
+  </default>
+  <global>
+    <blocks>
+      <core>
+        <rewrite>
+          <messages>AddInMage_ToastNotifications_Block_Messages</messages>
+        </rewrite>
+      </core>
+      <toastnotifications>
+        <class>AddInMage_ToastNotifications_Block</class>
+      </toastnotifications>
+    </blocks>
+    <models>
+      <toastnotifications>
+        <class>AddInMage_ToastNotifications_Model</class>
+        <resourceModel>toastnotifications_mysql4</resourceModel>
+      </toastnotifications>
+    </models>
+    <helpers>
+      <toastnotifications>
+        <class>AddInMage_ToastNotifications_Helper</class>
+      </toastnotifications>
+    </helpers>
+    <resources>
+      <toastnotifications_setup>
+        <setup>
+          <module>AddInMage_ToastNotifications</module>
+          <class>AddInMage_ToastNotifications_Model_Mysql4_Setup</class>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </toastnotifications_setup>
+    </resources>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <toastnotifications>
+          <file>addinmage/toastnotifications.xml</file>
+        </toastnotifications>
+      </updates>
+    </layout>
+    <translate>
+      <modules>
+        <toastnotifications>
+          <files>
+            <default>AddInMage_ToastNotifications.csv</default>
+          </files>
+        </toastnotifications>
+      </modules>
+    </translate>
+  </frontend>
+  <adminhtml>
+    <layout>
+      <updates>
+        <toastnotifications>
+          <file>addinmage/toastnotifications.xml</file>
+        </toastnotifications>
+      </updates>
+    </layout>
+    <translate>
+      <modules>
+        <toastnotifications>
+          <files>
+            <default>AddInMage_ToastNotifications.csv</default>
+          </files>
+        </toastnotifications>
+      </modules>
+    </translate>
+  </adminhtml>
+</config>

@@ -1,0 +1,571 @@
+<div class="financing-banner">
+	<h2 class="text-center">Chef's Deal Financing Request</h2>
+</div>
+
+<form id="financing-program-form" method="post" action="<?php echo $this->getUrl('financing-program/index/send')?>">
+<div class="fieldset">
+
+
+<div class="row">
+	<div class="col-md-6">
+
+	<h3><?php echo $this->__('Business Information')?></h3>
+
+		<div class="form-group field sales_contact row">
+			<div class="col-lg-4">
+				<label class="control-label" for="sales_contact">
+					<?php echo $this->__('Sales Contact')?> ::
+				</label>
+			</div>
+
+			<div class="col-lg-8">
+				<select class="select form-control" id="sales_contact" name="sales_contact">
+				
+					<option value="brandon@chefsdeal.com"><?php echo $this->__('Brandon Good')?></option>
+					<option value="marco@chefsdeal.com"><?php echo $this->__('Marco')?></option>
+					<option value="nekon@chefsdeal.com"><?php echo $this->__('Nekon Dake')?></option>
+					<option value="morgan@chefsdeal.com"><?php echo $this->__('Morgan Dake')?></option>
+					<option value=""><?php echo $this->__('Turk')?></option>
+			
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group field business_name row">
+			<div class="col-lg-4 required">
+				<label class="control-label" for="business_name"><?php echo $this->__('Business Name')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control input-text required-entry" id="business_name" name="business_name" type="text"/ required>
+			</div>
+		</div>
+
+		<div class="form-group field dba_name row">
+			<div class="col-lg-4">
+				<label class="control-label" for="dba_name"><?php echo $this->__('DBA Name')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control " id="dba_name" name="dba_name" type="text"/>
+			</div>
+		</div>
+
+		<div class="form-group field busines_type row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="busines_type">
+					<?php echo $this->__('Business Type')?> ::
+				</label>
+			</div>
+			<div class="col-lg-8">
+				<select class="select form-control input-text required-entry" id="busines_type" name="busines_type" required>
+					<option value=""><?php echo $this->__('--Please Select--')?></option>	
+					 <option value="Sole Proprietorship">Sole Proprietorship</option>
+					 <option value="Partnership">Partnership</option>
+					 <option value="LLC">LLC</option>
+					 <option value="Corporation">Corporation</option>
+					 <option value="Non-Profit">Non-Profit</option>
+					 <option value="Municipal">Municipal</option>
+					 <option value="Federal">Federal</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group field time_in_business row">
+			<div class="col-lg-4 required">
+				<label class="control-label" for="time_in_business"><?php echo $this->__('Time In Business')?> ::</label>
+			</div>
+			<div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 ">
+				<input class="form-control input-text required-entry" id="time_in_business" name="time_in_business" onkeypress='return isNumberKey(event)' type="text"/ required>
+			</div>
+
+			<div class="col-xs-4 col-sm-3 col-md-2">
+		        <label class="radio">
+		        	 <input name="business_time" type="radio" value="years"/ checked>
+		        	 <?php echo $this->__('Years')?>
+		        </label>
+	       </div>
+
+	       	<div class="col-xs-4 col-sm-3 col-md-2">
+		        <label class="radio">
+		        	 <input name="business_time" type="radio" value="months"/>
+		        	 <?php echo $this->__('Months')?>
+		        </label>
+	       </div>
+		</div>
+
+		<div class="form-group field busines_credit row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="busines_credit">
+					<?php echo $this->__('Busines Credit')?> ::
+				</label>
+			</div>
+			<div class="col-lg-8">
+				<select class="select form-control input-text required-entry" id="busines_credit" name="busines_credit" required>
+					<option value=""><?php echo $this->__('--Please Select--')?></option>		
+					<option value="Excellent">Excellent</option>
+					<option value="Fair">Fair</option>
+					<option value="Poor">Poor</option>
+					<option value="None">No Biz Credit Yet </option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group field business_address row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="business_address"><?php echo $this->__('Business Address')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control input-text required-entry" id="business_address" name="business_address" type="text"/ required>
+			</div>
+		</div>
+
+		<div class="form-group field city row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="city"><?php echo $this->__('City')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control input-text required-entry" id="city" name="city" type="text"/ required>
+			</div>
+		</div>
+
+		<div class="form-group field state row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="state">
+					<?php echo $this->__('State')?> ::
+				</label>
+			</div>
+			<div class="col-lg-8">
+				<select class="select form-control input-text required-entry" id="state" name="state" required>
+					<option value=""><?php echo $this->__('--Please Select--')?></option>
+		    
+			       <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+			     
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group field zip_code row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="zip_code"><?php echo $this->__('Zip Code')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control input-text required-entry " id="zip_code" name="zip_code" onkeypress='return isNumberKey(event)' type="text"/ required>
+			</div>
+		</div>
+
+		<div class="form-group field business_phone row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="business_phone"><?php echo $this->__('Business Phone')?> #</label>
+			</div>
+
+			<div class="col-lg-6 wrapper">
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="phone1" name="phone1"  maxlength="3" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="phone2" name="phone2"  maxlength="3" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="phone3" name="phone3"  maxlength="4" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group field fax row">
+			<div class="col-lg-4">
+				<label class="control-label" for="fax"><?php echo $this->__('Fax')?> #</label>
+			</div>
+
+			<div class="col-lg-6 wrapper">
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="fax1" name="fax1" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="fax2" name="fax2" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="fax3" name="fax3" maxlength="4" onkeypress='return isNumberKey(event)' type="text"/>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="form-group field federal_tax_id row">
+			<div class="col-lg-4">
+				<label class="control-label" for="federal_tax_id"><?php echo $this->__('Federal Tax ID')?> #</label>
+			</div>
+			<div class="col-xs-10 col-sm-9 col-md-6 ">
+				<input class="form-control " id="federal_tax_id" name="federal_tax_id" onkeypress='return isNumberKey(event)' type="text"/>
+			</div>
+
+			<div class="col-xs-2 col-sm-3 col-md-2 ">
+				<label class="control-label text-left"><?php echo $this->__('(EIN)')?></label>
+			</div>
+		</div>
+
+		<div class="form-group field website row">
+			<div class="col-lg-4">
+				<label class="control-label" for="website"><?php echo $this->__('Website')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control " id="website" name="website" type="text"/>
+			</div>
+		</div>
+
+
+		<div class="form-group field comments row">
+			<div class="col-lg-4">
+				<label class="control-label" for="comments"><?php echo $this->__('Comments')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				 <textarea class="form-control" cols="40" id="comments" name="comments" rows="5"></textarea>
+			</div>
+		</div>
+
+
+
+
+
+
+	</div>
+
+	<div class="col-md-6">
+
+		<h3><?php echo $this->__('Equipment Information')?></h3>
+
+		<div class="form-group field equipment_cost row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="equipment_cost"><?php echo $this->__('Equipment Cost')?> $</label>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-4 ">
+				<input class="form-control input-text required-entry" id="equipment_cost" name="equipment_cost" type="text"/ required>
+			</div>
+
+			<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+		        <label class="radio">
+		        	 <input name="equipment_state" id="new" type="radio" value="new"/ checked>
+		        	 <?php echo $this->__('New')?>
+		        </label>
+	       </div>
+
+	       	<div class="col-xs-6 col-sm-2 col-md-3 col-lg-2">
+		        <label class="radio">
+		        	 <input name="equipment_state" id="used" type="radio" value="used"/>
+		        	 <?php echo $this->__('Used')?>
+		        </label>
+	       </div>
+		</div>
+
+		<div class="form-group field same_as_business row">
+			<div class="col-md-6 col-lg-4">
+				<label class="control-label" for="same_as_business"><?php echo $this->__('Ship To Address')?> ::</label>
+			</div>
+
+			<div class="col-md-6 col-lg-8">
+		        <label class="radio">
+		        	 <input name="ship_address_option" id="same_as_business" type="radio" value="same_as_business"/ checked>
+		        	 <?php echo $this->__('Same as Business Address')?>
+		        </label>
+	       	
+		        <label class="radio">
+		        	 <input name="ship_address_option" id="other_business" type="radio" value="other_business"/>
+		        	 <?php echo $this->__('Other Address')?>
+		        </label>
+	       </div>
+
+	       <div id="ship_to_other_address_block" class="hidden">
+	       			<div class="form-group field ship_to_other_address row">
+						<div class="col-lg-4">
+							<label class="control-label required" for="ship_to_other_address"><?php echo $this->__('Ship To Other Address')?> ::</label>
+						</div>
+						<div class="col-lg-8">
+							<input class="form-control input-text required-entry" id="ship_to_other_address" name="ship_to_other_address" type="text"/>
+						</div>
+
+					</div>
+	       			<div class="form-group field city_state_zip row">
+						<div class="col-lg-4">
+							<label class="control-label required" for="city_state_zip"><?php echo $this->__('City, State, Zip')?> #</label>
+						</div>
+
+						<div class="col-lg-8 wrapper">
+							<div class="col-sm-3 p-3">
+								<input class="form-control input-text required-entry" id="city3" name="city3" type="text"/ >
+							</div>
+							<div class="col-sm-6 p-3">
+								<select class="select form-control input-text required-entry" id="state3" name="state3">
+									<option value=""><?php echo $this->__('--Please Select--')?></option>
+									
+								   <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>     
+								</select>
+							</div>
+							<div class="col-sm-3 p-3">
+								<input class="form-control input-text required-entry" id="zip3" name="zip3" onkeypress='return isNumberKey(event)' type="text"/>
+							</div>	
+
+						</div>
+
+					</div>
+	       </div>
+		</div>
+
+		<div class="form-group field same_as_ship row">
+			<div class="col-md-6 col-lg-4">
+				<label class="control-label" for="same_as_ship"><?php echo $this->__('Equipment Location')?> ::</label>
+			</div>
+
+			<div class="col-md-6 col-lg-8">
+		        <label class="radio">
+		        	 <input name="location_option" id="same_as_ship" type="radio" value="same_as_ship"/ checked>
+		        	 <?php echo $this->__('Same as Ship To Address')?>
+		        </label>
+	       	
+		        <label class="radio">
+		        	 <input name="location_option" id="other_ship" type="radio" value="other_ship"/>
+		        	 <?php echo $this->__('Other Address')?>
+		        </label>
+	       </div>
+
+	       	       <div id="other_location_address_block" class="hidden">
+	       			<div class="form-group field other_location_address row">
+						<div class="col-lg-4">
+							<label class="control-label required" for="other_location_address"><?php echo $this->__('Other Address')?> ::</label>
+						</div>
+						<div class="col-lg-8">
+							<input class="form-control input-text required-entry" id="other_location_address" name="other_location_address" type="text"/>
+						</div>
+
+					</div>
+	       			<div class="form-group field city_state_zip row">
+						<div class="col-lg-4">
+							<label class="control-label required" for="city_state_zip"><?php echo $this->__('City, State, Zip')?> #</label>
+						</div>
+
+						<div class="col-lg-8 wrapper">
+							<div class="col-sm-3 p-3">
+								<input class="form-control input-text required-entry" id="city4" name="city4" type="text"/>
+							</div>
+							<div class="col-sm-6 p-3">
+								<select class="select form-control input-text required-entry" id="state4" name="state4">
+									<option value=""><?php echo $this->__('--Please Select--')?></option>
+									
+								   <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>     
+								</select>
+							</div>
+							<div class="col-sm-3 p-3">
+								<input class="form-control input-text required-entry" id="zip4" name="zip4" onkeypress='return isNumberKey(event)' type="text"/>
+							</div>	
+
+						</div>
+
+					</div>
+	       </div>
+		</div>
+
+		<div class="form-group field equipment_desc row">
+				<label class="control-label text-left required" for="equipment_desc"><?php echo $this->__('Equipment Description')?> ::</label>
+				 <textarea required class="form-control" cols="40" id="equipment_desc" name="equipment_desc" rows="5"></textarea>
+		</div>
+
+		<h3><?php echo $this->__('Owner 1 Information')?></h3>
+		<div class="row2">
+			<div class="col-md-6 no-padding">
+				<div class="form-group field first_name row">
+					<div class="col-lg-4 ">
+						<label class="control-label required" for="first_name"><?php echo $this->__('First Name')?> ::</label>
+					</div>
+					<div class="col-lg-8 ">
+						<input class="form-control input-text required-entry" id="first_name" name="first_name" type="text"/ required>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 no-padding">
+				<div class="form-group field last_name row">
+					<div class="col-lg-4">
+						<label class="control-label required" for="last_name"><?php echo $this->__('Last Name')?> ::</label>
+					</div>
+					<div class="col-lg-8 ">
+						<input class="form-control input-text required-entry" id="last_name" name="last_name" type="text"/ required>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 no-padding">
+				<div class="form-group field title row">
+					<div class="col-lg-4">
+						<label class="control-label" for="title"><?php echo $this->__('Title')?> ::</label>
+					</div>
+					<div class="col-lg-8">
+						<input class="form-control " id="title" name="title" type="text"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 no-padding">
+				<div class="form-group field owner_ship row">
+					<div class="col-lg-4">
+						<label class="control-label required" for="owner_ship">
+							<?php echo $this->__('Owner Ship')?> ::
+						</label>
+					</div>
+					<div class="col-lg-8">
+						<select class="select form-control input-text required-entry" id="owner_ship" name="owner_ship" required>
+							<option value=""><?php echo $this->__('--Please Select--')?></option>
+							<option value="100">100 %</option> <option value="99">99 %</option> <option value="98">98 %</option> <option value="97">97 %</option> <option value="96">96 %</option> <option value="95">95 %</option> <option value="94">94 %</option> <option value="93">93 %</option> <option value="92">92 %</option> <option value="91">91 %</option> <option value="90">90 %</option> <option value="89">89 %</option> <option value="88">88 %</option> <option value="87">87 %</option> <option value="86">86 %</option> <option value="85">85 %</option> <option value="84">84 %</option> <option value="83">83 %</option> <option value="82">82 %</option> <option value="81">81 %</option> <option value="80">80 %</option> <option value="79">79 %</option> <option value="78">78 %</option> <option value="77">77 %</option> <option value="76">76 %</option> <option value="75">75 %</option> <option value="74">74 %</option> <option value="73">73 %</option> <option value="72">72 %</option> <option value="71">71 %</option> <option value="70">70 %</option> <option value="69">69 %</option> <option value="68">68 %</option> <option value="67">67 %</option> <option value="66">66 %</option> <option value="65">65 %</option> <option value="64">64 %</option> <option value="63">63 %</option> <option value="62">62 %</option> <option value="61">61 %</option> <option value="60">60 %</option> <option value="59">59 %</option> <option value="58">58 %</option> <option value="57">57 %</option> <option value="56">56 %</option> <option value="55">55 %</option> <option value="54">54 %</option> <option value="53">53 %</option> <option value="52">52 %</option> <option value="51">51 %</option> <option value="50">50 %</option> <option value="49">49 %</option> <option value="48">48 %</option> <option value="47">47 %</option> <option value="46">46 %</option> <option value="45">45 %</option> <option value="44">44 %</option> <option value="43">43 %</option> <option value="42">42 %</option> <option value="41">41 %</option> <option value="40">40 %</option> <option value="39">39 %</option> <option value="38">38 %</option> <option value="37">37 %</option> <option value="36">36 %</option> <option value="35">35 %</option> <option value="34">34 %</option> <option value="33">33 %</option> <option value="32">32 %</option> <option value="31">31 %</option> <option value="30">30 %</option> <option value="29">29 %</option> <option value="28">28 %</option> <option value="27">27 %</option> <option value="26">26 %</option> <option value="25">25 %</option> <option value="24">24 %</option> <option value="23">23 %</option> <option value="22">22 %</option> <option value="21">21 %</option> <option value="20">20 %</option> <option value="19">19 %</option> <option value="18">18 %</option> <option value="17">17 %</option> <option value="16">16 %</option> <option value="15">15 %</option> <option value="14">14 %</option> <option value="13">13 %</option> <option value="12">12 %</option> <option value="11">11 %</option> <option value="10">10 %</option> <option value="9">9 %</option> <option value="8">8 %</option> <option value="7">7 %</option> <option value="6">6 %</option> <option value="5">5 %</option> <option value="4">4 %</option> <option value="3">3 %</option> <option value="2">2 %</option> <option value="1">1 %</option> <option value="0">0 %</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		
+
+		<div class="form-group field social_security row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="social_security"><?php echo $this->__('Social Security')?> #</label>
+			</div>
+
+			<div class="col-lg-6 wrapper">
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="social1" name="social1" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="social2" name="social2" maxlength="2" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="social3" name="social3" maxlength="4" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group field address row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="address"><?php echo $this->__('Address')?> ::</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control input-text required-entry" id="address" name="address" type="text"/ required>
+			</div>
+
+		</div>
+
+		<div class="form-group field city_state_zip row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="city_state_zip"><?php echo $this->__('City, State, Zip')?> #</label>
+			</div>
+
+			<div class="col-lg-8 wrapper">
+				<div class="col-sm-3 p-3">
+					<input class="form-control input-text required-entry" id="city2" name="city2" type="text"/ required>
+				</div>
+				<div class="col-sm-6 p-3">
+					<select class="select form-control input-text required-entry" id="state2" name="state2" required>
+						<option value=""><?php echo $this->__('--Please Select--')?></option>
+						
+					   <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option>     
+					</select>
+				</div>
+				<div class="col-sm-3 p-3">
+					<input class="form-control input-text required-entry" id="zip2" name="zip2" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>	
+
+			</div>
+
+		</div>
+
+		<div class="form-group field home_phone row">
+			<div class="col-lg-4">
+				<label class="control-label required" for="home_phone"><?php echo $this->__('Home Phone')?> #</label>
+			</div>
+
+			<div class="col-lg-6 wrapper">
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="home_phone1" name="home_phone1" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="home_phone2" name="home_phone2" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control input-text required-entry" id="home_phone3" name="home_phone3" maxlength="4" onkeypress='return isNumberKey(event)' type="text"/ required>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group field mobile_phone row">
+			<div class="col-lg-4">
+				<label class="control-label" for="mobile_phone"><?php echo $this->__('Mobile Phone')?> #</label>
+			</div>
+			<div class="col-lg-6 wrapper">
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="mobile_phone1" name="mobile_phone1" maxlength="3"onkeypress='return isNumberKey(event)'  type="text"/>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="mobile_phone2" name="mobile_phone2" maxlength="3" onkeypress='return isNumberKey(event)' type="text"/>
+				</div>
+				<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 p-3">
+					<input class="form-control " id="mobile_phone3" name="mobile_phone3" maxlength="4" onkeypress='return isNumberKey(event)' type="text"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group field email row">
+			<div class="col-lg-4">
+				<label class="control-label" for="email"><?php echo $this->__('E-Mail')?> #</label>
+			</div>
+			<div class="col-lg-8">
+				<input class="form-control " id="email" name="email" type="email"/>
+			</div>			
+		</div>
+
+	</div>	
+	
+        
+
+		       <!--Button & Link-->
+		<div class="buttons-set">
+		<p class="required">* <?php echo $this->__('Required Fields')?></p>
+		<p class="back-link"><a class="back-link" href="<?php echo $this->getBaseUrl();?>"><mdall>&laquo;</mdall>Back</a></p>
+		<button class="button btn btn-success" title="Submit" type="submit"><span><span><?php echo $this->__('Submit')?></span></span></button>
+		</div>
+
+
+
+</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+</form>
+<script type="text/javascript">
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+jQuery(document).ready(function(){
+	
+	jQuery("input[name='ship_address_option']").change(function(){
+		if (this.value != 'same_as_business') {
+            jQuery('#ship_to_other_address_block').removeClass('hidden');
+        }
+        else {
+            jQuery('#ship_to_other_address_block').addClass('hidden');
+        }
+	});	
+	
+	jQuery("input[name='location_option']").change(function(){
+		if (this.value != 'same_as_ship') {
+            jQuery('#other_location_address_block').removeClass('hidden');
+        }
+        else {
+            jQuery('#other_location_address_block').addClass('hidden');
+        }
+	});	
+
+});
+
+</script>

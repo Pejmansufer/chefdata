@@ -1,0 +1,11 @@
+<?php $product = $this->_getProduct() ?>
+<script>
+fbq('track', 'ViewContent'<?php if($this->_trackDetails()): ?>, {
+	content_name: '<?php echo addcslashes($this->_getProductName($product),"'") ?>',
+	content_category: '<?php echo $this->_getCategoryPath($product) ?>',
+	content_ids: [<?php echo $this->_getProductTrackID($product) ?>],
+	content_type: 'product',
+	value: <?php echo $this->_getProductPrice($product) ?>,
+	currency: '<?php echo $this->getStoreCurrency($product) ?>'
+}<?php endif ?>);
+</script>

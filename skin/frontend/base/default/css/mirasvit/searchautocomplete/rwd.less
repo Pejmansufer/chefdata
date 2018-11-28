@@ -1,0 +1,44 @@
+@import "default.less";
+
+.searchautocomplete {
+    .nav-search-in {
+        top: 0px;
+
+        .category-fake {
+            padding-top: 7px;
+        }
+
+        .nav-down-arrow {
+            top: 19px;
+        }
+
+        .category {
+            top: 0px;
+            left: 0px;
+            height: 40px;
+        }
+    }
+    .searchautocomplete-placeholder {
+        top: 7px !important;
+        box-shadow: 0 3px 4px rgba(0,0,0,0.1);
+        ul {
+            li {
+                border: 1px solid #fff;
+                
+                div.highlight {
+                    color: #666;
+                }
+
+                &:last-child {
+                    border: 1px solid #fff;
+                }
+
+                &.active {
+                    background: transparent;
+                    box-shadow: none;
+                    border: 1px solid #3399cc !important;
+                }
+            }
+        }
+    }
+}

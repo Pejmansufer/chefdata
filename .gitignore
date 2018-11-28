@@ -37,8 +37,15 @@
 /var/package/*
 !/var/package/*.xml
 
+/ES
+/pdf
+
 .ftpquota
 /backup/*
 error_log
 sitemap.xml
 robots.txt
+/FME_quickrfq
+/_downloader_xsd
+/certs
+/ebay

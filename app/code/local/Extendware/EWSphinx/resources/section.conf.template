@@ -1,0 +1,34 @@
+### SECTION {{var section}}_{{var store_id}}
+
+source source_{{var section}}_{{var store_id}} {
+	type = xmlpipe
+	xmlpipe_command = {{var source_xml_pipe}}
+}
+
+index source_{{var section}}_{{var store_id}} {
+	source = source_{{var section}}_{{var store_id}}
+	path = {{var index_path}}/source_{{var section}}_{{var store_id}}
+	docinfo = extern
+	mlock = 0
+	morphology = {{var morphology}}
+	min_word_len = {{var min_word_length}}
+	charset_type = utf-8
+	charset_table = 0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F
+	min_infix_len = 1
+	enable_star = 1
+	
+	stopwords = {{var sphinx_path}}/stopwords_{{var store_id}}.txt
+	wordforms = {{var sphinx_path}}/wordforms_{{var store_id}}.txt
+}
+
+source delta_{{var section}}_{{var store_id}} {
+	type = xmlpipe
+	xmlpipe_command = {{var delta_xml_pipe}}
+}
+
+
+index delta_{{var section}}_{{var store_id}} : source_{{var section}}_{{var store_id}} {
+	source = delta_{{var section}}_{{var store_id}}
+	path = {{var index_path}}/delta_{{var section}}_{{var store_id}}
+}
+

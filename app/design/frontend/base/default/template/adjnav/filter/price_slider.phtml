@@ -1,0 +1,46 @@
+<?php
+/**
+ * Layered Navigation Pro
+ *
+ * @category:    AdjustWare
+ * @package:     AdjustWare_Nav
+ * @version      2.5.11
+ * @license:     HxObcXe62uQsQGs98TzFPLxwiM3aCakojlW7nJdmvI
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+$data = $this->getPriceSliderData() ?>
+<ol>
+    <li>
+<?php if ($data['to'] != $data['from']) :?>
+<div id="adj-nav-price-slider<?php echo $this->_filter->getRequestVar()?>" class="adj-nav-slider"  style="width:<?php echo $data['width']; ?>px;">
+    <div class="handle selected" style="left:<?php echo $data['firstOffset'] ?>px"></div>
+    <div class="handle" style="left:<?php echo $data['secondOffset'] ?>px"></div>
+  </div>
+<?php endif;?>
+
+<?php if ($data['to'] != $data['from']) :?>
+<?php echo $this->__('Range:')?>
+<?php echo $this->getSymbol()?><span id="adj-nav-range-from<?php echo $this->_filter->getRequestVar()?>"><?php echo $data['from'] ?></span> - <?php echo $this->getSymbol()?><span id="adj-nav-range-to<?php echo $this->_filter->getRequestVar()?>"><?php echo $data['to'] ?></span>
+<script type="text/javascript">
+    if(typeof AdjnavPrice == 'undefined')
+    {
+        document.observe("dom:loaded", function() {
+            slider = new AdjnavPrice();
+            adj_slider = slider.createSlider(<?php echo $data['width'].', '.$data['firstOffset'].', '.$data['secondOffset'].', '.$data['min'].', '.$data['max'].',"'.$this->_filter->getRequestVar().'"'?>);
+        });
+    }
+    else
+    {
+        slider = new AdjnavPrice();
+        adj_slider = slider.createSlider(<?php echo $data['width'].', '.$data['firstOffset'].', '.$data['secondOffset'].', '.$data['min'].', '.$data['max'].',"'.$this->_filter->getRequestVar().'"'?>);
+    }
+</script>
+
+<?php else:?>
+
+<?php echo $this->__('Value:')?>
+<?php echo $this->getSymbol()?><span id="adj-nav-range-from<?php echo $this->_filter->getRequestVar()?>"><?php echo $data['from'] ?></span>
+
+<?php endif;?>
+    </li>
+</ol>

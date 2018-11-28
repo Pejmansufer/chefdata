@@ -1,0 +1,146 @@
+"%1$s incl tax.","%1$s incl tax."
+"%d Review(s)","%d Review(s)"
+"%s is available for purchase in increments of %s","%s is available for purchase in increments of %s"
+"(Shift-)Click or drag to change value","(Shift-)Click or drag to change value"
+"* Required Fields","* Required Fields"
+"- Click on any of the time parts to increase it","- Click on any of the time parts to increase it"
+"- Hold mouse button on any of the above buttons for faster selection.","- Hold mouse button on any of the above buttons for faster selection."
+"- or click and drag for faster selection.","- or click and drag for faster selection."
+"- or Shift-click to decrease it","- or Shift-click to decrease it"
+"- Use the %s buttons to select month","- Use the %s buttons to select month"
+"- Use the %s, %s buttons to select year","- Use the %s, %s buttons to select year"
+"A prototype CSS selector that finds the product block in your catalog listings","A prototype CSS selector that finds the product block in your catalog listings"
+"A prototype CSS selector that finds the product image within the product product block","A prototype CSS selector that finds the product image within the product product block"
+"About the calendar","About the calendar"
+"Add to Cart","Add to Cart"
+"Add to Compare","Add to Compare"
+"Add to Wishlist","Add to Wishlist"
+"Add Your Review","Add Your Review"
+"Additional Information","Additional Information"
+"Alert Urls","Alert Urls"
+"Allowed file extensions to upload","Allowed file extensions to upload"
+and,and
+Appearance,Appearance
+"As low as","As low as"
+"As low as:","As low as:"
+Availability:,Availability:
+"Be the first to review this product","Be the first to review this product"
+Behavior,Behavior
+Bottom,Bottom
+"Bottom Block Options Wrapper","Bottom Block Options Wrapper"
+"Bundle Support","Bundle Support"
+"Buy %1$s","Buy %1$s"
+"Buy %1$s for","Buy %1$s for"
+"Buy %1$s for %2$s","Buy %1$s for %2$s"
+"Buy %1$s for %2$s (%3$s incl. tax) each","Buy %1$s for %2$s (%3$s incl. tax) each"
+"Buy %1$s for %2$s each","Buy %1$s for %2$s each"
+"Buy %1$s with %2$s discount each","Buy %1$s with %2$s discount each"
+"Catalog Product View (Any)","Catalog Product View (Any)"
+"Catalog Product View (Bundle)","Catalog Product View (Bundle)"
+"Catalog Product View (Configurable)","Catalog Product View (Configurable)"
+"Catalog Product View (Grouped)","Catalog Product View (Grouped)"
+"Catalog Product View (Simple)","Catalog Product View (Simple)"
+"Catalog Product View (Virtual)","Catalog Product View (Virtual)"
+"Category Product Image Selector","Category Product Image Selector"
+"Category Product Selector","Category Product Selector"
+Change,Change
+"Choose a selection...","Choose a selection..."
+"Choose an Option...","Choose an Option..."
+"Click for price","Click for price"
+Close,Close
+Configuration,Configuration
+"Continue Shopping","Continue Shopping"
+"Date selection:","Date selection:"
+"Default (compact)","Default (compact)"
+"Default (detailed)","Default (detailed)"
+"Default theme attempts to mimic the appearance on a default magento theme. Look through theme will attempt to use your customized theme files. If you are using the default theme, then they look the same.","Default theme attempts to mimic the appearance on a default magento theme. Look through theme will attempt to use your customized theme files. If you are using the default theme, then they look the same."
+Delete,Delete
+Details,Details
+Developer,Developer
+"DHTML Date/Time Selector","DHTML Date/Time Selector"
+"Display %s first","Display %s first"
+"Distributed under GNU LGPL. See %s for details.","Distributed under GNU LGPL. See %s for details."
+"Double click on above image to view full picture","Double click on above image to view full picture"
+"Drag to move","Drag to move"
+each,each
+"Email to a Friend","Email to a Friend"
+"Enable or disable support for bundled products","Enable or disable support for bundled products"
+"Enable or disable. Automatically disabled on unsupported browsers","Enable or disable. Automatically disabled on unsupported browsers"
+"Enable or disable. Close when clicking off of the quick view dialog","Enable or disable. Close when clicking off of the quick view dialog"
+"Error encountered","Error encountered"
+"Excl. Tax:","Excl. Tax:"
+Extendware,Extendware
+"Field is not complete","Field is not complete"
+"For latest version visit: %s","For latest version visit: %s"
+From,From
+General,General
+"Go Today","Go Today"
+"If products have a custom layout, then this will load it if enabled. This can cause issues depending on the product layouts.","If products have a custom layout, then this will load it if enabled. This can cause issues depending on the product layouts."
+"If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen.","If you put a very lage value (e.g., 99999), then the modal box will be center. You can put 0 and the modal box will come from the top of the screen."
+"In stock","In stock"
+"Incl. Tax","Incl. Tax"
+"Incl. Tax:","Incl. Tax:"
+"Info Column Options Wrapper","Info Column Options Wrapper"
+"Load Product Layouts","Load Product Layouts"
+"Loading Transitions","Loading Transitions"
+"Look Through (compact)","Look Through (compact)"
+"Look Through (detailed)","Look Through (detailed)"
+Main,Main
+"Max Top (px)","Max Top (px)"
+"Maximum image height","Maximum image height"
+"Maximum image width","Maximum image width"
+"Maximum number of characters:","Maximum number of characters:"
+Middle,Middle
+"More Views","More Views"
+"Next month (hold for menu)","Next month (hold for menu)"
+"Next year (hold for menu)","Next year (hold for menu)"
+"No options of this product are available.","No options of this product are available."
+None,None
+"Old Price:","Old Price:"
+"Only %s left","Only %s left"
+OR,OR
+"Out of stock","Out of stock"
+"Overlay Close","Overlay Close"
+"Overlay Position","Overlay Position"
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+"Please refresh the page and try again.","Please refresh the page and try again."
+"Position of overlay over product image","Position of overlay over product image"
+"Prev. month (hold for menu)","Prev. month (hold for menu)"
+"Prev. year (hold for menu)","Prev. year (hold for menu)"
+Price,Price
+"Price as configured","Price as configured"
+"Product Name","Product Name"
+"Product Quick View","Product Quick View"
+"Product View Extra Hint","Product View Extra Hint"
+px.,px.
+Qty,Qty
+Qty:,Qty:
+"Quick Overview","Quick Overview"
+"Quick View","Quick View"
+"Quick view","Quick view"
+"Quick view is not possible for this product. Please visit product page.","Quick view is not possible for this product. Please visit product page."
+"Quickly enable or disable quick view","Quickly enable or disable quick view"
+"Regular Price:","Regular Price:"
+save,save
+"Select date","Select date"
+Selectors,Selectors
+Settings,Settings
+"Special Price:","Special Price:"
+"Starting at:","Starting at:"
+Status,Status
+"The advantage of disabling this if you do not need bundle support is that the bundle related javascript will not have to load on your non-product pages.","The advantage of disabling this if you do not need bundle support is that the bundle related javascript will not have to load on your non-product pages."
+"The maximum pixels from the top of the screen that the modal box will appear.","The maximum pixels from the top of the screen that the modal box will appear."
+Theme,Theme
+"This is a required option","This is a required option"
+"Time selection:","Time selection:"
+Time:,Time:
+To,To
+Top,Top
+"Total incl. Tax: %1$s","Total incl. Tax: %1$s"
+"Visit Product Page","Visit Product Page"
+"What's this?","What's this?"
+Width,Width
+"Width in pixels of the dialog box","Width in pixels of the dialog box"
+"You also have complete control of the quick view appearance by editing the layout / template files in <i>app/design/frontend/base/default/layout/extendware/ewquickview.xml</i> and <i>app/design/frontend/base/default/template/extendware/ewquickview</i>.","You also have complete control of the quick view appearance by editing the layout / template files in <i>app/design/frontend/base/default/layout/extendware/ewquickview.xml</i> and <i>app/design/frontend/base/default/template/extendware/ewquickview</i>."
+"Zoom In","Zoom In"
+"Zoom Out","Zoom Out"

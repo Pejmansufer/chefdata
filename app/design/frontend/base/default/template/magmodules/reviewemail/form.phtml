@@ -1,0 +1,121 @@
+<?php
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Reviewemail
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2015 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+ $data = Mage::getSingleton('customer/session')->getFormData();
+ $email_id = Mage::getSingleton('core/session')->getEmailId();
+ $order_id = Mage::getSingleton('core/session')->getOrderId();
+ $increment_id = Mage::getSingleton('core/session')->getIncrementId();
+ 
+?> 
+<?php if($_order = $this->getOrder()) { ?>
+<div class="reviewemail-submit">
+	<form action="<?php echo (Mage::app()->getStore()->isCurrentlySecure()) ? $this->getUrl('*/*/post', array('_secure'=>true)) : $this->getUrl('*/*/post');  ?>" method="post" id="review-form" enctype="multipart/form-data" >	
+
+		<div class="page-title">
+			<h1><?php echo $this->__('Hi') ?> <?php echo $_order->getCustomerFirstname(); ?>,</h1>
+		</div>			
+		
+		<?php if(Mage::getStoreConfig('reviewemail/frontend/welcome')) { ?>
+			<p class="reviewemail-welcome"><?php echo str_replace("{{orderid}}", $increment_id, Mage::getStoreConfig('reviewemail/frontend/welcome')); ?></p>
+		<?php } ?>
+		<?php if(Mage::getStoreConfig('reviewemail/frontend/coupon')) { ?>
+			<p class="reviewemail-coupon"><?php echo Mage::getStoreConfig('reviewemail/frontend/coupon'); ?></p>
+		<?php } ?>
+		
+		<div class="review-list">	
+			<h3><?php echo $this->__('Personal Information') ?></h3>
+			<ul class="summary">
+				<li>
+					<div class="input-box">
+						<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo (isset($data['nickname']) ? $data['nickname'] :  $this->htmlEscape($_order->getCustomerFirstname())) ?>" placeholder="<?php echo $this->__('Nickname') ?>" />
+					</div>
+				</li>		
+				<li>
+					<div class="input-box">
+						<div data-tip="Not visible for customers">
+							<input type="text" data-tip="This is the text of the tooltip"   name="contact" id="contact_field" class="input-text required-entry"  value="<?php echo (isset($data['contact']) ? $data['contact'] : $this->htmlEscape($_order->getCustomerEmail())) ?>" placeholder="<?php echo $this->__('Email') ?>" />					
+						</div>
+					</div>
+				</li>		
+			</ul>
+		</div>		
+		
+		<?php if(Mage::getStoreConfig('reviewemail/shopreview/enabled') && Mage::helper('core')->isModuleEnabled('Magmodules_Shopreview')) { ?>
+			<?php echo $this->getChildHtml('shopreview') ?>
+		<?php } ?>	
+		
+		<div class="review-list">
+			<h3><?php echo $this->__('Write a review about products purchased') ?></h3>
+			<ul class="summary">
+				<li>
+					<div class="input-box">		
+						<?php foreach($this->getAllReviewProducts($_order) as $_item) { ?>
+							<?php if($this->getDefaultCheck()) { ?>
+								<input type="checkbox" name="check[<?php echo $_item->getId(); ?>]" onclick="toggleReview('<?php echo $_item->getId(); ?>');" checked> &nbsp;<?php echo trim($_item->getName()); ?><br />
+							<?php } else { ?>
+								<input type="checkbox" name="check[<?php echo $_item->getId(); ?>]" onclick="toggleReviewOnly('<?php echo $_item->getId(); ?>');"> &nbsp;<?php echo trim($_item->getName()); ?><br />							
+							<?php } ?>	
+						<?php } ?>
+					</div>
+				</li>		
+			</ul>
+		</div>		
+	
+		<?php foreach($this->getAllReviewProducts($_order) as $_item) { ?>
+			<?php $review_product_id = $this->helper('reviewemail')->getReviewProductId($_item, $_order); ?>
+			<?php $_product = Mage::getModel('catalog/product')->load($_item->getProductId()); ?>
+			<input type="hidden" name="productid[<?php echo $_item->getId(); ?>]" value="<?php echo $review_product_id; ?>">
+			<div class="review-list-item" id="item-<?php echo $_item->getId(); ?>" style="<?php echo $this->getItemStyle(); ?>">				
+				<ul class="summary">
+					<li>
+						<div class="input-box">
+							<h3><?php echo $_item->getName(); ?></h3>
+							<div><img src="<?php echo Mage::helper('catalog/image')->init($_product, 'thumbnail'); ?>"></div>
+							<?php foreach ($this->getRatings() as $_rating) { ?>								
+								<div class="rating rating-small">
+									<span><?php echo $this->escapeHtml($_rating->getRatingCode()) ?>:</span>									
+									<?php $i = '1'; foreach (array_reverse($_rating->getOptions()) as $_option) { ?>
+										<?php if($i == '5'): $validate = 'validate-one-required'; else: $validate = ''; endif; ?>
+										<input type="radio"  name="ratings-<?php echo $_item->getId(); ?>[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>_<?php echo $_item->getId(); ?>" value="<?php echo $_option->getId() ?>" class="rating-input <?php echo $validate; ?>" />
+										<label  for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>_<?php echo $_item->getId(); ?>" class="rating-star"> </label>
+									<?php $i++;  } ?>								
+								</div>	
+								<div style="clear:both;"></div>
+							<?php } ?>
+							<input type="text" name="title[<?php echo $_item->getId(); ?>]" id="summary_field_<?php echo $_item->getId(); ?>" class="input-text required-entry" value="" placeholder="<?php echo $this->__('Summary of Your Review') ?>" style="margin-top: 5px;"/>
+							<div style="clear:both;"></div>
+						</div>
+					</li>		
+				</ul>
+				<ul class="summary">				
+					<li>
+						<div class="input-box">
+							<textarea name="detail[<?php echo $_item->getId(); ?>]" id="review_field_<?php echo $_item->getId(); ?>" cols="5" rows="3" class="reviewarea required-entry" placeholder="<?php echo $this->__('Review') ?>"></textarea>
+						</div>
+					</li>
+				</ul>
+			</div>
+		<?php } ?>					
+		
+		<button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+		<input type="hidden" name="emailid" value="<?php echo $email_id; ?>">	          
+		<input type="hidden" name="orderid" value="<?php echo $order_id; ?>">	          
+	</form>
+	<script type="text/javascript">
+		var dataForm = new VarienForm('review-form');
+	</script>
+</div>
+<?php } ?>	

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+	(function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+	a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+	f.parentNode.insertBefore(a,f)})(window,document,'script', '<?php echo $this->getScriptUrl(); ?>', 'tp');
+	tp('register','<?php echo $this->getInstallationKey(); ?>');
+</script>
+<?php if ($this->getTrustBoxStatus()=='enabled'): ?>
+	<script type="text/javascript" onload="wgxpath.install();" src="<?php echo $this->getWgxpathUrl(); ?>" ></script>
+
+	<script type="text/javascript" src="<?php echo $this->getWidgetScriptUrl(); ?>" async></script>
+<?php else: ?>
+	<script type="text/javascript">
+		if (window.self !== window.top) {
+			var w = document.createElement("script");
+			w.type = "text/javascript";
+			w.onload = "wgxpath.install();";
+			w.src = "<?php echo $this->getWgxpathUrl(); ?>";
+			document.head.append(w);
+
+			var s = document.createElement("script");
+			s.type = "text/javascript";
+			s.src = "<?php echo $this->getWidgetScriptUrl(); ?>";
+			s.async = true;
+			document.head.append(s);
+		}
+	</script>
+<?php endif; ?>
