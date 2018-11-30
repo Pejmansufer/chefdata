@@ -21,7 +21,7 @@
  *
  * @category    design
  * @package     rwd_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
@@ -158,31 +158,28 @@ New customer registration
         </reference>
     </customer_account_forgotpassword>
 
-    	
-	<customer_account_changeforgotten translate="label">
-    <label>Reset a Password</label>
-    <remove name="right"/>
-    <remove name="left"/>
+    <customer_account_changeforgotten translate="label">
+        <label>Reset a Password</label>
+        <remove name="right"/>
+        <remove name="left"/>
 
-    <reference name="head">
-        <action method="setTitle" translate="title" module="customer">
-            <title>Reset a Password</title>
-        </action>
-    </reference>
-    <reference name="root">
-        <action method="setTemplate">
-            <template>page/1column.phtml</template>
-        </action>
-        <action method="setHeaderTitle" translate="title" module="customer">
-            <title>Reset a Password</title>
-        </action>
-    </reference>
-    <reference name="content">
-        <block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/resetforgottenpassword.phtml"/>
-    </reference>
-</customer_account_changeforgotten>
-
-
+        <reference name="head">
+            <action method="setTitle" translate="title" module="customer">
+                <title>Reset a Password</title>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+            <action method="setHeaderTitle" translate="title" module="customer">
+                <title>Reset a Password</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/resetforgottenpassword.phtml"/>
+        </reference>
+    </customer_account_changeforgotten>
 
     <customer_account_confirmation>
         <remove name="right"/>

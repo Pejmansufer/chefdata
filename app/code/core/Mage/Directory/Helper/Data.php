@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Directory
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -203,17 +203,10 @@ class Mage_Directory_Helper_Data extends Mage_Core_Helper_Abstract
                 'regions_required' => $this->getCountriesWithStatesRequired()
             )
         );
-        $excludeRegions = array('AS','AK','FM','ID','GU','AF','AA','AE','AP','HI','MH','MP','PW','PR','VI');
         foreach ($collection as $region) {
             if (!$region->getRegionId()) {
                 continue;
             }
-            //BOF Custom Logic Here
-            $regionCode = $region->getCode();
-            if (in_array($regionCode, $excludeRegions)) {
-                 continue;
-            }
-
             $regions[$region->getCountryId()][$region->getRegionId()] = array(
                 'code' => $region->getCode(),
                 'name' => $this->__($region->getName())

@@ -20,9 +20,10 @@
  *
  * @category    Mage
  * @package     Mage
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
 if (version_compare(phpversion(), '5.2.0', '<')) {
     echo 'It looks like you have an invalid PHP version. Magento supports PHP 5.2.0 or newer';
     exit;
@@ -42,6 +43,7 @@ if (!file_exists($mageFilename)) {
 }
 require $bootstrapFilename;
 require $mageFilename;
+
 if (!Mage::isInstalled()) {
     echo 'Application is not installed yet, please complete install wizard first.';
     exit;
@@ -51,8 +53,7 @@ if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
     Mage::setIsDeveloperMode(true);
 }
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+#ini_set('display_errors', 1);
 
 Mage::$headersSentThrowsException = false;
 Mage::init('admin');
@@ -73,8 +74,11 @@ if (in_array($apiAlias, Mage_Api2_Model_Server::getApiTypes())) {
 } else {
     /* @var $server Mage_Api_Model_Server */
     $server = Mage::getSingleton('api/server');
-    $adapterCode = $server->getAdapterCodeByAlias($apiAlias);
-
+    if (!$apiAlias) {
+        $adapterCode = 'default';
+    } else {
+        $adapterCode = $server->getAdapterCodeByAlias($apiAlias);
+    }
     // if no adapters found in aliases - find it by default, by code
     if (null === $adapterCode) {
         $adapterCode = $apiAlias;

@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Usa
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -275,6 +275,15 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
     public function getResult()
     {
        return $this->_result;
+    }
+
+    /**
+     * @inheritdoc
+     * Starting from 23.02.2018 USPS doesn't allow to create free shipping labels via their API.
+     */
+    public function isShippingLabelsAvailable()
+    {
+        return false;
     }
 
     /**
@@ -539,7 +548,8 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
              'method' => array(
                  '0_FCLE' => Mage::helper('usa')->__('First-Class Mail Large Envelope'),
                  '0_FCL'  => Mage::helper('usa')->__('First-Class Mail Letter'),
-                 '0_FCP'  => Mage::helper('usa')->__('First-Class Mail Parcel'),
+                 '0_FCSL' => Mage::helper('usa')->__('First-Class Mail Stamped Letter'),
+                 '0_FCP'  => Mage::helper('usa')->__('First-Class Package Service - Retail'),
                  '0_FCPC' => Mage::helper('usa')->__('First-Class Mail Postcards'),
                  '1'      => Mage::helper('usa')->__('Priority Mail'),
                  '2'      => Mage::helper('usa')->__('Priority Mail Express Hold For Pickup'),
@@ -586,6 +596,7 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
                  '62'     => Mage::helper('usa')->__('Priority Mail Express Padded Flat Rate Envelope'),
                  '63'     => Mage::helper('usa')->__('Priority Mail Express Padded Flat Rate Envelope Hold For Pickup'),
                  '64'     => Mage::helper('usa')->__('Priority Mail Express Sunday/Holiday Delivery Padded Flat Rate Envelope'),
+                 '72'     => Mage::helper('usa')->__('First-Class Mail Metered Letter'),
                  'INT_1'  => Mage::helper('usa')->__('Priority Mail Express International'),
                  'INT_2'  => Mage::helper('usa')->__('Priority Mail International'),
                  'INT_4'  => Mage::helper('usa')->__('Global Express Guaranteed (GXG)'),
@@ -616,6 +627,7 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
            'service_to_code' => array(
                  '0_FCLE' => 'First Class',
                  '0_FCL'  => 'First Class',
+                 '0_FCSL' => 'First Class',
                  '0_FCP'  => 'First Class',
                  '0_FCPC' => 'First Class',
                  '1'      => 'Priority',
@@ -663,6 +675,7 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
                  '62'     => 'Priority Express',
                  '63'     => 'Priority Express',
                  '64'     => 'Priority Express',
+                 '72'     => 'First Class',
                  'INT_1'  => 'Priority Express',
                  'INT_2'  => 'Priority',
                  'INT_4'  => 'Priority Express',
@@ -691,11 +704,13 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
              ),
 
        // Added because USPS has different services but with same CLASSID value, which is "0"
-             'method_to_code' => array(
-                 'First-Class Mail Large Envelope' => '0_FCLE',
-                 'First-Class Mail Letter'         => '0_FCL',
-                 'First-Class Mail Parcel'         => '0_FCP',
-             ),
+            'method_to_code' => array(
+                'First-Class Mail Large Envelope'      => '0_FCLE',
+                'First-Class Mail Letter'              => '0_FCL',
+                'First-Class Mail Stamped Letter'      => '0_FCSL',
+                'First-Class Mail Metered Letter'      => '72',
+                'First-Class Package Service - Retail' => '0_FCP',
+            ),
 
             'first_class_mail_type'=>array(
                 'LETTER'      => Mage::helper('usa')->__('Letter'),
@@ -1333,6 +1348,8 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
      *
      * @param Varien_Object $request
      * @return string
+     * @deprecated This method should not be used anymore.
+     * @see Mage_Usa_Model_Shipping_Carrier_Usps::_doShipmentRequest method doc block.
      */
     protected function _formUsExpressShipmentRequest(Varien_Object $request)
     {
@@ -1499,6 +1516,8 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
      *
      * @param Varien_Object $request
      * @return string
+     * @deprecated Should not be used anymore.
+     * @see Mage_Usa_Model_Shipping_Carrier_Usps::_doShipmentRequest doc block.
      */
     protected function _formIntlShipmentRequest(Varien_Object $request)
     {
@@ -1736,6 +1755,8 @@ class Mage_Usa_Model_Shipping_Carrier_Usps
      *
      * @param Varien_Object $request
      * @return Varien_Object
+     * @deprecated This method must not be used anymore. Starting from 23.02.2018 USPS eliminates API usage for
+     * free shipping labels generating.
      */
     protected function _doShipmentRequest(Varien_Object $request)
     {

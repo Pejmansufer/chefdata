@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
@@ -45,18 +45,11 @@
     $priceElementIdPrefix = $this->getPriceElementIdPrefix() ? $this->getPriceElementIdPrefix() : 'product-price-';
 ?>
     <div class="price-box map-info">
-
     <?php $_price = $this->helper('tax')->getPrice($_product, $_product->getMsrp()) ?>
         <?php if($_product->getMsrp()): ?>
             <?php $_msrpPrice = $_coreHelper->currency($_product->getMsrp(),true,true) ?>
-            <span class="old-price"  style="font-size:30px;display:block"><?php echo $_msrpPrice ?></span>
+            <span class="old-price" ><?php echo $_msrpPrice ?></span>
         <?php endif; ?>
-                <?php $helpLinkId = 'msrp-help-' . $_id . $_coreHelper->getRandomString(20); ?>
-        <a href="#" id="<?php echo($helpLinkId);?>" class="add-to-cart-see-price"><?php echo $this->__("Add to cart to see the price?"); ?></a>
-
-       
-            
-        
 
         <?php if ($_catalogHelper->isShowPriceOnGesture($_product)): ?>
             <?php $priceElementId = $priceElementIdPrefix . $_id . $this->getIdSuffix(); ?>
@@ -103,12 +96,12 @@
             </span>
         <?php endif; ?>
 
-
+        <?php $helpLinkId = 'msrp-help-' . $_id . $_coreHelper->getRandomString(20); ?>
+        <a href="#" id="<?php echo($helpLinkId);?>"><?php echo $this->__("What's this?"); ?></a>
         <script type="text/javascript">
             Catalog.Map.addHelpLink(
                 $('<?php echo $helpLinkId ?>'),
                 '<?php echo Mage::helper('core')->jsQuoteEscape($this->__("What's this?")); ?>'
             );
         </script>
-      
     </div>

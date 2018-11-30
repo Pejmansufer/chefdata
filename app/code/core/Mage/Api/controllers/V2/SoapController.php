@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Api
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -41,10 +41,8 @@ class Mage_Api_V2_SoapController extends Mage_Api_Controller_Action
             $handler_name = 'soap_v2';
         }
 
-
         /* @var $server Mage_Api_Model_Server */
         $this->_getServer()->init($this, $handler_name, $handler_name)
             ->run();
-
     }
 } // Class Mage_Api_IndexController End

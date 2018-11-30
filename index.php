@@ -1,5 +1,4 @@
 <?php
-ini_set("memory_limit","8192M");
 /**
  * Magento
  *
@@ -21,9 +20,10 @@ ini_set("memory_limit","8192M");
  *
  * @category    Mage
  * @package     Mage
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
+
 if (version_compare(phpversion(), '5.3.0', '<')===true) {
     echo  '<div style="font:12px/1.35em arial, helvetica, sans-serif;">
 <div style="margin:0 0 25px 0; border-bottom:1px solid #ccc;">
@@ -37,7 +37,6 @@ Whoops, it looks like you have an invalid PHP version.</h3></div><p>Magento supp
 /**
  * Compilation includes configuration file
  */
- 
 define('MAGENTO_ROOT', getcwd());
 
 $compilerConfig = MAGENTO_ROOT . '/includes/config.php';
@@ -57,13 +56,11 @@ if (!file_exists($mageFilename)) {
     exit;
 }
 
-$ip = $_SERVER['REMOTE_ADDR'];
-$allowed = array('119.82.68.252'); // these are the IP's that are allowed to view the site.
-
-if (file_exists($maintenanceFile) && !in_array($ip, $allowed)) { 
+if (file_exists($maintenanceFile)) {
     include_once dirname(__FILE__) . '/errors/503.php';
     exit;
 }
+
 require MAGENTO_ROOT . '/app/bootstrap.php';
 require_once $mageFilename;
 
@@ -71,11 +68,6 @@ require_once $mageFilename;
 
 if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
     Mage::setIsDeveloperMode(true);
-}
-
-if ($_SERVER['REMOTE_ADDR'] == '78.130.187.162') {
-#	ini_set('display_errors', 1);
-#	ini_set('error_reporting', E_ALL & E_NOTICE);
 }
 
 #Mage::setIsDeveloperMode(true);
@@ -86,6 +78,8 @@ umask(0);
 
 /* Store or website code */
 $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
+
 /* Run store or run website */
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
+
 Mage::run($mageRunCode, $mageRunType);

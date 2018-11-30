@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Checkout
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -163,7 +163,7 @@ class Mage_Checkout_Model_Cart extends Varien_Object implements Mage_Checkout_Mo
      * @return Mage_Checkout_Model_Cart
      */
     public function addOrderItem($orderItem, $qtyFlag=null)
-    {		
+    {
         /* @var $orderItem Mage_Sales_Model_Order_Item */
         if (is_null($orderItem->getParentItem())) {
             $product = Mage::getModel('catalog/product')
@@ -229,10 +229,6 @@ class Mage_Checkout_Model_Cart extends Varien_Object implements Mage_Checkout_Mo
             $request = new Varien_Object($requestInfo);
         }
 
-        if (!$request->hasQty()) {
-            $request->setQty(1);
-        }
-
         return $request;
     }
 
@@ -245,33 +241,24 @@ class Mage_Checkout_Model_Cart extends Varien_Object implements Mage_Checkout_Mo
      */
     public function addProduct($productInfo, $requestInfo=null)
     {
-		$count = $this->getQuote()->getItemsSummaryQty();
-		
-		if($count==0){
-			unset($_COOKIE['frontend']);
-			unset($_COOKIE['frontend_cid']);
-			setcookie('frontend', null, -1);
-			setcookie('frontend', null, -1, '/');
-			setcookie('frontend_cid', null, -1);
-			setcookie('frontend_cid', null, -1, '/');
-			
-			setcookie('frontend', null, -1);
-			setcookie('frontend', null, -1, '/','.www.cdrestaurantequipment.com');
-			setcookie('frontend_cid', null, -1);
-			setcookie('frontend_cid', null, -1, '/','.www.cdrestaurantequipment.com');
-		}
-		
         $product = $this->_getProduct($productInfo);
         $request = $this->_getProductRequest($requestInfo);
 
+        /** @var Mage_Catalog_Helper_Product $helper */
+        $helper  = Mage::helper('catalog/product');
+
+        if (!$request->hasQty()) {
+            $request->setQty($helper->getDefaultQty($product));
+        }
+
         $productId = $product->getId();
 
-        if ($product->getStockItem()) {
+        if (!$product->isConfigurable() && $product->getStockItem()) {
             $minimumQty = $product->getStockItem()->getMinSaleQty();
             //If product was not found in cart and there is set minimal qty for it
             if ($minimumQty && $minimumQty > 0 && $request->getQty() < $minimumQty
                 && !$this->getQuote()->hasProductId($productId)
-            ){
+            ) {
                 $request->setQty($minimumQty);
             }
         }
@@ -305,7 +292,6 @@ class Mage_Checkout_Model_Cart extends Varien_Object implements Mage_Checkout_Mo
 
         Mage::dispatchEvent('checkout_cart_product_add_after', array('quote_item' => $result, 'product' => $product));
         $this->getCheckoutSession()->setLastAddedProductId($productId);
-
         return $this;
     }
 

@@ -3,9 +3,9 @@
 
 ; adjust memory limit
 
-memory_limit = 4096M
+memory_limit = 64M
 
-max_execution_time = 25000
+max_execution_time = 18000
 
 ; disable magic quotes for php request vars
 

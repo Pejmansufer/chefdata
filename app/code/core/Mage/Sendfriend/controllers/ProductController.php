@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Sendfriend
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -140,93 +140,7 @@ class Mage_Sendfriend_ProductController extends Mage_Core_Controller_Front_Actio
 
         $this->renderLayout();
     }
-	/**
-     * Send Price Post Action
-     *
-     */
-	public function sendpriceAction(){
-		$product = $this->_initProduct();
-		
-		$email=$this->getRequest()->getParam('email');
-		
-		$html="
-		<html>
-			<head></head>
-			<body>
-				<table style='width:100%;max-width:800px;margin:0 auto;'>
-					<tr>
-						<td>
-							<img style='width:250px;' src='https://www.cdrestaurantequipment.com/media/logo/default/logo_5.png'>
-						</td>
-						<td style='text-align: right; vertical-align: top;'>
-							<h5 style='margin-bottom:0px;'>Contact Us</h5>
-							<h5 style='margin-bottom:0px;margin-top:0px;'>(877) 254-5449</h5>
-							<h5 style='margin-top:0px;margin-bottom:0px;'>
-								<a href='mailto:info@chefsdeal.com'>info@chefsdeal.com</a>
-							</h5>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2' style='background-color:#000;color:#FFF;padding:10px;text-align:center;'>
-							Special Price Request
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2'>
-						<br>
-						Dear Customer;<br><br>
-						We are happy to offer you this exclusive price, which we guarantee for 24 hours. While the price may not change in that time, we do ask that you request a new quote to ensure you're getting the most current pricing. Order now by clicking the button below or call us at 877-254-5449, Monday through Friday from 8 a.m. to 8 p.m. Eastern Time.
-						</td>
-					</tr>
-					<tr>
-						<td  style='text-align: left; vertical-align: top;width:50%;'>
-							<img style='max-width:90%;' src='".$product->getImageUrl()."'>
-						</td>
-						<td style='text-align: left; vertical-align: top;width:50%;'>
-							<br>
-							<a href='".Mage::getUrl('catalog/product/view/id/'.$product->getId())."'>".Mage::helper('core')->escapeHtml($product->getName())."</a>
-							<br>
-							<br>
-							Retail Price : ".Mage::helper('core')->currency($product->getMsrp(), true, false)."<br>
-							<h2 style='color:red;'>Your Price : ".Mage::helper('core')->currency($product->getSpecialPrice(), true, false)."</h2>
-							Save ".Mage::helper('core')->currency($product->getMsrp()-$product->getSpecialPrice(), true, false)." by ordering now!
-							<a href=".Mage::getUrl('customer/account/login', array('referer' => Mage::helper('core')->urlEncode($product->getUrl())))." style='min-width:200px;display:block;width:100%;color:#FFF;background-color:#D51E2D;padding-top:15px;padding-bottom:15px;margin-top:15px;margin-bottom:15px;text-align:center;text-decoration:none;'>Login & Shop Now</a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2' style='background-color:#000;color:#FFF;padding:10px;'>
-							Note: This special price is valid until 24 hour.<br>
-							Thanks for choosing us.
-						</td>
-					</tr>
-				</table>
-			</body>
-		</html>
-		";
-		
-		$sender=Mage::getStoreConfig('trans_email/ident_general/email');
-		$sendername=Mage::getStoreConfig('trans_email/ident_general/name');
-		
-		$mail = Mage::getModel('core/email');
-		$mail->setToName($email);
-		$mail->setToEmail($email);
-		$mail->setBody($html);
-		$mail->setSubject('Chefs Deal Restaurant Equipment '.$product->getName().' Price Request');
-		$mail->setFromEmail($sender);
-		$mail->setFromName($sendername);
-		$mail->setType('html');// YOu can use Html or text as Mail format
 
-		try {
-			$mail->send();
-			Mage::getSingleton('core/session')->addSuccess('Your price request has been sent to your mail address');
-			$this->_redirect($product->getUrlPath());
-		}
-		catch (Exception $e) {
-			Mage::getSingleton('core/session')->addError('Unable to send.');
-			$this->_redirect($product->getUrlPath());
-		}
-	}
-	
     /**
      * Send Email Post Action
      *

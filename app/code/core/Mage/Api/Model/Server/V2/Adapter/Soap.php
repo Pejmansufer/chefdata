@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Api
- * @copyright  Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -60,7 +60,6 @@ class Mage_Api_Model_Server_V2_Adapter_Soap extends Mage_Api_Model_Server_Adapte
             $this->getController()->getResponse()
                 ->clearHeaders()
                 ->setHeader('Content-Type','text/xml; charset='.$apiConfigCharset)
-		//->setHeader('Content-Type', 'application/soap+xml; charset='.$apiConfigCharset)
                 ->setBody(
                       preg_replace(
                         '/<\?xml version="([^\"]+)"([^\>]+)>/i',
