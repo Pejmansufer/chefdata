@@ -1,8 +1,0 @@
-<config>
-    <router id="admin">
-        <route id="commercebugadmin" frontName="commercebugadmin">
-            <module name="Chefsdeal_Commercebug_Adminhtml" before="Magento_Adminhtml" />
-        </route>
-    </router>
-</config>
-

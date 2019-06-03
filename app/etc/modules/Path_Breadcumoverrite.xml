@@ -1,8 +1,0 @@
-<config>
-    <modules>
-        <Path_Breadcumoverrite>
-            <active>true</active>
-            <codePool>community</codePool>            
-        </Path_Breadcumoverrite>
-    </modules>
-</config>

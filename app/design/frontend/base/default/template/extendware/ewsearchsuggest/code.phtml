@@ -1,6 +1,0 @@
-<div id="search_autocomplete2" class="search-autocomplete"></div>
-<script type="text/javascript">
-$('search').value = '';
-var ewsearchsuggest=new EWSearchSuggest('search_mini_form', 'search', <?php echo json_encode($this->mHelper('config')->getDefaultSearchText()); ?>);
-ewsearchsuggest.initAutocomplete(<?php echo json_encode($this->getUrl('ewsearchsuggest/ajax/suggest')); ?>, <?php echo ($this->mHelper('config')->isDefaultBoxEnabled() ? 'search_autocomplete' : 'search_autocomplete2'); ?>);
-</script>

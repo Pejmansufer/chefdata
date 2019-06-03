@@ -1,7 +1,0 @@
-<config>
-    <router id="standard">
-        <route id="commercebug" frontName="commercebug">
-            <module name="Chefsdeal_Commercebug" />
-        </route>
-    </router>
-</config>

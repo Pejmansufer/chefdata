@@ -1,7 +1,0 @@
-<?php $brand = $this->getBrand(); ?>
-<?php if($brand && $brand->getId()): ?>
-    <?php if($brand->getThumbnailImage()): ?>
-    <a href="<?php echo $this->getUrl($brand->getUrlKey()); ?>"><img class="img-responsive" src="<?php echo Mage::getBaseUrl('media').'brands/thumbnail/'.$brand->getId().'/'.$brand->getThumbnailImage(); ?>" title="<?php echo $brand->getName(); ?>" /></a> <br />
-    <?php endif; ?>
-    <a href="<?php echo $this->getUrl($brand->getUrlKey()); ?>"><?php echo $this->__('View all %s', $brand->getName()); ?></a>
-<?php endif; ?>

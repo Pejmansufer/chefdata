@@ -1,4 +1,0 @@
-<config>
-    <preference for="Magento\Event\Manager" type="Chefsdeal_Commercebug_Model_Event_Manager" />
-    <preference for="Magento\Event\Invoker\InvokerDefault" type="Chefsdeal_Commercebug_Model_Invoker" />
-</config>
